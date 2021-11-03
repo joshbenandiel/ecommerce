@@ -1,0 +1,140 @@
+
+.navbar-wrapper {
+  font-family: 'Lato', sans-serif;
+  padding: 30px 0px;
+  background-color: #E7EBED;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.search {
+ display: flex;
+ align-items: center;
+}
+
+.search-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.search-wrapper input {
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.search-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40px;
+  background: rgb(94,165,214);
+  background: linear-gradient(90deg, rgba(94,165,214,1) 0%, rgba(128,152,223,1) 43%, rgba(154,143,228,1) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.login-wrapper {
+  padding-right: 2em;
+}
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo-name {
+  background: -webkit-linear-gradient(#5ea5d6, #8098df, #9a8fe4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-wrapper h5 {
+  font-size: 0.9rem;
+}
+.account {
+  cursor: pointer;
+  color: rgb(94,165,214);
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+.login-signup {
+  color: #A3AFEF;
+}
+.cart-wrapper {
+  display: flex;
+  justify-content: space-between;
+  border-left: 2px solid;
+  
+}
+
+.cart-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  font-size: 0.9rem;
+  padding-left: 2em;
+  color: rgb(94,165,214);
+}
+
+.far {
+  font-size: 2rem;
+  padding-left: 50px;
+  color: rgb(94,165,214);
+}
+
+
+
+.cart-wrap {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  height: 17px;
+  width: 15px;
+  background-color: #5ea5d6;
+  z-index: 1;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.cart-count h5 {
+  font-size: 0.9em;
+  margin-top: 6px;
+}
+
+
+.cart-count:hover {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  height: 20px;
+  width: 20px;
+  background-color: #5ea5d6;
+  z-index: 1;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

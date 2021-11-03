@@ -1,0 +1,66 @@
+
+.slider-container {
+  position: relative;
+ 
+  
+}
+.slider-img {
+  width: 100%;
+  
+}
+
+.dot {
+  height: 16px;
+  width: 16px;
+  background-color: #fff;
+  border-radius: 100%;
+  cursor: pointer;  
+}
+
+
+
+.active-dot {
+  background: radial-gradient(circle, transparent 45%, #fff 35%);
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border-radius: 100%;
+  cursor: pointer; 
+}
+
+.dot-wrapper {
+  position: absolute;
+  bottom: 30px;
+  right: 45%;
+  width: 10%;
+}
+
+.img-size {
+  height: 70vh;
+  width: 100%;
+ 
+}
+
+.arrow-wrapper {
+  position: absolute;
+  top: 300px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30px;
+}
+
+.arrow-wrapper i {
+  font-size: 3em;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.arrow-wrapper i:hover {
+  font-size: 4em;
+  color: #fff;
+  cursor: pointer;
+  transition: 300ms;
+  opacity: 1;
+}
