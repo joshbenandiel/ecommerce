@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react'
+import React, { useState } from 'react'
 import sliderData from "./SliderData"
 import "../styles/Slider.css"
 
@@ -10,7 +10,7 @@ const Slider = () => {
   const handleNextClick = () => {
     const current = sliderData.find((item) => item.id == activeSlider);
     
-    if (current.id == 5) {
+    if (current.id === 5) {
       setActiveSlider(1)
     } else {
       setActiveSlider(current.id + 1);
@@ -20,7 +20,7 @@ const Slider = () => {
   const handlePrevClick = () => {
     const current = sliderData.find((item) => item.id == activeSlider);
     
-    if (current.id == 1) {
+    if (current.id === 1) {
       setActiveSlider(5)
     } else {
       setActiveSlider(current.id - 1);
@@ -30,7 +30,7 @@ const Slider = () => {
   return (
     <div className="slider-container">
       {sliderData.map((item, index)=> {
-        if (item.id == activeSlider) {
+        if (item.id === activeSlider) {
           return (
             <div key={index}>
               <div className="slider-container d-flex justify-content-center align-items-center">
@@ -48,7 +48,7 @@ const Slider = () => {
               onClick={() => setActiveSlider(item.id)}
               className={
               `d-flex justify-content-center align-items-center ${
-                activeSlider == item.id 
+                activeSlider === item.id 
                   ? "active-dot"
                   : "dot"
                 }`

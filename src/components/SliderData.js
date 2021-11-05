@@ -2,7 +2,6 @@ import iphone from "../images/iphone.jpg"
 import iphone1 from "../images/iphone1.png"
 import laptop from "../images/laptop.jpg"
 import laptop1 from "../images/laptop1.jpg"
-import tablet from "../images/tablet.jpg"
 import watch from "../images/watch.jpg"
 
 
