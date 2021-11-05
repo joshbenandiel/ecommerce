@@ -1,0 +1,41 @@
+.promos-container {
+ height: 70vh;
+ width: 100%;
+ background: #1B1B1B;
+}
+
+
+
+.menu-items {
+  color: #fff;
+  list-style: none;
+  height: 45px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 2px solid #36383C;
+}
+
+
+.active-menu-items {
+  color: #fff;
+  list-style: none;
+  height: 45px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 2px solid rgb(94,165,214);
+  background-color: #36383C;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+
+
+
+
+
