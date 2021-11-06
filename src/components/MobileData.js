@@ -6,17 +6,23 @@ const laptop = [
   {
     id: 1,
     img: mobile1,
-    alt: "mobile1"
+    alt: "mobile1",
+    name: "Mobile",
+    series: "Iphone 11 Pro Max"
   },
   {
     id: 2,
     img: mobile2,
-    alt: "mobile2"
+    alt: "mobile2",
+    name: "Mobile",
+    series: "Iphone 12 Pro"
   },
   {
     id: 3,
     img: mobile3,
-    alt: "mobile3"
+    alt: "mobile3",
+    name: "Mobile",
+    series: "Iphone 13"
   },
 ]
 

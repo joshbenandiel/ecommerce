@@ -16,7 +16,11 @@ const PromoCard = ({value}) => {
             return (
               <div key={index}>
                <img className="img" src={item.img}/>
+               <p className="text-white mt-3">{item.name}</p>
+               <h5 className="text-white">{item.series}</h5>
+               <h5 className="text-white">Price</h5>
               </div>
+              
             )       
           }                        
       })}    
@@ -25,14 +29,15 @@ const PromoCard = ({value}) => {
            return (
             <div key={index}>
               <img className="img" src={itemMobile.img}/>
+              <p className="text-white mt-3">{itemMobile.name}</p>
+              <h5 className="text-white">{itemMobile.series}</h5>
+              <h5 className="text-white">Price</h5>
            </div>
 
            )
          }
       })}  
-        <p className="text-white">Hello</p>
-        <h5 className="text-white">Series</h5>
-        <h5 className="text-white">Price</h5>
+        
     </div>
   )
 }
