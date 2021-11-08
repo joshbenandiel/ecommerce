@@ -1,0 +1,44 @@
+.login-container-active {
+  height: 400px;
+  width: 300px;
+  box-shadow: -2px 10px 19px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -2px 10px 19px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 10px 19px 0px rgba(0,0,0,0.75);
+  background: #fff;
+  position: absolute;
+  z-index: 2;
+  flex-direction: column;
+  top: 78%;
+  right: 23%;
+  padding: 20px;
+ 
+  
+}
+
+
+.footer-container {
+  margin-top: 20px;
+}
+
+.footer {
+  font-size: 12px;
+  margin-bottom: 2px;
+  
+}
+
+
+
+.footer-container a {
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+.footer-container a:hover {
+  text-decoration: underline;
+}
+
+
+
+.login-header {
+  font-size: 1rem !important;
+}

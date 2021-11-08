@@ -5,6 +5,7 @@
   margin: 60px 10px;
   border-radius: 10px;
   padding: 50px;
+  position: relative;
 }
 
 .img {
@@ -14,3 +15,27 @@
 -moz-box-shadow: -3px 2px 50px 0px rgba(176,170,170,1);
   background: #fff;
 }
+
+.cart {
+  font-size: 1.5rem;
+
+}
+
+.cart-wrapp {
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  background: rgb(94,165,214);
+  background: linear-gradient(90deg, rgba(94,165,214,1) 0%, rgba(128,152,223,1) 43%, rgba(154,143,228,1) 100%);
+}
+

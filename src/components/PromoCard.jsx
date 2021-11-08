@@ -13,14 +13,13 @@ const PromoCard = ({value}) => {
     <div className="promo-container">   
       {recomendations.map((item,index)=> {
           if (item.id === random & value === 1) {
-            return (
-              <div key={index}>
-               <img className="img" src={item.img}/>
-               <p className="text-white mt-3">{item.name}</p>
-               <h5 className="text-white">{item.series}</h5>
-               <h5 className="text-white">Price</h5>
-              </div>
-              
+            return (            
+                <div key={index}>
+                  <img className="img" src={item.img}/>
+                  <p className="text-white mt-3">{item.name}</p>
+                  <h5 className="text-white">{item.series}</h5>
+                  <h5 className="text-white">Price</h5>
+                </div>         
             )       
           }                        
       })}    
@@ -36,8 +35,13 @@ const PromoCard = ({value}) => {
 
            )
          }
-      })}  
-        
+      })} 
+
+      <div className="cart-wrapp">
+        <div className="cart-container">
+          <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
+        </div>  
+      </div>
     </div>
   )
 }
