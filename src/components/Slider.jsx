@@ -41,7 +41,7 @@ const Slider = () => {
         }
       })}
 
-      <div className="dot-wrapper d-flex justify-content-between">
+      <div className="dot-wrapper d-flex justify-content-center">
         {sliderData.map((item, index) => {
           return (
             <div

@@ -47,6 +47,7 @@ const Navbar = () => {
         </div>
         <Login
         activeLogin={activeLogin}
+        setActiveLogin={setActiveLogin}
         />
       </div>
     
