@@ -39,6 +39,7 @@ const PromoCard = ({value}) => {
 
       <div className="cart-wrapp">
         <div className="cart-container">
+          
           <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
         </div>  
       </div>
