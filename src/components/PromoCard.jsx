@@ -1,17 +1,27 @@
-import React , { useState } from 'react'
+import React , { useState , useEffect } from 'react'
 import "../styles/PromoCard.css"
-import recomendations from "./RecomendationsData"
-import mobile from "./MobileData"
+import recomendations from "./data/RecomendationsData"
+import { useSelector, useDispatch } from 'react-redux'
+import { addToCart } from '../redux/product';
+
+
+
 
 const PromoCard = ({value}) => {
 
-  const random = Math.floor(Math.random() * 12) + 1;
-  const randomMobile = Math.floor(Math.random() * 3) + 1;
-  console.log(randomMobile);
+  const [random, setRandom] = useState(0);
   
+
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * 12) + 1);
+  }, [])
+
+  const { products }  = useSelector((state) => state.product) 
+  const dispatch = useDispatch()
+
   return (
     <div className="promo-container">   
-      {recomendations.map((item,index)=> {
+      {products.map((item,index)=> {
           if (item.id === random & value === 1) {
             return (            
                 <div key={index}>
@@ -19,30 +29,17 @@ const PromoCard = ({value}) => {
                   <p className="text-white mt-3">{item.name}</p>
                   <h5 className="text-white">{item.series}</h5>
                   <h5 className="text-white">Price</h5>
+                  <div 
+                    onClick={() => dispatch(addToCart(item))}
+                    className="cart-wrapp">
+                    <div className="cart-container">     
+                      <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
+                    </div>  
+                  </div>
                 </div>         
             )       
           }                        
-      })}    
-      {mobile.map((itemMobile, index)=> {
-         if (itemMobile.id === randomMobile & value === 2 ) {
-           return (
-            <div key={index}>
-              <img className="img" src={itemMobile.img}/>
-              <p className="text-white mt-3">{itemMobile.name}</p>
-              <h5 className="text-white">{itemMobile.series}</h5>
-              <h5 className="text-white">Price</h5>
-           </div>
-
-           )
-         }
-      })} 
-
-      <div className="cart-wrapp">
-        <div className="cart-container">
-          
-          <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
-        </div>  
-      </div>
+      })}       
     </div>
   )
 }

@@ -14,7 +14,11 @@ const Cart = ({activeCart}) => {
             <div className="active-cart-count-box">
               <button
               onClick={()=> {
-                setCount(count - 1)
+                if (count === 0){
+                } else {
+                  setCount(count - 1)
+                }
+                
               }} 
               >
                 -
