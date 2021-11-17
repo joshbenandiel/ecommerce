@@ -28,7 +28,7 @@ const PromoCard = ({value}) => {
                   <img className="img" src={item.img}/>
                   <p className="text-white mt-3">{item.name}</p>
                   <h5 className="text-white">{item.series}</h5>
-                  <h5 className="text-white">Price</h5>
+                  <h5 className="text-white">{item.price}</h5>
                   <div 
                     onClick={() => dispatch(addToCart(item))}
                     className="cart-wrapp">

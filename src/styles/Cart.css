@@ -1,5 +1,5 @@
 .active-cart {
-  height: 300px;
+  height: auto;
   width: 500px;
   background-color: #fff;
   position: absolute;
@@ -26,7 +26,6 @@
   border: 1px solid #e1e3e4;  
   border-radius: 3px;
   box-shadow: 0 1px 1px rgb(225 227 228 / 20%);
-  position: absolute;
   right: 20px;
   display: flex;
   align-items: center;
@@ -52,3 +51,40 @@
  .button-wrap {
    width: 300px;
  }
+
+ .cart-item {
+   height: 120px;
+   height: 120px;
+ }
+
+.remove-button {
+  border: none;
+  background: transparent;
+}
+ 
+.cart-adjust {
+  max-height: 250px;
+  overflow: auto;
+}
+
+.button-remove {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-empty {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  
+}
+
+.cart-active-container {
+  margin-top: 40px;
+  font-size: 5em;
+  margin-bottom: 20px;
+}

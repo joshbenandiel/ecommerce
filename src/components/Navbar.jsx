@@ -45,7 +45,7 @@ const Navbar = () => {
               </div>
               <div className="cart-wrapper">
                 <div className="cart-wrap">
-                  <i className="far fa-shopping-cart"></i>
+                  <i className="cart-nav far fa-shopping-cart"></i>
                   <div
                     onClick={() => {
                         setActiveCart(!activeCart)

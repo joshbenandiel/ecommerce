@@ -14,11 +14,16 @@ export const productSlice = createSlice({
       const existingCart = state.cart;
       existingCart.push(payload);
       state.cart = existingCart;
+    },
+    removeToCart: (state, { payload }) => {
+      const id = payload.id;
+      const filtered = state.cart.filter((item) => item.id !== id)
+      state.cart = filtered;
     }
   },
 })
 
 
-export const { addToCart } = productSlice.actions
+export const { addToCart , removeToCart } = productSlice.actions
 
 export default productSlice.reducer
