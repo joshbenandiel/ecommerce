@@ -3,7 +3,7 @@ import "../styles/PromoCard.css"
 import recomendations from "./data/RecomendationsData"
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart } from '../redux/product';
-
+import { decrement, increment } from '../redux/count';
 
 
 
@@ -17,6 +17,8 @@ const PromoCard = ({value}) => {
   }, [])
 
   const { products }  = useSelector((state) => state.product) 
+
+
   const dispatch = useDispatch()
 
   return (
@@ -29,8 +31,11 @@ const PromoCard = ({value}) => {
                   <p className="text-white mt-3">{item.name}</p>
                   <h5 className="text-white">{item.series}</h5>
                   <h5 className="text-white">{item.price}</h5>
-                  <div 
-                    onClick={() => dispatch(addToCart(item))}
+                  <div
+                    onClick={() => {
+                      dispatch(addToCart(item))
+                      dispatch(increment())
+                    }}
                     className="cart-wrapp">
                     <div className="cart-container">     
                       <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>

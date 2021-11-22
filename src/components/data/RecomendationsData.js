@@ -20,7 +20,7 @@ const recomendations = [
      alt: "laptop1",
      name: "Laptop",
      series: "Apple M1",
-     price: "1000 Php"
+     price: 1000
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const recomendations = [
     alt: "laptop2",
     name: "Laptop",
     series: "Apple Mac 13",
-    price: "2000 Php"
+    price: 2000
   },
   {
    id: 3,
@@ -36,7 +36,7 @@ const recomendations = [
    alt: "laptop3",
    name: "Laptop",
    series: "Macbook Gold",
-   price: "1000php"
+   price: 3000
    
  },
  {
@@ -45,7 +45,7 @@ const recomendations = [
    alt: "mobile1",
    name: "Mobile",
    series: "Iphone 11 Pro Max",
-   price: "1000php"
+   price: 4000
    
  },
  {
@@ -54,7 +54,7 @@ const recomendations = [
    alt: "mobile2",
    name: "Mobile",
    series: "Iphone 12 Pro",
-   price: "1000php"
+   price: 5000
  },
  {
    id: 6,
@@ -62,7 +62,7 @@ const recomendations = [
    alt: "mobile3",
    name: "Mobile",
    series: "Iphone 13",
-   price: "1000php"
+   price: 6000
  },
  {
    id: 7,
@@ -70,7 +70,7 @@ const recomendations = [
    alt: "tablet1",
    name: "Tablets",
    series: "Ipad Pro",
-   price: "1000php"
+   price: 7000
  },
  {
    id: 8,
@@ -78,7 +78,7 @@ const recomendations = [
    alt: "tablet2",
    name: "Tablets",
    series: "Ipad Mini",
-   price: "1000php"
+   price: 8000
  },
  {
    id: 9,
@@ -86,7 +86,7 @@ const recomendations = [
    alt: "tablet3",
    name: "Tablets",
    series: "Ipad Pro 11",
-   price: "1000php"
+   price: 9000
  },
  {
    id: 10,
@@ -94,7 +94,7 @@ const recomendations = [
    alt: "watch1",
    name: "Watch",
    series: "Watch SE",
-   price: "1000php"
+   price: 10000
  },
  {
    id: 11,
@@ -102,7 +102,7 @@ const recomendations = [
    alt: "watch2",
    name: "Watch",
    series: "Watch Series 3",
-   price: "1000php"
+   price: 11000
 
  },
  {
@@ -111,7 +111,7 @@ const recomendations = [
    alt: "watch3",
    name: "Watch",
    series: "Watch Series 6",
-   price: "1000php"
+   price: 12000
  },
 
 ]

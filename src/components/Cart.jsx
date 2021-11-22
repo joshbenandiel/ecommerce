@@ -2,7 +2,9 @@ import React , { useState } from 'react'
 import "../styles/Cart.css"
 import Button from '@mui/material/Button';
 import { useSelector , useDispatch } from 'react-redux'
-import { removeToCart } from '../redux/product';
+import { incrementProductCount, removeToCart , decrementProductCount } from '../redux/product';
+import { decrement, increment} from '../redux/count';
+
 
 const Cart = ({activeCart}) => {
 
@@ -21,7 +23,6 @@ const Cart = ({activeCart}) => {
             { productsInCart.length > 0 ? (
               <>
                 { productsInCart.map((item, index) => {
-                  console.log(index, item);
                   return (
                     <CartItem 
                       key={index}
@@ -58,9 +59,22 @@ const Cart = ({activeCart}) => {
 }
 
 const CartItem = ({cartItem}) => {
-  const [count, setCount] = useState(0);
+
+
+
 
   const dispatch = useDispatch();
+
+  const addItem = () => {
+    dispatch(incrementProductCount({id: cartItem.id}))
+  }
+
+  const minusItem = () => {
+    dispatch(decrementProductCount({id: cartItem.id}))
+  }
+
+
+
   return (
     <div className="active-cart-wrap"> 
       <div className="container">
@@ -70,23 +84,29 @@ const CartItem = ({cartItem}) => {
           </div>
           <div className="col">
             <p>{cartItem.series}</p>
-            <p>{cartItem.price}</p>
+            <p>{cartItem.price*cartItem.count} Php</p>
+
           </div>
           <div className="col"> 
               <div className="button-remove">  
                 <div className="active-cart-count-box">
                   <button
                   onClick={()=> {
-                    if (count === 0){
+                    if (cartItem.count < 2){
+                      dispatch(decrement())
+                      dispatch(removeToCart({ id: cartItem.id }))
+                           
                     } else {
-                      setCount(count - 1)
-                    }     
+                      dispatch(decrement())
+                      minusItem()
+                    }
                   }} 
                   > - </button>    
-                  <p>{count}</p>
+                  <p>{cartItem.count}</p>
                   <button
                   onClick={()=> {
-                    setCount(count + 1)
+                    dispatch(increment())
+                    addItem()           
                   }} 
                   > + </button>
                 </div>  

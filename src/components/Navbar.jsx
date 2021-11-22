@@ -3,13 +3,19 @@ import "../styles/Navbar.css"
 import Login from "./Login"
 import Cart from "./Cart"
 
+import { useSelector } from 'react-redux'
+
 const Navbar = () => {
 
   const [activeLogin, setActiveLogin] = useState(false)
   const [activeCart, setActiveCart] = useState(false);
 
+  const  { count }  = useSelector((state) => state.counter);
+
+  const productsInCart = useSelector((state) => state.product.cart);
 
 
+  
 
   return (
       <div className="navbar-wrapper">
@@ -55,7 +61,7 @@ const Navbar = () => {
 
                     }} 
                     className="cart-count">
-                    <h5>0</h5>
+                    <h5>{count}</h5>
                   </div>
                 </div>      
                 <h5 className="cart-name">Cart</h5>
