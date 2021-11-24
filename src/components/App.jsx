@@ -5,6 +5,7 @@ import "../styles/App.css"
 import Promo from "./Promo"
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart } from '../redux/product';
+import Items from "./Items"
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
       <div className="navbar-height"/>  
       <Slider/>
       <Promo/>
+      <Items/>
     </>
   );
 }

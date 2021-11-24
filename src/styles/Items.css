@@ -1,0 +1,42 @@
+.items-container {
+  flex-direction: column;
+  
+}
+.items-container h1 {
+  font-size: 3em;
+}
+.items-container h2 {
+  font-size: 5em;
+  font-weight: bold;
+}
+
+.iphone-container h2 {
+  font-size: 5em;
+  font-weight: bold;
+}
+.items-container p {
+  padding: 50px 500px;
+  font-size: 2em;
+  text-align: center;
+}
+ 
+.iphone-container {
+  flex-direction: column;
+  text-align: center;
+  height: 50rem;
+  overflow: hidden;
+}
+
+.items-wrapper {
+  position: relative;
+}
+
+.img-phone-paragraph {
+  font-size: 2rem;
+  
+}
+
+.phone-wrap {
+  padding: 0px 350px;
+  text-align: center;
+}

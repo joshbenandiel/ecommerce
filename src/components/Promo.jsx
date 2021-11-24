@@ -39,12 +39,24 @@ const Promo = () => {
         </ul>
         <div className="d-flex justify-content-center align-items-center">
           <PromoCard
+          mobileId={4}
+          tabletId={7}
+          laptopId={1}
+          watchId={10}
           value={value}
           />
           <PromoCard
+          mobileId={5}
+          tabletId={8}
+          laptopId={2}
+          watchId={11}
           value={value}
           />
           <PromoCard
+          mobileId={6}
+          tabletId={9}
+          laptopId={3}
+          watchId={12}
           value={value}
           />
         </div>

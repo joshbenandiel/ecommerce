@@ -2,6 +2,10 @@ import React , { useState } from 'react'
 import "../styles/Navbar.css"
 import Login from "./Login"
 import Cart from "./Cart"
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import productData from '../components/data/RecomendationsData'
+import Chip from '@mui/material/Chip';
 
 import { useSelector } from 'react-redux'
 
@@ -10,12 +14,18 @@ const Navbar = () => {
   const [activeLogin, setActiveLogin] = useState(false)
   const [activeCart, setActiveCart] = useState(false);
 
-  const  { count }  = useSelector((state) => state.counter);
 
   const productsInCart = useSelector((state) => state.product.cart);
 
+  const getCartTotal = () => {
+    let finalCount = 0;
 
-  
+    productsInCart.map((item) => {
+      finalCount = finalCount + item.count
+    });
+
+    return finalCount;
+  }
 
   return (
       <div className="navbar-wrapper">
@@ -24,13 +34,8 @@ const Navbar = () => {
             <div className="col logo">
             <h1 className="logo-name">JOSH SHOPEE</h1>
             </div>
-            <div className="col-6 search"> 
-              <div className="search-wrapper">
-                <input type="text" placeholder="Search..."></input>
-                <div className="search-btn">
-                  <i className="fas fa-search"></i>
-                </div>
-              </div>           
+            <div className="col-6"> 
+           
             </div>
             <div className="col login">
               <div className="login-wrapper">
@@ -54,6 +59,7 @@ const Navbar = () => {
                   <i className="cart-nav far fa-shopping-cart"></i>
                   <div
                     onClick={() => {
+                        console.log(productsInCart);
                         setActiveCart(!activeCart)
                         if (activeLogin) {
                           setActiveLogin(!activeLogin);
@@ -61,7 +67,7 @@ const Navbar = () => {
 
                     }} 
                     className="cart-count">
-                    <h5>{count}</h5>
+                    <h5>{getCartTotal()}</h5>
                   </div>
                 </div>      
                 <h5 className="cart-name">Cart</h5>
