@@ -6,6 +6,7 @@ import Promo from "./Promo"
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart } from '../redux/product';
 import Items from "./Items"
+import Footer from './Footer'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <Slider/>
       <Promo/>
       <Items/>
+      <Footer/>
     </>
   );
 }

@@ -35,7 +35,7 @@ const Navbar = () => {
             <h1 className="logo-name">JOSH SHOPEE</h1>
             </div>
             <div className="col-6"> 
-           
+              
             </div>
             <div className="col login">
               <div className="login-wrapper">
