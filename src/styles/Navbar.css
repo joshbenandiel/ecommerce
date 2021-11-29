@@ -2,7 +2,7 @@
 .navbar-wrapper {
   font-family: 'Roboto', sans-serif;
   padding: 30px 0px;
-  background-color: #E7EBED;
+  background-color: yellow;
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -13,6 +13,15 @@
  display: flex;
  align-items: center;
 }
+.search-input {
+  padding: 10px;
+  padding-left: 20px;
+  outline: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  
+  border: none;
+}
 
 .search-wrapper {
   width: 100%;
@@ -22,6 +31,11 @@
 .search-wrapper input {
   padding: 10px 20px;
   width: 100%;
+}
+
+.price-text {
+  font-weight: bold;
+  color: #fff;
 }
 
 .search-btn {
@@ -38,8 +52,35 @@
   color: #fff;
   cursor: pointer;
   outline: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
+
+
+.search-item {
+  position: absolute;
+  background: #fff;
+  height: auto;
+  width: 94%;
+  justify-content: center;
+  cursor: pointer;
+  
+}
+
+.search-series-header {
+  font-weight: bold;
+}
+
+
+.search-wrapper:hover {
+  background: rgb(204, 238, 255);
+}
+
+
+.search-details {
+  padding: 10px;
+}
 .login-wrapper {
   padding-right: 2em;
 }
@@ -120,6 +161,7 @@
 }
 
 .cart-count h5 {
+  font-weight: bold;
   font-size: 0.9em;
   margin-top: 6px;
 }
@@ -138,4 +180,16 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.search-img {
+
+  height: 80px;
+  width: 80px;
+}
+
+.search-header {
+  padding: 5px 15px;
+  color: rgb(193, 193, 215);
+  background: rgb(240, 240, 245);
 }

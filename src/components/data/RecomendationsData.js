@@ -35,7 +35,7 @@ const recomendations = [
    img: laptop3,
    alt: "laptop3",
    name: "Laptop",
-   series: "Macbook Gold",
+   series: "Apple Macbook Gold",
    price: 3000
    
  },

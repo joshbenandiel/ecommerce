@@ -84,7 +84,7 @@ const CartItem = ({cartItem}) => {
           </div>
           <div className="col">
             <p>{cartItem.series}</p>
-            <p>{cartItem.price*cartItem.count} Php</p>
+            <p>₱ {cartItem.price*cartItem.count}</p>
 
           </div>
           <div className="col"> 

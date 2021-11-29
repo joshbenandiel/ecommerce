@@ -31,7 +31,7 @@ const PromoCard = ({value,mobileId,tabletId,laptopId,watchId}) => {
                   <img className="img" src={item.img}/>
                   <p className="text-white mt-3">{item.name}</p>
                   <h5 className="text-white">{item.series}</h5>
-                  <h5 className="text-white">{item.price} Php</h5>
+                  <h5 className="price-text">₱ {item.price}</h5>
                   <div
                     onClick={() => {
                       dispatch(addToCart(item))
@@ -50,7 +50,7 @@ const PromoCard = ({value,mobileId,tabletId,laptopId,watchId}) => {
                 <img className="img" src={item.img}/>
                 <p className="text-white mt-3">{item.name}</p>
                 <h5 className="text-white">{item.series}</h5>
-                <h5 className="text-white">{item.price} Php</h5>
+                <h5 className="text-white">₱ {item.price}</h5>
                 <div
                   onClick={() => {
                     dispatch(addToCart(item))
@@ -69,7 +69,7 @@ const PromoCard = ({value,mobileId,tabletId,laptopId,watchId}) => {
                 <img className="img" src={item.img}/>
                 <p className="text-white mt-3">{item.name}</p>
                 <h5 className="text-white">{item.series}</h5>
-                <h5 className="text-white">{item.price} Php</h5>
+                <h5 className="text-white">₱ {item.price}</h5>
                 <div
                   onClick={() => {
                     dispatch(addToCart(item))
@@ -88,7 +88,7 @@ const PromoCard = ({value,mobileId,tabletId,laptopId,watchId}) => {
                 <img className="img" src={item.img}/>
                 <p className="text-white mt-3">{item.name}</p>
                 <h5 className="text-white">{item.series}</h5>
-                <h5 className="text-white">{item.price} Php</h5>
+                <h5 className="text-white">₱ {item.price}</h5>
                 <div
                   onClick={() => {
                     dispatch(addToCart(item))
@@ -107,7 +107,7 @@ const PromoCard = ({value,mobileId,tabletId,laptopId,watchId}) => {
                 <img className="img" src={item.img}/>
                 <p className="text-white mt-3">{item.name}</p>
                 <h5 className="text-white">{item.series}</h5>
-                <h5 className="text-white">{item.price} Php</h5>
+                <h5 className="text-white">₱ {item.price}</h5>
                 <div
                   onClick={() => {
                     dispatch(addToCart(item))

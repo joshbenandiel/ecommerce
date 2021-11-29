@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import sliderData from "./data/SliderData"
 import "../styles/Slider.css"
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 const Slider = () => {
 
@@ -28,6 +30,7 @@ const Slider = () => {
   }
 
   return (
+    <>
     <div className="slider-container">
       {sliderData.map((item, index)=> {
         if (item.id === activeSlider) {
@@ -68,7 +71,9 @@ const Slider = () => {
           className="fal fa-arrow-circle-right"></i>
       </div>
     </div>
+    </>
   )
+ 
 }
 
 export default Slider
