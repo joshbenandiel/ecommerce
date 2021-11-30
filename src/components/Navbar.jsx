@@ -5,6 +5,7 @@ import Cart from "./Cart"
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Chip from '@mui/material/Chip';
+import { Link } from "react-router-dom";
 
 
 import { useSelector } from 'react-redux'
@@ -50,9 +51,11 @@ const Navbar = () => {
                 <input
                 onChange={searchFilter}
                 placeholder='Search...' className="search-input"></input>
-                <div className="search-btn">
-                  <i class="far fa-search"></i>
-                </div>
+                <Link to="/search">
+                  <div className="search-btn">
+                    <i class="far fa-search"></i>
+                  </div>
+                </Link>
                 {searchTerm == ""  ? 
                   null
                  : 

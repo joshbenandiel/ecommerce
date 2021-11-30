@@ -12,11 +12,11 @@ const Main = () => {
   const state = useSelector((state) => state) 
   return (
     <div>
-      <button
+      {/* <button
       onClick={() => {
         console.log(state);    
       }} 
-      className="text-black">CHECK GLOBAL STATE</button>
+      className="text-black">CHECK GLOBAL STATE</button> */}
       <Navbar/>
       <Slider/>
       <Promo/>
