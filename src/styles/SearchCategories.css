@@ -1,0 +1,71 @@
+.search-main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-right: 40px;
+}
+.filters-sections {
+  background-color: #fff;
+  height: 600px;
+  width: 300px;
+  border: 1px solid #E1E3E4;
+  padding: 30px;
+}
+
+.filters-sections h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(94,165,214);
+}
+
+.categories-text {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+.categories-section {
+  height: auto;
+  cursor: pointer;
+  
+}
+
+.categories-wrapper {
+  height: auto;
+  border-bottom: 2px solid #F3F5F6;
+}
+
+.categories-checkbox-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.categories-checkbox-items li {
+  list-style: none;
+  margin: 2px;
+}
+
+.price-section {
+ cursor: pointer;
+ 
+}
+.range-input {
+  height: 40px;
+  background-color: #fff;
+  width: 100px;
+  border: 1px solid #F3F5F6;
+  text-align: center;
+}
+
+.price-wrapper {
+  border-bottom: 2px solid #F3F5F6;
+}
+
+
+.avail-list li {
+  list-style: none;
+}
+
+.available-section {
+  cursor: pointer;
+}

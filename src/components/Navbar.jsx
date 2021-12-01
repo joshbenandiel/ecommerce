@@ -6,8 +6,6 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Chip from '@mui/material/Chip';
 import { Link } from "react-router-dom";
-
-
 import { useSelector } from 'react-redux'
 import { setUseProxies } from 'immer';
 import Search from './Search'
@@ -35,8 +33,6 @@ const Navbar = () => {
 
   const searchFilter = (e) => {
    setSearchTerm(e.target.value);
-   console.log(productsInCart);
-   console.log(searchTerm);
   }
 
   return (
