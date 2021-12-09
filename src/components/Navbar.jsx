@@ -1,20 +1,15 @@
-import React , { useState } from 'react'
+import React , { useState , useEffect } from 'react'
 import "../styles/Navbar.css"
 import Login from "./Login"
 import Cart from "./Cart"
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import Chip from '@mui/material/Chip';
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux'
-import { setUseProxies } from 'immer';
-import Search from './Search'
+import { useSelector} from 'react-redux'
 
-const Navbar = () => {
+const Navbar = ({searchFilter,searchTerm}) => {
   
   const [activeLogin, setActiveLogin] = useState(false)
   const [activeCart, setActiveCart] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("")
+
 
   const productsData = useSelector((state) => state.product.products);
 
@@ -31,9 +26,19 @@ const Navbar = () => {
   }
 
 
-  const searchFilter = (e) => {
-   setSearchTerm(e.target.value);
-  }
+
+  const [filteredResult, setFilteredResult] = useState([])
+  
+  useEffect(() => {
+      const items = []
+      productsData.map(item => {
+        if (item.series.toLowerCase().includes(searchTerm)){
+          items.push(item)
+        } 
+      })
+      setFilteredResult(items)
+  }, [searchTerm])
+
 
   return (
       <div className="navbar-wrapper">
@@ -48,7 +53,8 @@ const Navbar = () => {
                 onChange={searchFilter}
                 placeholder='Search...' className="search-input"></input>
                 <Link to="/search">
-                  <div className="search-btn">
+                  <div
+                  className="search-btn">
                     <i class="far fa-search"></i>
                   </div>
                 </Link>
@@ -57,15 +63,7 @@ const Navbar = () => {
                  : 
                 <div className="search-item mt-2">
                  <p className="search-header">PRODUCTS</p>
-                 {productsData.filter(searchItem => {
-                   if (searchTerm == "") {
-                     return searchItem
-                   } else if (searchItem.series.toLowerCase().includes(searchTerm.toLowerCase())) {
-                     return searchItem
-                   } else if (searchItem.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                    return searchItem
-                   }
-                 }).map((searchItem , index) => {
+                 {filteredResult.map((searchItem , index) => {
                    return (
                      <div key={index}>
                        <div className="search-wrapper">
@@ -136,6 +134,5 @@ const Navbar = () => {
   )
   
 }
-
 
 export default Navbar

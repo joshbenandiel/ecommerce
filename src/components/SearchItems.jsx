@@ -3,13 +3,15 @@ import '../styles/SearchItems.css'
 import { useSelector } from 'react-redux'
 import Button from '@mui/material/Button';
 
-const SearchItems = ({searchTerm}) => {
+const SearchItems = ({searchTerm,searchFilter}) => {
 
 
   const productsData = useSelector((state) => state.product.products);
   const [sortMenu , setSortMenu] = useState(true);
   const [viewList , setViewList] = useState(false)
   const [viewGrid , setViewGrid] = useState(true)
+  const [selectedSort , setSelectedSort] = useState('')
+
 
   let sortItems =  [
     {
@@ -32,10 +34,16 @@ const SearchItems = ({searchTerm}) => {
   ]
 
   const [sortContent, setSortContent] = useState(sortItems[0].sortText)
+
+
+  const sortItemsClick = (itemData) => {
+    setSelectedSort(itemData.sortText);
+  }
   
 
   return (
       <div className="search-items-wrapper">
+          <h3 className='search-items-results'>Search Results for "{searchTerm}"</h3>
           <div className="search-container-items container">
             <div className="search-row row">
               <div className="search-show-product col">
@@ -48,7 +56,6 @@ const SearchItems = ({searchTerm}) => {
                       <button
                       onClick={() => {
                       setSortMenu(!sortMenu)
-                      console.log(sortItems);
                       }} 
                       style={{background: "transparent", border: "none"}}>
                       <div className="sort-items-menu">
@@ -79,11 +86,9 @@ const SearchItems = ({searchTerm}) => {
                                   onClick={() => {
                                       setSortContent(item.sortText);
                                       setSortMenu(!sortMenu)
-                                      if (item.sortText) {
-
-                                      }
-                                  }} 
-                                  className="sort-items-content p-2">{item.sortText}</p>
+                                      sortItemsClick(item)
+                                  }}  
+                                  className={selectedSort == item.sortText ? "sort-items-content-color p-2" : "sort-items-content p-2"}>{item.sortText}</p>
                               </div>
                             )
                             

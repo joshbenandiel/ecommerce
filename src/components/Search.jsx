@@ -1,5 +1,5 @@
 import React , { useState } from 'react'
-import Navbar from './Navbar'
+import SearchNavbar from './SearchNavbar'
 import Footer from './Footer'
 import SearchCategories from './SearchCategories'
 import SearchItems from './SearchItems'
@@ -7,15 +7,18 @@ import '../styles/Search.css'
 
 
 
-const Search = () => {
-
+const Search = ({searchTerm,searchFilter}) => {
   return (
     <div>
-      <Navbar
-      />
-      <div className="search-main-wrapper d-flex p-5">
+        <SearchNavbar
+          searchTerm={searchTerm}
+          searchFilter={searchFilter}
+        />
+        <div className="search-main-wrapper d-flex p-5">
         <SearchCategories/>
         <SearchItems
+          searchTerm={searchTerm}
+          searchFilter={searchFilter}
         />
       </div>
       <Footer/>   

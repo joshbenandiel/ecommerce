@@ -7,17 +7,17 @@ import Navbar from "./Navbar"
 import Slider from "./Slider"
 import { useSelector, useDispatch } from 'react-redux'
 
-const Main = () => {
+const Main = ({searchTerm,searchFilter}) => {
+
+  
 
   const state = useSelector((state) => state) 
   return (
     <div>
-      {/* <button
-      onClick={() => {
-        console.log(state);    
-      }} 
-      className="text-black">CHECK GLOBAL STATE</button> */}
-      <Navbar/>
+      <Navbar
+      searchTerm={searchTerm}
+      searchFilter={searchFilter}
+      />
       <Slider/>
       <Promo/>
       <Items/>
