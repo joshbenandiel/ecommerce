@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect } from 'react'
 import '../styles/SearchItems.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Button from '@mui/material/Button';
 
-const SearchItems = ({searchTerm,searchFilter}) => {
+const SearchItems = ({searchTerm}) => {
 
 
   const productsData = useSelector((state) => state.product.products);
@@ -12,6 +12,8 @@ const SearchItems = ({searchTerm,searchFilter}) => {
   const [viewGrid , setViewGrid] = useState(true)
   const [selectedSort , setSelectedSort] = useState('')
 
+
+  
 
   let sortItems =  [
     {
@@ -41,13 +43,68 @@ const SearchItems = ({searchTerm,searchFilter}) => {
   }
   
 
+  const searchIsVisible = useSelector((state) => { 
+    return (
+      state.search.searchIsVisible
+    )
+  })
+
+
+  const searchResult = useSelector((state) => {
+    return state.searchResult.searchResult
+  })
+
+
+  const selectedCheck = useSelector((state) => {
+
+    return state.selectedCheckbox.selectedCheckbox
+  })
+
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (searchIsVisible == false){
+
+      const filteredItem = []
+      productsData.map(items => {
+        if(items.series.toLowerCase().includes(searchTerm.toLowerCase()) || items.name.toLowerCase().includes(searchTerm.toLowerCase())){
+          filteredItem.push(items)
+        }
+      })
+      setFilteredItems(filteredItem);
+    } 
+
+  }, [searchIsVisible])
+
+  const [filteredItems , setFilteredItems] = useState([])
+
+
+
+  const [catFilteredItems, setCatFilteredItems] = useState([])
+
+  useEffect(() => {
+    const categoryFilteredItems = []
+    productsData.map(items => {
+      if(items.name.toLowerCase().includes(selectedCheck.toLowerCase())){
+        categoryFilteredItems.push(items)
+      }
+    })
+
+    setCatFilteredItems(categoryFilteredItems)
+  }, [selectedCheck])
+
   return (
       <div className="search-items-wrapper">
-          <h3 className='search-items-results'>Search Results for "{searchTerm}"</h3>
+          {selectedCheck ?
+            <h3 className='search-items-results'>Categories for "{selectedCheck}"</h3>  
+          : <h3 className='search-items-results'>Search Results for "{searchResult}"</h3>}
+          
           <div className="search-container-items container">
             <div className="search-row row">
               <div className="search-show-product col">
-                <p>Showing {productsData.length} products</p>
+              {selectedCheck ?<p>Showing {catFilteredItems.length} products</p> : <p>Showing {filteredItems.length} products</p>}
+                
               </div>
               <div className="col-6">
                 <div className="search-items-header"> 
@@ -122,7 +179,15 @@ const SearchItems = ({searchTerm,searchFilter}) => {
             </div>
           </div>
           <div className={viewGrid && "search-items-container"}>
-            {productsData.map((item,key) => {
+            {filteredItems.length == 0 && 
+            <div className='search-no-match d-flex justify-content-center align-items-center mt-5'>
+              <p>Sorry, no products matched the keyword</p>
+            </div>
+            }
+            {selectedCheck  ? 
+
+             <>
+            {catFilteredItems.map((item,key) => {
                 return (
                   <>
                   {viewList ?                     
@@ -153,6 +218,42 @@ const SearchItems = ({searchTerm,searchFilter}) => {
                   </>     
                   )
               })}
+              </>
+            :      
+            <>
+            {filteredItems.map((item,key) => {
+                return (
+                  <>
+                  {viewList ?                     
+                    <div className="search-items-container-list" key={key}>
+                      <div className="container">
+                        <div className="row">
+                          <div className="view-list-img col">
+                            <img src={item.img} alt="item-picture"/>
+                          </div>
+                          <div className="view-list-text col-6">
+                            <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                            <h5>{item.series}</h5>
+                          </div>
+                          <div className="view-list-button col">
+                            <Button className="mt-3" variant="contained">Add to cart</Button>
+                            <Button className="mt-3" variant="outlined">Quick view</Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  :  
+                    <div className="search-items" key={key}>
+                        <img src={item.img} alt="item-picture"/>
+                        <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                        <h5>{item.series}</h5>
+                        <Button className="mt-3" variant="contained">Add to cart</Button>
+                    </div>}            
+                  </>     
+                  )
+              })}
+              </>
+            }
           </div>
         </div>
     

@@ -38,6 +38,7 @@
 .categories-checkbox-items {
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .categories-checkbox-items li {

@@ -4,24 +4,23 @@ import Footer from './Footer'
 import SearchCategories from './SearchCategories'
 import SearchItems from './SearchItems'
 import '../styles/Search.css'
+import Navbar from './Navbar'
 
 
 
-const Search = ({searchTerm,searchFilter}) => {
+const Search = ({searchTerm,searchFilter, searchTermNavbar, searchFilterNavbar}) => {
+
   return (
     <div>
-        <SearchNavbar
-          searchTerm={searchTerm}
-          searchFilter={searchFilter}
-        />
         <div className="search-main-wrapper d-flex p-5">
-        <SearchCategories/>
-        <SearchItems
-          searchTerm={searchTerm}
-          searchFilter={searchFilter}
-        />
-      </div>
-      <Footer/>   
+          <SearchCategories/>
+          <SearchItems
+            searchTerm={searchTerm}
+            searchFilter={searchFilter}
+            searchTermNavbar={searchTermNavbar}
+            searchFilterNavbar={searchFilterNavbar}
+          />
+        </div>
     </div>
   )
 }

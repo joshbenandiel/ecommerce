@@ -3,7 +3,8 @@ import '../styles/SearchCategories.css'
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react'
 import Slider from '@mui/material/Slider';
-
+import { useSelector, useDispatch } from 'react-redux'
+import { setSelectedCheckbox } from '../redux/SelectedCheckBox'
 
 
 
@@ -14,11 +15,37 @@ const SearchItemsCategories = () => {
   const [priceDropDown , setpriceDropDown] = useState(false);
   const [availDropDown , setAvailDropDown] = useState(false);
 
-  const [value, setValue] = React.useState([1, 99]);
+  const [value, setValue] = React.useState([1, 10000]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+
+  const checkboxes = [
+    { 
+      name: 'laptop', 
+      label: 'Laptop' 
+    },
+    { 
+      name: 'mobile', 
+      label: 'Mobile' 
+    },
+    { name: 'tablet', 
+      label: 'Tablet' 
+    },
+    { 
+      name: 'watch', 
+      label: 'Watch' 
+    },
+  ]
+
+  const selectedCheck = useSelector((state) => {
+
+    return state.selectedCheckbox.selectedCheckbox
+  })
+
+  const dispatch = useDispatch()
 
   return (
     <div className="search-main-container">
@@ -45,12 +72,33 @@ const SearchItemsCategories = () => {
             <span><i class="fas fa-caret-down"></i></span>
             <p className="categories-text">CATEGORIES</p>
           </div>
-          <div className="categories-checkbox-items">
-            <li><input type="checkbox"/> Laptop</li>
-            <li><input type="checkbox"/> Mobile</li>
-            <li><input type="checkbox"/> Tablets</li>
-            <li><input type="checkbox"/> Watch</li>
-          </div>       
+          <ul
+            className="categories-checkbox-items">
+            { checkboxes.map((checkbox) => {
+              return (
+                <li
+                  key={checkbox.name} 
+                  className="container">
+                  <div className="row">
+                    <div className="col-2">
+                      <input
+                        checked={selectedCheck == checkbox.name}
+                        onChange={(e) => {
+                          dispatch(setSelectedCheckbox(e.target.name))
+                        }}
+                        name={checkbox.name}
+                        id={checkbox.name} 
+                        type="checkbox"/> 
+                    </div>
+                    <div className="col-10">
+                      <label htmlFor={checkbox.key}>{checkbox.label}</label>
+                    </div>
+                  </div>
+                </li>
+              ) 
+            })
+            }
+          </ul>       
         </div>
         }
         {priceDropDown ?
@@ -80,6 +128,8 @@ const SearchItemsCategories = () => {
             <input className="range-input" value={value[1]}></input>
           </div>
           <Slider
+            max={10000}
+            min={0}
             getAriaLabel={() => ''}
             value={value}
             onChange={handleChange}
@@ -120,5 +170,6 @@ const SearchItemsCategories = () => {
     </div>
   )
 }
+
 
 export default SearchItemsCategories

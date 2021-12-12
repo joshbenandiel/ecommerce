@@ -3,7 +3,10 @@ import "../styles/Navbar.css"
 import Login from "./Login"
 import Cart from "./Cart"
 import { Link } from "react-router-dom";
-import { useSelector} from 'react-redux'
+import { useSelector , useDispatch} from 'react-redux'
+import { setSearchisClose } from '../redux/SearchClose'
+import { handleSearchResult } from '../redux/SearchResult'
+import { setSelectedCheckbox } from '../redux/SelectedCheckBox'
 
 const Navbar = ({searchFilter,searchTerm}) => {
   
@@ -25,20 +28,40 @@ const Navbar = ({searchFilter,searchTerm}) => {
     return finalCount;
   }
 
-
+  const [searchEmpty , setSearchEmpty] = useState(false)
 
   const [filteredResult, setFilteredResult] = useState([])
+
+  const [searchIsClick , setSearchIsClick] = useState(false)
+
+
+  const searchIsVisible = useSelector((state) => { 
+    return (
+      state.search.searchIsVisible
+    )
+  })
+  
+
+  const dispatch = useDispatch();
   
   useEffect(() => {
       const items = []
       productsData.map(item => {
-        if (item.series.toLowerCase().includes(searchTerm)){
+        if (item.series.toLowerCase().includes(searchTerm.toLowerCase()) || item.name.toLowerCase().includes(searchTerm.toLowerCase())){
           items.push(item)
-        } 
+          setSearchEmpty(false);
+        } else if (items.length == 0){
+          setSearchEmpty(true);
+        }
       })
       setFilteredResult(items)
+      dispatch(setSearchisClose(true));
   }, [searchTerm])
 
+
+  
+  
+  
 
   return (
       <div className="navbar-wrapper">
@@ -52,36 +75,51 @@ const Navbar = ({searchFilter,searchTerm}) => {
                 <input
                 onChange={searchFilter}
                 placeholder='Search...' className="search-input"></input>
-                <Link to="/search">
+                <Link 
+                  to={searchTerm && `/search?q=${searchTerm}`}
+                  onClick={() => {
+                    dispatch(setSearchisClose(false))
+                    dispatch(handleSearchResult(searchTerm))
+                    dispatch(setSelectedCheckbox(''))
+                  }}
+                >
                   <div
                   className="search-btn">
                     <i class="far fa-search"></i>
                   </div>
                 </Link>
-                {searchTerm == ""  ? 
-                  null
-                 : 
-                <div className="search-item mt-2">
-                 <p className="search-header">PRODUCTS</p>
-                 {filteredResult.map((searchItem , index) => {
-                   return (
-                     <div key={index}>
-                       <div className="search-wrapper">
-                         <div className="search-container d-flex">
-                           <img className="search-img mt-2" src={searchItem.img} alt="item-img"></img>
-                           <div className="search-details">
-                             <p className="search-series-header">{searchItem.series}</p>
-                             <p>{searchItem.name}</p>
-                             <p>₱ {searchItem.price}</p>        
-                           </div>   
-                           
-                         </div>
-                       </div>
-                     </div>
-                   )
-                 })}
-                 </div>   
-                }      
+                
+                {searchIsVisible && 
+                  <div>
+                    {searchTerm == ""  ? 
+                      null
+                    : 
+                    <div className="search-item mt-2">
+                    <p className="search-header">PRODUCTS</p>
+                    {searchEmpty && 
+                        <p className="p-2">Sorry, nothing found for "{searchTerm}"</p>
+                    }
+                    {filteredResult.map((searchItem , index) => {
+                      return (
+                        <div key={index}>
+                          <div className="search-wrapper">
+                            <div className="search-container d-flex">
+                              <img className="search-img mt-2" src={searchItem.img} alt="item-img"></img>
+                              <div className="search-details">
+                                <p className="search-series-header">{searchItem.series}</p>
+                                <p>{searchItem.name}</p>
+                                <p>₱ {searchItem.price}</p>        
+                              </div>   
+                              
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    })}
+                    </div>   
+                    } 
+                  </div>          
+                }       
               </div>
             </div>
             <div className="col login">

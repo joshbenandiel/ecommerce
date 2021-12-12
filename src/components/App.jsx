@@ -8,6 +8,9 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Navbar from './Navbar'
+import Footer from './Footer'
+import { useSelector} from 'react-redux'
 
 
 function App() {
@@ -19,20 +22,36 @@ function App() {
     setSearchTerm(e.target.value);
   }
 
+  const checkState = useSelector((state) => { return state})
+
   return (
     <BrowserRouter>
+      <button
+      onClick={() => {
+        console.log(checkState);
+      } }
+      >
+        Check Global State
+
+      </button>
+      <Navbar
+        searchTerm={searchTerm}
+        searchFilter={searchFilter}
+      />
       <Routes>
         <Route path="/" element={
         <Main
           searchTerm={searchTerm}
           searchFilter={searchFilter}
+          setSearchTerm={setSearchTerm}
         />} />
-        <Route path="/search" element={
+        <Route path='/search' element={
         <Search
           searchTerm={searchTerm}
           searchFilter={searchFilter}
         />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

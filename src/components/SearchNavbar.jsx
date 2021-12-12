@@ -37,13 +37,18 @@ const SearchNavbar = ({searchTerm}) => {
 
 
   const [filteredResult, setFilteredResult] = useState([])
+
+  const [searchEmpty , setSearchEmpty] = useState(false)
   
   useEffect(() => {
       const items = []
       productsData.map(item => {
-        if (item.series.toLowerCase().includes(searchTermNavbar)){
+        if (item.series.toLowerCase().includes(searchTermNavbar.toLowerCase()) || item.name.toLowerCase().includes(searchTermNavbar.toLowerCase())){
           items.push(item)
-        } 
+          setSearchEmpty(false);
+        } else if (items.length == 0){
+          setSearchEmpty(true);
+        }
       })
       setFilteredResult(items)
   }, [searchTermNavbar])
@@ -70,6 +75,9 @@ const SearchNavbar = ({searchTerm}) => {
                : 
               <div className="search-item mt-2">
                <p className="search-header">PRODUCTS</p>
+               {searchEmpty && 
+                    <p className="p-2">Sorry, nothing found for "{searchTerm}"</p>
+                }
                {filteredResult.map((searchItem , index) => {
                  return (
                    <div key={index}>

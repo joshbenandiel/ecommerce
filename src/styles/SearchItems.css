@@ -131,3 +131,14 @@
   border-bottom: none;
   margin: 0;
 }
+
+.search-no-match {
+  border: 1px solid #E1E3E4;
+  width: 100%;
+ 
+}
+
+.search-no-match p {
+  padding: 5px;
+  margin: 0;
+}
