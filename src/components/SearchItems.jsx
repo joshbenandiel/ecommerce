@@ -2,6 +2,7 @@ import React, { useState ,useEffect } from 'react'
 import '../styles/SearchItems.css'
 import { useSelector, useDispatch } from 'react-redux'
 import Button from '@mui/material/Button';
+import { setHighestPrice , setLowestPrice} from '../redux/price'
 
 const SearchItems = ({searchTerm}) => {
 
@@ -80,10 +81,60 @@ const SearchItems = ({searchTerm}) => {
   const [filteredItems , setFilteredItems] = useState([])
 
 
-
   const [catFilteredItems, setCatFilteredItems] = useState([])
 
+
+  
+
+  
+
+
+
+
   useEffect(() => {
+   
+    const highest = []
+    filteredItems.map(items => {
+        highest.push(items.price); 
+
+    console.log(highest)
+    })
+    
+    if (highest.length >= 1) {
+      const highestValue = highest.reduce((acc , val) => {
+        if (val > acc) {
+          acc = val;
+        }
+        return acc;
+        
+      })
+      const lowestValue = highest.reduce((acc , val) => {
+        if (val < acc) {
+          acc = val;
+        }
+        return acc;
+        
+      }) 
+      dispatch(setHighestPrice(highestValue))
+      dispatch(setLowestPrice(lowestValue))
+  
+      console.log(highestValue)
+      console.log(lowestValue)
+    }
+
+  }, [filteredItems])
+
+
+
+
+    
+    
+  
+  
+
+
+  useEffect(() => {
+
     const categoryFilteredItems = []
     productsData.map(items => {
       if(items.name.toLowerCase().includes(selectedCheck.toLowerCase())){
@@ -92,9 +143,39 @@ const SearchItems = ({searchTerm}) => {
     })
 
     setCatFilteredItems(categoryFilteredItems)
+
+    const highestCat = []
+    categoryFilteredItems.map(items => {
+        highestCat.push(items.price); 
+    })
+
+    console.log(highestCat)
+    
+    if (highestCat.length >= 1) {
+      const highestValue = highestCat.reduce((acc , val) => {
+        if (val > acc) {
+          acc = val;
+        }
+        return acc;  
+      })
+      const lowestValue = highestCat.reduce((acc , val) => {
+        if (val < acc) {
+          acc = val;
+        }
+        return acc;
+        
+      }) 
+      dispatch(setHighestPrice(highestValue))
+      dispatch(setLowestPrice(lowestValue))
+  
+      console.log(highestValue)
+      console.log(lowestValue)
+    }
+
   }, [selectedCheck])
 
   return (
+    
       <div className="search-items-wrapper">
           {selectedCheck ?
             <h3 className='search-items-results'>Categories for "{selectedCheck}"</h3>  

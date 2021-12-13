@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/SearchCategories.css'
 import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Slider from '@mui/material/Slider';
 import { useSelector, useDispatch } from 'react-redux'
 import { setSelectedCheckbox } from '../redux/SelectedCheckBox'
@@ -15,11 +15,25 @@ const SearchItemsCategories = () => {
   const [priceDropDown , setpriceDropDown] = useState(false);
   const [availDropDown , setAvailDropDown] = useState(false);
 
-  const [value, setValue] = React.useState([1, 10000]);
+
+  const highestPrice = useSelector(state => {
+    return state.price.highestPrice
+  })
+
+  const lowestPrice = useSelector(state => {
+    return state.price.lowestPrice
+  })
+
+  const [value, setValue] = React.useState([lowestPrice, highestPrice]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    
   };
+
+  useEffect(() => {
+    setValue([lowestPrice, highestPrice]);
+  }, [highestPrice, lowestPrice])
 
 
   const checkboxes = [
@@ -128,9 +142,8 @@ const SearchItemsCategories = () => {
             <input className="range-input" value={value[1]}></input>
           </div>
           <Slider
-            max={10000}
-            min={0}
-            getAriaLabel={() => ''}
+            max={highestPrice}
+            min={lowestPrice}
             value={value}
             onChange={handleChange}
             valueLabelDisplay="auto"

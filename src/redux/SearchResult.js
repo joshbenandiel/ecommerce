@@ -10,7 +10,6 @@ export const searchResultSlice = createSlice({
   reducers: {
     handleSearchResult: (state , payload) => {
       state.searchResult = payload.payload
-      console.log(payload)
     }
   },
 })

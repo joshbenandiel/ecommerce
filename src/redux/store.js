@@ -4,6 +4,7 @@ import countReducer from './count';
 import searchReducer from './SearchClose'
 import searchResultReducer from './SearchResult'
 import selectedCheckboxReducer from './SelectedCheckBox'
+import priceReducer from './price'
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     counter: countReducer,
     search: searchReducer,
     searchResult: searchResultReducer,
-    selectedCheckbox: selectedCheckboxReducer
+    selectedCheckbox: selectedCheckboxReducer,
+    price: priceReducer
   },
 })

@@ -16,7 +16,7 @@ const Login = ({ activeLogin, toggleActiveLogin }) => {
         <TextField fullWidth id="filled-basic" label="Password" variant="filled"  margin="normal"/>
         <Button fullWidth variant="contained">Login</Button>
         <div className="footer-container">
-          <p className="footer">New Costumer?<a href="">Create your password</a></p>
+          <p className="footer">New Costumer?<a href="">Create your account</a></p>
           <p className="footer">Lost Password?<a href="">Recover password</a></p>
         </div>
       </div>
