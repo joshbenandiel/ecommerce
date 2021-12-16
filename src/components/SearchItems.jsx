@@ -3,8 +3,11 @@ import '../styles/SearchItems.css'
 import { useSelector, useDispatch } from 'react-redux'
 import Button from '@mui/material/Button';
 import { setHighestPrice , setLowestPrice} from '../redux/price'
+import { addToCart } from '../redux/product.js'
+import { increment } from '../redux/count'
+import { Link } from 'react-router-dom'
 
-const SearchItems = ({searchTerm}) => {
+const SearchItems = ({searchTerm, value, setValue, availIsCheck}) => {
 
 
   const productsData = useSelector((state) => state.product.products);
@@ -12,7 +15,6 @@ const SearchItems = ({searchTerm}) => {
   const [viewList , setViewList] = useState(false)
   const [viewGrid , setViewGrid] = useState(true)
   const [selectedSort , setSelectedSort] = useState('')
-
 
   
 
@@ -83,11 +85,7 @@ const SearchItems = ({searchTerm}) => {
 
   const [catFilteredItems, setCatFilteredItems] = useState([])
 
-
   
-
-  
-
 
 
 
@@ -97,7 +95,6 @@ const SearchItems = ({searchTerm}) => {
     filteredItems.map(items => {
         highest.push(items.price); 
 
-    console.log(highest)
     })
     
     if (highest.length >= 1) {
@@ -118,8 +115,11 @@ const SearchItems = ({searchTerm}) => {
       dispatch(setHighestPrice(highestValue))
       dispatch(setLowestPrice(lowestValue))
   
-      console.log(highestValue)
-      console.log(lowestValue)
+    }
+
+    if (highest.length == 0) {
+      dispatch(setHighestPrice(0))
+      dispatch(setLowestPrice(0))
     }
 
   }, [filteredItems])
@@ -149,7 +149,6 @@ const SearchItems = ({searchTerm}) => {
         highestCat.push(items.price); 
     })
 
-    console.log(highestCat)
     
     if (highestCat.length >= 1) {
       const highestValue = highestCat.reduce((acc , val) => {
@@ -167,9 +166,7 @@ const SearchItems = ({searchTerm}) => {
       }) 
       dispatch(setHighestPrice(highestValue))
       dispatch(setLowestPrice(lowestValue))
-  
-      console.log(highestValue)
-      console.log(lowestValue)
+
     }
 
   }, [selectedCheck])
@@ -181,7 +178,7 @@ const SearchItems = ({searchTerm}) => {
             <h3 className='search-items-results'>Categories for "{selectedCheck}"</h3>  
           : <h3 className='search-items-results'>Search Results for "{searchResult}"</h3>}
           
-          <div className="search-container-items container">
+          <div className={viewList ? "search-container-items-list container": "search-container-items container"}>
             <div className="search-row row">
               <div className="search-show-product col">
               {selectedCheck ?<p>Showing {catFilteredItems.length} products</p> : <p>Showing {filteredItems.length} products</p>}
@@ -260,7 +257,7 @@ const SearchItems = ({searchTerm}) => {
             </div>
           </div>
           <div className={viewGrid && "search-items-container"}>
-            {filteredItems.length == 0 && 
+            {filteredItems.length == 0 &&
             <div className='search-no-match d-flex justify-content-center align-items-center mt-5'>
               <p>Sorry, no products matched the keyword</p>
             </div>
@@ -269,76 +266,358 @@ const SearchItems = ({searchTerm}) => {
 
              <>
             {catFilteredItems.map((item,key) => {
-                return (
+            if(availIsCheck == true & item.quantity >= 1) {
+              if (value[1] >= item.price) {
+                if(value[0] <= item.price) {                
+                   return (
                   <>
                   {viewList ?                     
                     <div className="search-items-container-list" key={key}>
                       <div className="container">
-                        <div className="row">
-                          <div className="view-list-img col">
-                            <img src={item.img} alt="item-picture"/>
-                          </div>
-                          <div className="view-list-text col-6">
-                            <h5 style={{color: "blue"}}>₱ {item.price}</h5>
-                            <h5>{item.series}</h5>
-                          </div>
+                        <div className="row">                                   
+                            <div className="view-list-img col">
+                              <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                              <img src={item.img} alt="item-picture"/>
+                              </Link>
+                            </div>     
+                            <div className="view-list-text col-6">
+                              <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'>
+                                <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                                <h5>{item.series}</h5>
+                              </Link>
+                            </div>
                           <div className="view-list-button col">
-                            <Button className="mt-3" variant="contained">Add to cart</Button>
-                            <Button className="mt-3" variant="outlined">Quick view</Button>
+                            {item.quantity == 0 
+
+                            ? 
+                            
+                             <Button 
+                             onClick={()=> {
+                              dispatch(addToCart(item))
+                              dispatch(increment())
+                             }}
+                             className="mt-3" variant="contained" disabled>Out of stock</Button> 
+                            :
+                            <>
+                              <Button 
+                              onClick={()=> {
+                                dispatch(addToCart(item))
+                                dispatch(increment())
+                               }}
+                              className="mt-3" variant="contained">Add to cart</Button>
+                              <Button 
+                              onClick={()=> {
+                                dispatch(addToCart(item))
+                                dispatch(increment())
+                               }}
+                              className="mt-3" variant="outlined">Quick view</Button>
+                            </>
+                            }
                           </div>
                         </div>
                       </div>
                     </div> 
                   :  
-                    <div className="search-items" key={key}>
-                        <img src={item.img} alt="item-picture"/>
-                        <h5 style={{color: "blue"}}>₱ {item.price}</h5>
-                        <h5>{item.series}</h5>
-                        <Button className="mt-3" variant="contained">Add to cart</Button>
+                    <div className="search-items" key={key}> 
+                          <>        
+                          <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'>    
+                            <img src={item.img} alt="item-picture"/>
+                            <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                            <h5>{item.series}</h5>
+                          </Link>
+                          </>
+                        {item.quantity == 0 ? 
+                           
+                           <Button 
+                           onClick={()=> {
+                            dispatch(addToCart(item))
+                            dispatch(increment())
+                           }}
+                           className="mt-3" variant="contained" disabled>Out of stock</Button>        
+                            :                 
+                           <Button
+                           onClick={()=> {
+                            dispatch(addToCart(item))
+                            dispatch(increment())
+                           }} 
+                           className="mt-3" variant="contained">Add to cart</Button>
+                           }
                     </div>}            
                   </>     
                   )
+                   }
+                }
+              } else {
+
+                if(availIsCheck == false) {
+                  if (value[1] >= item.price) {
+                    if(value[0] <= item.price) {                
+                       return (
+                      <>
+                      {viewList ?                     
+                        <div className="search-items-container-list" key={key}>
+                          <div className="container">
+                            <div className="row">
+                              <div className="view-list-img col">
+                              <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                                <img src={item.img} alt="item-picture"/>
+                              </Link>
+                              </div>
+                              <div className="view-list-text col-6">
+                              <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                                <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                                <h5>{item.series}</h5>
+                              </Link>
+                              </div>
+                              <div className="view-list-button col">
+                                {item.quantity == 0 
+    
+                                ? 
+                                
+                                <Button 
+                                onClick={()=> {
+                                 dispatch(addToCart(item))
+                                 dispatch(increment())
+                                }}
+                                className="mt-3" variant="contained" disabled>Out of stock</Button> 
+                               :
+                               <>
+                                 <Button 
+                                 onClick={()=> {
+                                   dispatch(addToCart(item))
+                                   dispatch(increment())
+                                  }}
+                                 className="mt-3" variant="contained">Add to cart</Button>
+                                 <Button 
+                                 onClick={()=> {
+                                   dispatch(addToCart(item))
+                                   dispatch(increment())
+                                  }}
+                                 className="mt-3" variant="outlined">Quick view</Button>
+                                </>
+                                }
+                              </div>
+                            </div>
+                          </div>
+                        </div> 
+                      :  
+                        <div className="search-items" key={key}>
+                          <>
+                          <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                            <img src={item.img} alt="item-picture"/>
+                            <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                            <h5>{item.series}</h5>
+                          </Link>
+                          </>
+                            {item.quantity == 0 ? 
+                               
+                               <Button 
+                                onClick={()=> {
+                                  dispatch(addToCart(item))
+                                  dispatch(increment())
+                                }}
+                                className="mt-3" variant="contained" disabled>Out of stock</Button>        
+                                  :                 
+                                <Button
+                                onClick={()=> {
+                                  dispatch(addToCart(item))
+                                  dispatch(increment())
+                                }} 
+                                className="mt-3" variant="contained">Add to cart</Button>
+                                    }
+                        </div>}            
+                      </>     
+                      )
+                       }
+                    }
+                  }
+              }
               })}
-              </>
+
+            </>
             :      
             <>
+            
             {filteredItems.map((item,key) => {
-                return (
-                  <>
-                  {viewList ?                     
-                    <div className="search-items-container-list" key={key}>
-                      <div className="container">
-                        <div className="row">
-                          <div className="view-list-img col">
-                            <img src={item.img} alt="item-picture"/>
-                          </div>
-                          <div className="view-list-text col-6">
-                            <h5 style={{color: "blue"}}>₱ {item.price}</h5>
-                            <h5>{item.series}</h5>
-                          </div>
-                          <div className="view-list-button col">
-                            <Button className="mt-3" variant="contained">Add to cart</Button>
-                            <Button className="mt-3" variant="outlined">Quick view</Button>
+
+              if(availIsCheck == true & item.quantity >= 1) {
+                if (value[1] >= item.price) {
+                  if(value[0] <= item.price) {
+                  return (
+                    <>
+                      {viewList ?                     
+                      <div className="search-items-container-list" key={key}>
+                        <div className="container">
+                          <div className="row">
+                            <div className="view-list-img col">
+                            <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                              <img src={item.img} alt="item-picture"/>
+                            </Link>
+                            </div>
+                            <div className="view-list-text col-6">
+                            <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                              <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                              <h5>{item.series}</h5>
+                            </Link>
+                            </div>
+                            <div className="view-list-button col">
+                            {item.quantity == 0 
+
+                              ? 
+
+                              <Button 
+                              onClick={()=> {
+                               dispatch(addToCart(item))
+                               dispatch(increment())
+                              }}
+                              className="mt-3" variant="contained" disabled>Out of stock</Button> 
+                             :
+                             <>
+                               <Button 
+                               onClick={()=> {
+                                 dispatch(addToCart(item))
+                                 dispatch(increment())
+                                }}
+                               className="mt-3" variant="contained">Add to cart</Button>
+                               <Button 
+                               onClick={()=> {
+                                 dispatch(addToCart(item))
+                                 dispatch(increment())
+                                }}
+                               className="mt-3" variant="outlined">Quick view</Button>
+                              </>
+                              }
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div> 
-                  :  
-                    <div className="search-items" key={key}>
-                        <img src={item.img} alt="item-picture"/>
-                        <h5 style={{color: "blue"}}>₱ {item.price}</h5>
-                        <h5>{item.series}</h5>
-                        <Button className="mt-3" variant="contained">Add to cart</Button>
-                    </div>}            
-                  </>     
-                  )
+                      </div> 
+                    :  
+                      <div className="search-items" key={key}>
+                        <>
+                        <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                          <img src={item.img} alt="item-picture"/>
+                          <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                          <h5>{item.series}</h5>
+                        </Link>
+                        </>
+                          {item.quantity == 0 ? 
+                           
+                           <Button 
+                           onClick={()=> {
+                             dispatch(addToCart(item))
+                             dispatch(increment())
+                           }}
+                           className="mt-3" variant="contained" disabled>Out of stock</Button>        
+                             :                 
+                           <Button
+                           onClick={()=> {
+                             dispatch(addToCart(item))
+                             dispatch(increment())
+                           }} 
+                           className="mt-3" variant="contained">Add to cart</Button>
+                          }
+                      </div>}                                                
+                    </>                      
+                    )
+                  }
+                }
+              } else {
+              if(availIsCheck == false) {
+                if (value[1] >= item.price) {
+                  if(value[0] <= item.price) {
+                  return (
+                    <>
+                      {viewList ?                     
+                      <div className="search-items-container-list" key={key}>
+                        <div className="container">
+                          <div className="row">
+                            <div className="view-list-img col">
+                            <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                              <img src={item.img} alt="item-picture"/>
+                            </Link>
+                            </div>
+                            <div className="view-list-text col-6">
+                            <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                              <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                              <h5>{item.series}</h5>
+                            </Link>
+                            </div>
+                            <div className="view-list-button col">
+                            {item.quantity == 0 
+
+                              ? 
+
+                              <Button 
+                              onClick={()=> {
+                               dispatch(addToCart(item))
+                               dispatch(increment())
+                              }}
+                              className="mt-3" variant="contained" disabled>Out of stock</Button> 
+                             :
+                             <>
+                               <Button 
+                               onClick={()=> {
+                                 dispatch(addToCart(item))
+                                 dispatch(increment())
+                                }}
+                               className="mt-3" variant="contained">Add to cart</Button>
+                               <Button 
+                               onClick={()=> {
+                                 dispatch(addToCart(item))
+                                 dispatch(increment())
+                                }}
+                               className="mt-3" variant="outlined">Quick view</Button>
+                               </>
+                              }
+                            </div>
+                          </div>
+                        </div>
+                      </div> 
+                    :  
+                      <div className="search-items" key={key}>
+                        <>
+                        <Link style={{textDecoration: 'none', color: 'black'}} to ='/product?'> 
+                          <img src={item.img} alt="item-picture"/>
+                          <h5 style={{color: "blue"}}>₱ {item.price}</h5>
+                          <h5>{item.series}</h5>
+                        </Link>
+                        </>
+                          {item.quantity == 0 ? 
+                           
+                           <Button 
+                           onClick={()=> {
+                             dispatch(addToCart(item))
+                             dispatch(increment())
+                           }}
+                           className="mt-3" variant="contained" disabled>Out of stock</Button>        
+                             :                 
+                           <Button
+                           onClick={()=> {
+                             dispatch(addToCart(item))
+                             dispatch(increment())
+                           }} 
+                           className="mt-3" variant="contained">Add to cart</Button>
+                          }
+                      </div>}                                                
+                    </>                      
+                    )
+                  }
+                }
+              }
+
+
+              }
               })}
-              </>
+
+            </>
             }
           </div>
         </div>
     
   )
 }
+
+
+
 
 export default SearchItems

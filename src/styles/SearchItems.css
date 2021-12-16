@@ -58,6 +58,14 @@
   
 }
 
+.search-container-items-list {
+  border: 1px solid #E1E3E4;
+  border-top: none;
+  
+}
+
+
+
 .search-show-product {
   display: flex;
   justify-content: flex-start;

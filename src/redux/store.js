@@ -5,6 +5,8 @@ import searchReducer from './SearchClose'
 import searchResultReducer from './SearchResult'
 import selectedCheckboxReducer from './SelectedCheckBox'
 import priceReducer from './price'
+import productItemReducer from './productItem'
+import selectedItemReducer from './selectedItem'
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +15,8 @@ export const store = configureStore({
     search: searchReducer,
     searchResult: searchResultReducer,
     selectedCheckbox: selectedCheckboxReducer,
-    price: priceReducer
+    price: priceReducer,
+    productItem: productItemReducer,
+    selectedItem: selectedItemReducer
   },
 })

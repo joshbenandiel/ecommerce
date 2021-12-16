@@ -7,6 +7,7 @@ import { useSelector , useDispatch} from 'react-redux'
 import { setSearchisClose } from '../redux/SearchClose'
 import { handleSearchResult } from '../redux/SearchResult'
 import { setSelectedCheckbox } from '../redux/SelectedCheckBox'
+import { getProductItem } from '../redux/productItem'
 
 const Navbar = ({searchFilter,searchTerm}) => {
   
@@ -59,7 +60,11 @@ const Navbar = ({searchFilter,searchTerm}) => {
   }, [searchTerm])
 
 
-  
+  const selectedProduct = useSelector(state => {
+    return state.productItem.productItem;
+
+    
+  })
   
   
 
@@ -68,7 +73,9 @@ const Navbar = ({searchFilter,searchTerm}) => {
         <div className="container">
           <div className="row">
             <div className="col logo">
+            <Link to='/'>
             <h1 className="logo-name">JOSH SHOPEE</h1>
+            </Link>
             </div>
             <div className="col-6"> 
               <div className="search-wrapper">
@@ -101,16 +108,25 @@ const Navbar = ({searchFilter,searchTerm}) => {
                     }
                     {filteredResult.map((searchItem , index) => {
                       return (
-                        <div key={index}>
+                        <div
+                        onClick={() => {
+                          dispatch(setSearchisClose(false))
+                          dispatch(getProductItem(searchItem))
+                          console.log(selectedProduct)
+                        }} 
+                        key={index}>
                           <div className="search-wrapper">
                             <div className="search-container d-flex">
-                              <img className="search-img mt-2" src={searchItem.img} alt="item-img"></img>
+                              <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${searchItem.tag}`}> 
+                                <img className="search-img mt-2" src={searchItem.img} alt="item-img"></img>
+                              </Link> 
                               <div className="search-details">
-                                <p className="search-series-header">{searchItem.series}</p>
-                                <p>{searchItem.name}</p>
-                                <p>₱ {searchItem.price}</p>        
-                              </div>   
-                              
+                                <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${searchItem.tag}`}> 
+                                  <p className="search-series-header">{searchItem.series}</p>
+                                  <p>{searchItem.name}</p>
+                                  <p>₱ {searchItem.price}</p>
+                                </Link>         
+                              </div>        
                             </div>
                           </div>
                         </div>

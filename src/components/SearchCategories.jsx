@@ -5,15 +5,19 @@ import { useState, useEffect } from 'react'
 import Slider from '@mui/material/Slider';
 import { useSelector, useDispatch } from 'react-redux'
 import { setSelectedCheckbox } from '../redux/SelectedCheckBox'
+import { Link } from "react-router-dom";
 
 
 
 
-const SearchItemsCategories = () => {
+const SearchItemsCategories = ({value, setValue, searchTerm,setAvailIsCheck,availIsCheck}) => {
 
   const [categoriesDropDown , setCategoriesDropDown] = useState(false);
   const [priceDropDown , setpriceDropDown] = useState(false);
   const [availDropDown , setAvailDropDown] = useState(false);
+
+
+  
 
 
   const highestPrice = useSelector(state => {
@@ -24,10 +28,9 @@ const SearchItemsCategories = () => {
     return state.price.lowestPrice
   })
 
-  const [value, setValue] = React.useState([lowestPrice, highestPrice]);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
+   
     
   };
 
@@ -90,25 +93,30 @@ const SearchItemsCategories = () => {
             className="categories-checkbox-items">
             { checkboxes.map((checkbox) => {
               return (
-                <li
-                  key={checkbox.name} 
-                  className="container">
-                  <div className="row">
-                    <div className="col-2">
-                      <input
-                        checked={selectedCheck == checkbox.name}
-                        onChange={(e) => {
-                          dispatch(setSelectedCheckbox(e.target.name))
-                        }}
-                        name={checkbox.name}
-                        id={checkbox.name} 
-                        type="checkbox"/> 
+                // <Link
+                //   to={`/search?q=${searchTerm}&categories=${checkbox.name}`}
+                // >
+                  <li
+                    
+                    key={checkbox.name} 
+                    className="container text-black">
+                    <div className="row">
+                      <div className="col-2">
+                        <input
+                          checked={selectedCheck == checkbox.name}
+                          onChange={(e) => {
+                            dispatch(setSelectedCheckbox(e.target.name))
+                          }}
+                          name={checkbox.name}
+                          id={checkbox.name} 
+                          type="checkbox"/> 
+                      </div>
+                      <div className="col-10">
+                        <label htmlFor={checkbox.key}>{checkbox.label}</label>
+                      </div>
                     </div>
-                    <div className="col-10">
-                      <label htmlFor={checkbox.key}>{checkbox.label}</label>
-                    </div>
-                  </div>
-                </li>
+                  </li>
+                // </Link>
               ) 
             })
             }
@@ -174,7 +182,16 @@ const SearchItemsCategories = () => {
             <p className="categories-text">AVAILABILITY</p>
           </div>
           <div className="avail-list">
-            <li><input type="checkbox"/> In Stock Only</li>
+            <li>
+              <input
+              checked={availIsCheck}
+              onChange={() => {
+                setAvailIsCheck(!availIsCheck)
+                console.log(availIsCheck)
+              }}
+              name='isCheck'
+              type="checkbox"/> In Stock Only
+            </li>
           </div>
         </div>
         }

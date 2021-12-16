@@ -94,6 +94,7 @@
   background: -webkit-linear-gradient(#5ea5d6, #8098df, #9a8fe4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-decoration: none;
 }
 
 .login-wrapper h5 {

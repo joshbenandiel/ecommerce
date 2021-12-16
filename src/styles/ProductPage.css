@@ -1,0 +1,128 @@
+.products-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.item-feature-wrapper {
+   display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 350px;
+  margin: 50px
+}
+
+.item-feature {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  margin-top: 0;
+}
+
+.macbook-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+.macbook-header h1{
+  width: 600px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.item-feature img {
+  height: 200px;
+
+}
+
+.item-color-button-spacegray {
+  height: 32px;
+  width: 32px;
+  background-color: #AFB3B6;
+  border: none;
+  border-radius: 100%;
+}
+
+.item-color-button-spacegray-active {
+  height: 32px;
+  width: 32px;
+  background-color: #AFB3B6;
+  border: 1px solid blue;
+  border-radius: 100%;
+}
+
+.item-color-button-gold {
+  height: 32px;
+  width: 32px;
+  background-color: #F0E0D3;
+  border: none;
+  border-radius: 100%;
+}
+
+.item-color-button-gold-active {
+  height: 32px;
+  width: 32px;
+  background-color: #F0E0D3;
+  border: none;
+  border-radius: 100%;
+  border: 1px solid blue;
+}
+
+.item-color-button-silver {
+  height: 32px;
+  width: 32px;
+  background-color: #DFE1E0;
+  border: none;
+  border-radius: 100%;
+}
+
+
+.item-color-button-silver-active {
+  height: 32px;
+  width: 32px;
+  background-color: #DFE1E0;
+  border: none;
+  border-radius: 100%;
+  border: 1px solid blue;
+}
+
+
+.item-description-wrapper {
+  padding-right: 20px;
+  border-right: 1px solid #E1E3E4;
+}
+
+.item-button {
+  padding-right: 30px
+}
+
+.item-ships p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.item-ships {
+  margin: 20px;
+  display: flex;
+}
+
+.item-ships-desc {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  margin-top: 0;
+}
+
+
+
+.item-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -5,20 +5,42 @@ import SearchCategories from './SearchCategories'
 import SearchItems from './SearchItems'
 import '../styles/Search.css'
 import Navbar from './Navbar'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
 const Search = ({searchTerm,searchFilter, searchTermNavbar, searchFilterNavbar}) => {
 
+
+
+  const highestPrice = useSelector(state => {
+    return state.price.highestPrice
+  })
+
+  const lowestPrice = useSelector(state => {
+    return state.price.lowestPrice
+  })
+
+  const [value, setValue] = React.useState([lowestPrice, highestPrice]);
+
+  const [availIsCheck, setAvailIsCheck] = useState(false);
+
   return (
     <div>
         <div className="search-main-wrapper d-flex p-5">
-          <SearchCategories/>
+          <SearchCategories
+          setAvailIsCheck={setAvailIsCheck}
+          value={value}
+          setValue={setValue}
+          searchTerm={searchTerm}
+          availIsCheck={availIsCheck}
+          
+          />
           <SearchItems
+            value={value}
+            setValue={setValue}
             searchTerm={searchTerm}
-            searchFilter={searchFilter}
-            searchTermNavbar={searchTermNavbar}
-            searchFilterNavbar={searchFilterNavbar}
+            availIsCheck={availIsCheck}
           />
         </div>
     </div>

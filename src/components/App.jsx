@@ -11,6 +11,8 @@ import {
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useSelector} from 'react-redux'
+import ProductPage from './ProductPage'
+import SelectedProduct from './SelectedProduct'
 
 
 function App() {
@@ -24,8 +26,11 @@ function App() {
 
   const checkState = useSelector((state) => { return state})
 
+
+
   return (
     <BrowserRouter>
+
       <button
       onClick={() => {
         console.log(checkState);
@@ -49,6 +54,12 @@ function App() {
         <Search
           searchTerm={searchTerm}
           searchFilter={searchFilter}
+        />} />
+        <Route exact path='/product/:tag' element={
+          <ProductPage
+        />} />
+        <Route exact path='/product/:tag/:item' element={
+          <SelectedProduct
         />} />
       </Routes>
       <Footer/>
