@@ -14,14 +14,13 @@ import watch1 from "../../images/Recomendations/watchse.jpg"
 import watch2 from "../../images/Recomendations/watchseries3.jpg"
 import watch3 from "../../images/Recomendations/watchseries6.jpg"
 
-
 const recomendations = [
   {
      id: 1,
      alt: "laptop1",
      name: "Laptop",
      series: "Macbook Air",
-     price: '₱54,990.00',
+     price: 54990,
      quantity: 10,
      tag: 'macbook-air',
      descriptionHeader: 'Apple M1 Chip with 8-Core CPU and 7-Core GPU 256 GB Storage',
@@ -39,7 +38,7 @@ const recomendations = [
         {
           key: 'space-gray-macbook',
           type: 'spacegray',
-          price: '₱54,990.00',
+          price: 54990,
           img: macbookSpaceGray,
           name: 'Space Gray',
           url: 'space-gray-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
@@ -53,13 +52,40 @@ const recomendations = [
             'Force Touch trackpad',
             'Two Thunderbolt / USB 4 ports'
           ],
-          size: ['8GB unified memory', '16GB unified memory'],  
-          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+          size: [
+            {
+              memory: '8GB unified storage',
+              fee: 0
+            },
+            {
+              memory: '16GB unified storage',
+              fee: 12000,
+            }
+          ],  
+          storage: [
+            {
+              storage: '256GB SSD Storage',
+              fee: 0
+            },
+            {
+              storage: '512GB SSD Storage',
+              fee: 12000
+            },
+            {
+              storage: '1TB SSD Storage',
+              fee: 24000
+            },
+            {
+              storage: '2TB SSD Storage',
+              fee: 48000
+            },
+
+          ]   
         },
         {
           key: 'gold-macbook',
           type: 'gold',
-          price: '₱54,990.00',
+          price: 54990,
           img: macbookGold,
           name: 'Gold',
           url: 'gold-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
@@ -73,15 +99,40 @@ const recomendations = [
             'Force Touch trackpad',
             'Two Thunderbolt / USB 4 ports'
           ],
-          size: ['8GB unified memory', '16GB unified memory'],
-          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+          size: [
+            {
+              memory: '8GB unified storage'
+            },
+            {
+              memory: '16GB unified storage',
+              fee: 12000,
+            }
+          ],
+          storage: [
+            {
+              storage: '256GB SSD Storage'
+            },
+            {
+              storage: '512GB SSD Storage',
+              fee: 12000
+            },
+            {
+              storage: '1TB SSD Storage',
+              fee: 24000
+            },
+            {
+              storage: '2TB SSD Storage',
+              fee: 48000
+            },
+
+          ]   
         },
         {
           key: 'silver-macbook',
           type: 'silver',
           img: macbookSilver,
           name: 'Silver',
-          price: '₱54,990.00',
+          price: 54990,
           url: 'silver-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
           description: [
             'Apple M1 chip with 8‑core CPU, 7‑core GPU, and 16‑core Neural Engine',
@@ -93,8 +144,35 @@ const recomendations = [
             'Force Touch trackpad',
             'Two Thunderbolt / USB 4 ports'
           ],
-          size: ['8GB unified memory', '16GB unified memory'],
-          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']    
+          size: [
+            {
+              memory: '8GB unified storage',
+              fee: 0
+            },
+            {
+              memory: '16GB unified storage',
+              fee: 12000
+            }
+          ],
+          storage: [
+            {
+              storage: '256GB SSD Storage',
+              fee: 0
+            },
+            {
+              storage: '512GB SSD Storage',
+              fee: 12000
+            },
+            {
+              storage: '1TB SSD Storage',
+              fee: 24000
+            },
+            {
+              storage: '2TB SSD Storage',
+              fee: 48000
+            },
+
+          ]      
         }
      ],
 
@@ -104,7 +182,7 @@ const recomendations = [
     alt: "laptop1",
     name: "Laptop",
     series: "Macbook Air",
-    price: '₱54,990.00',
+    price: 68000,
     quantity: 10,
     tag: 'macbook-air',
     descriptionHeader: 'Apple M1 Chip with 8-Core CPU and 8-Core GPU 512 GB Storage',
@@ -124,7 +202,7 @@ const recomendations = [
          type: 'spacegray',
          img: macbookSpaceGray,
          name: 'Space Gray',
-         price: '₱54,990.00',
+         price: 54990,
          url: 'space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
          description: [
           'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
@@ -136,8 +214,35 @@ const recomendations = [
           'Force Touch trackpad',
           'Two Thunderbolt / USB 4 ports'
           ],
-          size: ['8GB unified memory', '16GB unified memory'],
-          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+          size: [
+            {
+              memory: '8GB unified storage',
+              fee: 0
+            },
+            {
+              memory: '16GB unified storage',
+              fee: 12000,
+            }
+          ],
+          storage: [
+            {
+              storage: '256GB SSD Storage',
+              fee: 0
+            },
+            {
+              storage: '512GB SSD Storage',
+              fee: 12000
+            },
+            {
+              storage: '1TB SSD Storage',
+              fee: 24000
+            },
+            {
+              storage: '2TB SSD Storage',
+              fee: 48000
+            },
+
+          ]   
 
        },
        {
@@ -145,7 +250,7 @@ const recomendations = [
          type: 'gold',
          img: macbookGold,
          name: 'Gold',
-         price: '₱54,990.00',
+         price: 54990,
          url: 'gold-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
          description: [
           'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
@@ -157,13 +262,40 @@ const recomendations = [
           'Force Touch trackpad',
           'Two Thunderbolt / USB 4 ports'
           ],
-          size: ['8GB unified memory', '16GB unified memory'],
-          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+          size: [
+            {
+              memory: '8GB unified storage',
+              fee: 0
+            },
+            {
+              memory: '16GB unified storage',
+              fee: 12000,
+            }
+          ],
+          storage: [
+            {
+              storage: '256GB SSD Storage',
+              fee: 0
+            },
+            {
+              storage: '512GB SSD Storage',
+              fee: 12000
+            },
+            {
+              storage: '1TB SSD Storage',
+              fee: 24000
+            },
+            {
+              storage: '2TB SSD Storage',
+              fee: 48000
+            },
+
+          ]  
        },
        {
          key: 'silver-macbook',
          type: 'silver',
-         price: '₱54,990.00',
+         price: 54990,
          img: macbookSilver,
          name: 'Silver',
          url: 'silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
@@ -177,8 +309,35 @@ const recomendations = [
           'Force Touch trackpad',
           'Two Thunderbolt / USB 4 ports'
         ],
-        size: ['8GB unified memory', '16GB unified memory'],
-        storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+        size: [
+          {
+            memory: '8GB unified storage',
+            fee: 0
+          },
+          {
+            memory: '16GB unified storage',
+            fee: 12000,
+          }
+        ],
+        storage: [
+          {
+            storage: '256GB SSD Storage',
+            fee: 0
+          },
+          {
+            storage: '512GB SSD Storage',
+            fee: 12000
+          },
+          {
+            storage: '1TB SSD Storage',
+            fee: 24000
+          },
+          {
+            storage: '2TB SSD Storage',
+            fee: 48000
+          },
+
+        ]    
        }
     ],
 
