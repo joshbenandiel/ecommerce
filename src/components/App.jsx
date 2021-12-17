@@ -29,41 +29,42 @@ function App() {
 
 
   return (
-    <BrowserRouter>
+    <div className='app-container'>
+      <BrowserRouter>
+        <button
+        onClick={() => {
+          console.log(checkState);
+        } }
+        >
+          Check Global State
 
-      <button
-      onClick={() => {
-        console.log(checkState);
-      } }
-      >
-        Check Global State
-
-      </button>
-      <Navbar
-        searchTerm={searchTerm}
-        searchFilter={searchFilter}
-      />
-      <Routes>
-        <Route path="/" element={
-        <Main
+        </button>
+        <Navbar
           searchTerm={searchTerm}
           searchFilter={searchFilter}
-          setSearchTerm={setSearchTerm}
-        />} />
-        <Route path='/search' element={
-        <Search
-          searchTerm={searchTerm}
-          searchFilter={searchFilter}
-        />} />
-        <Route exact path='/product/:tag' element={
-          <ProductPage
-        />} />
-        <Route exact path='/product/:tag/:item' element={
-          <SelectedProduct
-        />} />
-      </Routes>
-      <Footer/>
-    </BrowserRouter>
+        />
+        <Routes>
+          <Route path="/" element={
+          <Main
+            searchTerm={searchTerm}
+            searchFilter={searchFilter}
+            setSearchTerm={setSearchTerm}
+          />} />
+          <Route path='/search' element={
+          <Search
+            searchTerm={searchTerm}
+            searchFilter={searchFilter}
+          />} />
+          <Route exact path='/product/:tag' element={
+            <ProductPage
+          />} />
+          <Route exact path='/product/:tag/:item' element={
+            <SelectedProduct
+          />} />
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
+    </div>
   );
 }
 

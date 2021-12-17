@@ -35,41 +35,76 @@ const recomendations = [
        'Force Touch trackpad',
        'Two Thunderbolt / USB 4 ports'
      ],
-     selectUrl: 'apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
-     color: [
-       {
-         id: 1,
-         color: 'spacegray',
-         colorName: 'Space Gray',
-         img: macbookSpaceGray,
-         selectUrl: 'space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-256gb',
-       },
-       {
-        id: 2,
-        color: 'gold',
-        colorName: 'Gold',
-        img: macbookGold,
-        selectUrl: 'gold-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-256gb',
-      },
-      {
-        id: 3,
-        color: 'silver',
-        colorName: 'Silver',
-        img: macbookSilver,
-        selectUrl: 'silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-256gb',
-      },
+     variant: [
+        {
+          key: 'space-gray-macbook',
+          type: 'spacegray',
+          price: '₱54,990.00',
+          img: macbookSpaceGray,
+          name: 'Space Gray',
+          url: 'space-gray-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
+          description: [
+            'Apple M1 chip with 8‑core CPU, 7‑core GPU, and 16‑core Neural Engine',
+            '8GB unified memory',
+            '256GB SSD storage¹',
+            'Retina display with True Tone',
+            'Magic Keyboard',
+            'Touch ID',
+            'Force Touch trackpad',
+            'Two Thunderbolt / USB 4 ports'
+          ],
+          size: ['8GB unified memory', '16GB unified memory'],  
+          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+        },
+        {
+          key: 'gold-macbook',
+          type: 'gold',
+          price: '₱54,990.00',
+          img: macbookGold,
+          name: 'Gold',
+          url: 'gold-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
+          description: [
+            'Apple M1 chip with 8‑core CPU, 7‑core GPU, and 16‑core Neural Engine',
+            '8GB unified memory',
+            '256GB SSD storage¹',
+            'Retina display with True Tone',
+            'Magic Keyboard',
+            'Touch ID',
+            'Force Touch trackpad',
+            'Two Thunderbolt / USB 4 ports'
+          ],
+          size: ['8GB unified memory', '16GB unified memory'],
+          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+        },
+        {
+          key: 'silver-macbook',
+          type: 'silver',
+          img: macbookSilver,
+          name: 'Silver',
+          price: '₱54,990.00',
+          url: 'silver-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
+          description: [
+            'Apple M1 chip with 8‑core CPU, 7‑core GPU, and 16‑core Neural Engine',
+            '8GB unified memory',
+            '256GB SSD storage¹',
+            'Retina display with True Tone',
+            'Magic Keyboard',
+            'Touch ID',
+            'Force Touch trackpad',
+            'Two Thunderbolt / USB 4 ports'
+          ],
+          size: ['8GB unified memory', '16GB unified memory'],
+          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']    
+        }
      ],
-     
+
   },
   {
     id: 2,
-    img: macbookSpaceGray,
-    imgGold: macbookGold,
-    imgSilver: macbookSilver,
-    alt: "laptop2",
+    alt: "laptop1",
     name: "Laptop",
     series: "Macbook Air",
-    price: '₱68,990.00',
+    price: '₱54,990.00',
     quantity: 10,
     tag: 'macbook-air',
     descriptionHeader: 'Apple M1 Chip with 8-Core CPU and 8-Core GPU 512 GB Storage',
@@ -83,31 +118,71 @@ const recomendations = [
       'Force Touch trackpad',
       'Two Thunderbolt / USB 4 ports'
     ],
-    
-    color: [
-      {
-        id: 1,
-        color: 'spacegray',
-        colorName: 'Space Gray',
-        img: macbookSpaceGray,
-        selectUrl: 'space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-256gb',
-      },
-      {
-       id: 2,
-       color: 'gold',
-       colorName: 'Gold',
-       img: macbookGold,
-       selectUrl: 'gold-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-256gb',
-     },
-     {
-       id: 3,
-       color: 'silver',
-       colorName: 'Silver',
-       img: macbookSilver,
-       selectUrl: 'silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-256gb',
-     },
+    variant: [
+       {
+         key: 'space-gray-macbook',
+         type: 'spacegray',
+         img: macbookSpaceGray,
+         name: 'Space Gray',
+         price: '₱54,990.00',
+         url: 'space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
+         description: [
+          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
+          '8GB unified memory',
+          '512GB SSD storage¹',
+          'Retina display with True Tone',
+          'Magic Keyboard',
+          'Touch ID',
+          'Force Touch trackpad',
+          'Two Thunderbolt / USB 4 ports'
+          ],
+          size: ['8GB unified memory', '16GB unified memory'],
+          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+
+       },
+       {
+         key: 'gold-macbook',
+         type: 'gold',
+         img: macbookGold,
+         name: 'Gold',
+         price: '₱54,990.00',
+         url: 'gold-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
+         description: [
+          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
+          '8GB unified memory',
+          '512GB SSD storage¹',
+          'Retina display with True Tone',
+          'Magic Keyboard',
+          'Touch ID',
+          'Force Touch trackpad',
+          'Two Thunderbolt / USB 4 ports'
+          ],
+          size: ['8GB unified memory', '16GB unified memory'],
+          storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+       },
+       {
+         key: 'silver-macbook',
+         type: 'silver',
+         price: '₱54,990.00',
+         img: macbookSilver,
+         name: 'Silver',
+         url: 'silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
+         description: [
+          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
+          '8GB unified memory',
+          '512GB SSD storage¹',
+          'Retina display with True Tone',
+          'Magic Keyboard',
+          'Touch ID',
+          'Force Touch trackpad',
+          'Two Thunderbolt / USB 4 ports'
+        ],
+        size: ['8GB unified memory', '16GB unified memory'],
+        storage: ['256GB SSD Storage', '512GB SSD Storage', '1TB SSD Storage', '2TB SSD Storage']  
+       }
     ],
- },
+
+  },
   {
     id: 99,
     img: laptop2,
@@ -119,7 +194,7 @@ const recomendations = [
 
   },
  {
-   id: 3,
+   id: 90,
    img: mobile1,
    alt: "mobile1",
    name: "Mobile",
@@ -129,7 +204,7 @@ const recomendations = [
    
  },
  {
-   id: 4,
+   id: 97,
    img: mobile2,
    alt: "mobile2",
    name: "Mobile",
@@ -138,7 +213,7 @@ const recomendations = [
    quantity: 10
  },
  {
-   id: 5,
+   id: 95,
    img: mobile3,
    alt: "mobile3",
    name: "Mobile",
@@ -147,7 +222,7 @@ const recomendations = [
    quantity: 10
  },
  {
-   id: 6,
+   id: 96,
    img: tablet1,
    alt: "tablet1",
    name: "Tablets",
@@ -156,7 +231,7 @@ const recomendations = [
    quantity: 10
  },
  {
-   id: 7,
+   id: 97,
    img: tablet2,
    alt: "tablet2",
    name: "Tablets",
@@ -165,7 +240,7 @@ const recomendations = [
    quantity: 10
  },
  {
-   id: 8,
+   id: 98,
    img: tablet3,
    alt: "tablet3",
    name: "Tablets",
@@ -174,7 +249,7 @@ const recomendations = [
    quantity: 10
  },
  {
-   id: 9,
+   id: 999,
    img: watch1,
    alt: "watch1",
    name: "Watch",
@@ -183,7 +258,7 @@ const recomendations = [
    quantity: 0
  },
  {
-   id: 10,
+   id: 910,
    img: watch2,
    alt: "watch2",
    name: "Watch",
@@ -193,7 +268,7 @@ const recomendations = [
 
  },
  {
-   id: 11,
+   id: 911,
    img: watch3,
    alt: "watch3",
    name: "Watch",

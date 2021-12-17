@@ -1,43 +1,35 @@
 import React from 'react'
 import Button from '@mui/material/Button';
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
 const ProductCard = ({item}) => {
 
+  const [variantUrl, setVariantUrl] = useState(item.variant[0].url)
+  const [selectedVariant, setSelectedVariant] = useState(item.variant[0]);
+  const [active, setActive] = useState('')
 
-
-  const [selectedImg ,setSelectedImg] = useState(item.color[0].img)
-  const [selectedColor, setSelectedColor] = useState(item.color[0].id)
-  const [selectedColorName, setSelectedColorName] = useState(item.color[0].colorName)
-  const [colorUrl, setColorUrl] = useState(item.color[0].selectUrl)
-  
-
-
-  const handleColorClick = (color) => {
-    setSelectedImg(color.img)
-    setSelectedColor(color.id)
-    setSelectedColorName(color.colorName)
-    console.log(color)
-    setColorUrl(color.selectUrl)
-  }
 
   return (
+    <>
     <div className='item-feature-wrapper'>
       <div className='item-img'>
-        <img className=''src={selectedImg} alt={selectedImg + 'img'}/>
+        <img className='' src={selectedVariant.img} alt='item-img'/>
       </div>
-      <p>{selectedColorName}</p>
+      <p>{selectedVariant.name}</p>
       <div className='d-flex'>
-        {item.color && item.color.map(itemColor => {
-          return <button      
-          onClick={() => handleColorClick(itemColor)}
-          name={itemColor.id} 
-          id={itemColor.id}
-          className={`item-color-button-${itemColor.color}${selectedColor == itemColor.id ? '-active' : ''} m-2
-          
-          `}/>
+        {item.variant.length > 0 && item.variant.map(variant => {
+          return <button
+          onClick={(e) => {
+            console.log(e)
+            setActive(e.target.name)
+            setSelectedVariant(variant) 
+            setVariantUrl(variant.url)
+          }}
+          name={variant.key}
+          className={active == variant.key ? `item-color-button-${variant.type}-active m-2` :`item-color-button-${variant.type} m-2` }/>
         })}
+         
       </div>
       <div>
         <h4 className='mt-5'><strong>{item.descriptionHeader}</strong></h4>
@@ -46,7 +38,7 @@ const ProductCard = ({item}) => {
             return <p className='item-description'>{desc}</p>
           })}
         </div>
-        <Link to={`/product/${item.tag}/${colorUrl}`}>
+        <Link to={`/product/${item.tag}/${variantUrl}`}>
           <Button variant='contained' fullWidth>Select</Button>
         </Link>
       </div>
@@ -59,6 +51,7 @@ const ProductCard = ({item}) => {
         </div>
       </div> 
     </div>
+  </>
   )
 }
 

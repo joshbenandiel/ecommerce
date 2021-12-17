@@ -3,3 +3,7 @@
 .navbar-height {
   height: 0px;
 }
+
+.app-container {
+  position: relative;
+}
