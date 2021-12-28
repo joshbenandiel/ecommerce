@@ -1,0 +1,38 @@
+.product-pro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+
+.macbook-pro-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+.macbook-pro-header h1{
+  width: 600px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.button-inches {
+  height: 90px;
+  width: 150px;
+  border: 1px solid #D3D3D8;
+  background-color: #fff;
+}
+
+.button-inches-active {
+  height: 90px;
+  width: 150px;
+  border: 1px solid blue;
+  background-color: #fff;
+}
+
+
+

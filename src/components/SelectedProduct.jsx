@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useSelector , useDispatch} from 'react-redux'
 import Button from '@mui/material/Button';
+import { setSelectedPhone } from '../redux/selectedProduct'
+import { Link } from "react-router-dom";
 
 
 
@@ -15,8 +17,17 @@ const SelectedProduct = () => {
     return state.product.products
   })
 
+  const dispatch = useDispatch()
+
+  const selectedUrl = useSelector(state => {
+    return state.selectedProduct.selectedPhone
+  })
+
   const [selectedProduct , setSelectedProduct] = useState({})
-  console.log(selectedProduct)
+  const [selectedPhone, setSelectedPhoneItem] = useState({})
+  const [phonePrice, setPhonePrice] = useState(31990)
+  const [getStoragePhone, setGetStoragePhone] = useState('64gb')
+  const [phoneColor, setPhoneColor] = useState('purple')
 
 
 
@@ -25,12 +36,16 @@ const SelectedProduct = () => {
       if (item.variant && item.variant.length > 0){
         item.variant.map(itemVariant => {
           if(itemVariant.url == params.item){
-            console.log({ itemVariant })
             setSelectedProduct(itemVariant)
           }
         })
-      }
-    })  
+      }      
+    }) 
+    products.map(item => {
+      if (item.searchUrl == params.item){
+        setSelectedPhoneItem(item)   
+      }      
+    })
   }, [params])
     
 
@@ -47,7 +62,6 @@ const SelectedProduct = () => {
 
   useEffect(() => {
    setTotal(selectedProduct.price);
-   
   }, [selectedProduct])
 
 
@@ -62,14 +76,71 @@ const SelectedProduct = () => {
             <a href="" className=''>View Gallery</a>
             <i className="far fa-shipping-fast mt-5 fa-lg"></i>
             <p className='mt-2'>Free Delivery</p>
-          </div>
-          <div className="selected-items-details-second-column col-6">
-            <div className='selected-items-details-wrapper'>
-              <h3>Customize your MacBook Air - {selectedProduct.name}</h3>
-              {selectedProduct.description && selectedProduct.description.map(desc => {
-                return <p>{desc}</p>
-              })}   
-            </div>
+          </div>       
+            {params.tag.includes('iphone') &&
+            <div className='phone-wrapper col-6'>
+              <div className='phone-container-color'>
+                <h1 className=''><strong>{selectedProduct.header}</strong></h1>
+                <p className='mt-5'><strong>Choose your finish</strong></p>
+                {selectedPhone.variant && selectedPhone.variant.map(item => {
+                  return (
+                    <>
+                    <Link to={`/product/${params.tag}/6.1-inch-display-${getStoragePhone}-${phoneColor}`}>
+                      <button
+                      className='phone-color-button'
+                      onClick={() => {
+                        setSelectedProduct(item)
+                        setPhoneColor(item.type)
+                      }}        
+                      >{item.type}</button>        
+                    </Link>
+                    </>
+                  )
+                })}
+              </div>
+              <div>
+                <p className='mt-5'><strong>Choose your capacity.</strong></p>
+                {selectedProduct.size && selectedProduct.size.map(item => {
+                  return (
+                  <>
+                    <Link to={`/product/${params.tag}/6.1-inch-display-${getStoragePhone}-${phoneColor}`}>
+                      <button
+                      className='phone-color-button'
+                      onClick={() => {
+                        setPhonePrice(item.price)
+                        setGetStoragePhone(item.storage)
+                      }}
+                      >
+                      {item.storage}
+                      </button>
+                    </Link>
+                  </>
+                  )
+                })}
+              </div>
+              <div className='container-phone-footer mt-3'>
+                <h2>₱{phonePrice.toLocaleString()}</h2>
+                <div className='item-ships'>
+                  <i class="far fa-shipping-fast"></i>
+                  <div className='item-ships-desc'>
+                    <p><strong>Ships:</strong></p>
+                    <p>1-3 business days</p>
+                    <p>Free Shipping</p>    
+                  </div>      
+                </div> 
+                <Button variant='contained' className=''>Add to cart</Button> 
+              </div>
+            </div>    
+            }        
+            {params.tag.includes('macbook') && 
+            <div className="selected-items-details-second-column col-6">
+              <div className='selected-items-details-wrapper'>
+                <h3>Customize your {selectedProduct.header} - {selectedProduct.name}</h3>
+                {selectedProduct.description && selectedProduct.description.map(desc => {
+                  return <p>{desc}</p>
+                })} 
+              </div>
+                      
             <div className='selected-items-memory-section m-3'>
               <p><strong>Memory</strong></p>
               {selectedProduct.size && selectedProduct.size.map(itemSize => {
@@ -88,7 +159,7 @@ const SelectedProduct = () => {
                       {getMemory == itemSize.memory 
                         ? null 
                         : <span className='item-memory-fee'>
-                            { `${(itemSize.fee == 0 ? '' : `₱${itemSize.fee.toLocaleString()}`)}` }
+                            { `${(itemSize.fee == 0 ? '' : `₱${itemSize.fee.toLocaleString()}.00`)}` }
                           </span>
                         }
                     </button>
@@ -113,36 +184,36 @@ const SelectedProduct = () => {
                       {itemStorage.storage}{getStorage == itemStorage.storage 
                       ? null 
                       : <span className='item-memory-fee'>
-                          { `${(itemStorage.fee == 0 ? '' : `₱${itemStorage.fee.toLocaleString()}`)}` }
+                          { `${(itemStorage.fee == 0 ? '' : `₱${itemStorage.fee.toLocaleString()}.00`)}` }
                         </span>}</button>
                 </div>
               ) 
               })}
             </div>   
           </div>
-          
+          }
         </div>  
       </div>
-    </div>
-
-    <div className='selected-items-footer'>
-      <div className='selected-items-footer-wrapper'>
-        <div className='item-ships'>
-          <i class="far fa-shipping-fast"></i>
-          <div className='item-ships-desc'>
-            <p><strong>Ships:</strong></p>
-            <p>1-3 business days</p>
-            <p>Free Shipping</p>
-          </div>
+    </div>    
+    {params.tag.includes('macbook') && 
+      <div className='selected-items-footer'>
+        <div className='selected-items-footer-wrapper'>
+         <div className='item-ships'>
+            <i class="far fa-shipping-fast"></i>
+            <div className='item-ships-desc'>
+              <p><strong>Ships:</strong></p>
+              <p>1-3 business days</p>
+              <p>Free Shipping</p>
+            </div>
+          </div>   
+          <h3 className='p-5'>₱{parseInt(selectedProduct.price + storage + memory).toLocaleString() }.00</h3>
+          <Button variant='contained' className=''>Add to cart</Button> 
         </div>
-       
-        <h3 className='p-5'>₱{parseInt(selectedProduct.price + storage + memory).toLocaleString() }</h3>
-     
-        <Button variant='contained' className=''>Add to cart</Button> 
-      </div>
-    </div>
+      </div>    
+    }
     </>
   )
 }
+
 
 export default SelectedProduct

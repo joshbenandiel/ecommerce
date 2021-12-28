@@ -4,11 +4,10 @@ import { useState , useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
 const ProductCard = ({item}) => {
-
+  
   const [variantUrl, setVariantUrl] = useState(item.variant[0].url)
   const [selectedVariant, setSelectedVariant] = useState(item.variant[0]);
-  const [active, setActive] = useState('')
-
+  const [active, setActive] = useState('space-gray-macbook')
 
   return (
     <>
@@ -21,7 +20,6 @@ const ProductCard = ({item}) => {
         {item.variant.length > 0 && item.variant.map(variant => {
           return <button
           onClick={(e) => {
-            console.log(e)
             setActive(e.target.name)
             setSelectedVariant(variant) 
             setVariantUrl(variant.url)
@@ -34,10 +32,11 @@ const ProductCard = ({item}) => {
       <div>
         <h4 className='mt-5'><strong>{item.descriptionHeader}</strong></h4>
         <div className='mt-4'>
-          {item.description.map((desc) => {
+          {selectedVariant.description.map((desc) => {
             return <p className='item-description'>{desc}</p>
           })}
         </div>
+        <h3><strong>₱{selectedVariant.price.toLocaleString()}.00</strong></h3>
         <Link to={`/product/${item.tag}/${variantUrl}`}>
           <Button variant='contained' fullWidth>Select</Button>
         </Link>

@@ -13,6 +13,8 @@ import Footer from './Footer'
 import { useSelector} from 'react-redux'
 import ProductPage from './ProductPage'
 import SelectedProduct from './SelectedProduct'
+import ProductCardPro from './ProductCardPro'
+
 
 
 function App() {
@@ -26,6 +28,10 @@ function App() {
 
   const checkState = useSelector((state) => { return state})
 
+
+  const getInches = useSelector(state => {
+    return state.inch.inch
+  })
 
 
   return (
@@ -60,6 +66,9 @@ function App() {
           />} />
           <Route exact path='/product/:tag/:item' element={
             <SelectedProduct
+          />} />
+          <Route exact path='/product/:tag/:inch/item' element={
+            <ProductCardPro
           />} />
         </Routes>
         <Footer/>

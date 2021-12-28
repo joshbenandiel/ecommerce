@@ -7,6 +7,8 @@ import selectedCheckboxReducer from './SelectedCheckBox'
 import priceReducer from './price'
 import productItemReducer from './productItem'
 import selectedItemReducer from './selectedItem'
+import inchReducer from './inches'
+import selectedProductReducer from './selectedProduct'
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +19,8 @@ export const store = configureStore({
     selectedCheckbox: selectedCheckboxReducer,
     price: priceReducer,
     productItem: productItemReducer,
-    selectedItem: selectedItemReducer
+    selectedItem: selectedItemReducer,
+    inch: inchReducer,
+    selectedProduct: selectedProductReducer
   },
 })

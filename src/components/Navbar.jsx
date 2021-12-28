@@ -44,15 +44,22 @@ const Navbar = ({searchFilter,searchTerm}) => {
   
 
   const dispatch = useDispatch();
+
+
+  const selectedUrl = useSelector(state => {
+    return state.selectedProduct.selectedPhone
+  })
   
   useEffect(() => {
       const items = []
       productsData.map(item => {
-        if (item.series.toLowerCase().includes(searchTerm.toLowerCase()) || item.name.toLowerCase().includes(searchTerm.toLowerCase())){
-          items.push(item)
-          setSearchEmpty(false);
-        } else if (items.length == 0){
-          setSearchEmpty(true);
+        if(item.searchTag){
+          if (item.searchTag.toLowerCase().includes(searchTerm.toLowerCase()) || item.searchTag.toLowerCase().includes(searchTerm.toLowerCase())){
+            items.push(item)
+            setSearchEmpty(false);
+          } else if (items.length == 0){
+            setSearchEmpty(true);
+          }
         }
       })
       setFilteredResult(items)
@@ -117,11 +124,15 @@ const Navbar = ({searchFilter,searchTerm}) => {
                         key={index}>
                           <div className="search-wrapper">
                             <div className="search-container d-flex">
-                              <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${searchItem.tag}`}> 
+                              <Link style={{textDecoration: 'none', color: 'black'}} to={
+                                searchItem.searchTag == 'Iphone'
+                                ? `/product/${searchItem.tag}/${selectedUrl}`
+                                : searchItem.inch ? `/product/${searchItem.tag}/${searchItem.inch}/item` : `/product/${searchItem.tag}` 
+                              }>                         
                                 <img className="search-img mt-2" src={searchItem.img} alt="item-img"></img>
                               </Link> 
                               <div className="search-details">
-                                <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${searchItem.tag}`}> 
+                                <Link style={{textDecoration: 'none', color: 'black'}} to={searchItem.inch ? `/product/${searchItem.tag}/${searchItem.inch}/item` : `/product/${searchItem.tag}`}> 
                                   <p className="search-series-header">{searchItem.series}</p>
                                   <p>{searchItem.name}</p>
                                   <p>₱ {searchItem.price}</p>

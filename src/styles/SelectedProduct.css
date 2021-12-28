@@ -130,3 +130,34 @@
   display: flex;
   justify-content: space-between;
 }
+
+.phone-color-button {
+  height: 100px;
+  width: 200px;
+  border: 2px solid #E1E3E4;
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.phone-container-color {
+  border-bottom: 2px solid #E1E3E4;
+}
+
+.phone-wrapper {
+  width: 425px;
+}
+
+.container-phone-footer {
+  display: flex;
+  flex-direction: column;
+  width: 425px;
+  height: 300px;
+  padding: 35px;
+  background-color: #FBFBFD;
+}
+
+.container-phone-footer h2 {
+  border-bottom: 2px solid #E1E3E4;
+  padding-bottom: 20px;
+}
