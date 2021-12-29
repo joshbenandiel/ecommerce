@@ -126,7 +126,7 @@ const Navbar = ({searchFilter,searchTerm}) => {
                             <div className="search-container d-flex">
                               <Link style={{textDecoration: 'none', color: 'black'}} to={
                                 searchItem.searchTag == 'Iphone'
-                                ? `/product/${searchItem.tag}/${selectedUrl}`
+                                ? `/product/buy/${searchItem.tag}`
                                 : searchItem.inch ? `/product/${searchItem.tag}/${searchItem.inch}/item` : `/product/${searchItem.tag}` 
                               }>                         
                                 <img className="search-img mt-2" src={searchItem.img} alt="item-img"></img>

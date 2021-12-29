@@ -15,6 +15,32 @@ import iphone11Red from '../../images/Iphone/iphone11-red-select-2019.png'
 import iphone11Black from '../../images/Iphone/iphone11-black-select-2019.png'
 import iphone11White from '../../images/Iphone/iphone11-white-select-2019.png'
 import iphone11Yellow from '../../images/Iphone/iphone11-yellow-select-2019.png'
+import buttonColorBlack from '../../images/Iphone/finish-black-201909.jpg'
+import buttonColorPurple from '../../images/Iphone/finish-purple-201909 (1).jpg'
+import buttonColorGreen from '../../images/Iphone/finish-green-201909.jpg'
+import buttonColorRed from '../../images/Iphone/finish-red-201909.jpg'
+import buttonColorWhite from '../../images/Iphone/finish-white-201909.jpg'
+import buttonColorYellow from '../../images/Iphone/finish-yellow-201909.jpg'
+import iphone12BlackMini from '../../images/Iphone/iphone-mini/iphone-12-mini-black-select-2020.png'
+import iphone12BlueMini from '../../images/Iphone/iphone-mini/iphone-12-mini-blue-select-2020.png'
+import iphone12GreenMini from '../../images/Iphone/iphone-mini/iphone-12-mini-green-select-2020.png'
+import iphone12PurpleMini from '../../images/Iphone/iphone-mini/iphone-12-mini-purple-select-2021.png'
+import iphone12RedMini from '../../images/Iphone/iphone-mini/iphone-12-mini-red-select-2020.png'
+import iphone12WhiteMini from '../../images/Iphone/iphone-mini/iphone-12-mini-white-select-2020.png'
+import buttonColorBlackMini from '../../images/Iphone/iphone-mini/finish-black-202010.jpg'
+import buttonColorBlueMini from '../../images/Iphone/iphone-mini/finish-blue-202010.jpg'
+import buttonColorGreenMini from '../../images/Iphone/iphone-mini/finish-green-202010.jpg'
+import buttonColorPurpleMini from '../../images/Iphone/iphone-mini/finish-purple-202104.jpg'
+import buttonColorRedMini from '../../images/Iphone/iphone-mini/finish-red-202010.jpg'
+import buttonColorWhiteMini from '../../images/Iphone/iphone-mini/finish-white-202010.jpg'
+import iphone13ColorBlue from '../../images/Iphone/iphone13/iphone-13-pro-blue-select.png'
+import iphone13ColorGold from '../../images/Iphone/iphone13/iphone-13-pro-gold-select.png'
+import iphone13ColorGraphite from '../../images/Iphone/iphone13/iphone-13-pro-graphite-select.png'
+import iphone13ColorSilver from '../../images/Iphone/iphone13/iphone-13-pro-silver-select.png'
+import buttonColorIphoneBlue from '../../images/Iphone/iphone13/iphone-finish-blue-2021.jpg'
+import buttonColorIphoneGold from '../../images/Iphone/iphone13/iphone-finish-gold-2021.jpg'
+import buttonColorIphoneGraphite from '../../images/Iphone/iphone13/iphone-finish-graphite-2021.jpg'
+import buttonColorIphoneSilver from '../../images/Iphone/iphone13/iphone-finish-silver-2021.jpg'
 
 
 const recomendations = [
@@ -1033,136 +1059,538 @@ const recomendations = [
     ],
 
   },
-  ////FOR IPHONE
+  ////FOR IPHONE 6.1-inch-display-{storage}-{color}
   {
-    id: 1,
+    id: 10,
     alt: "mobile",
     name: "Mobile",
+    img: iphone11Purple,
     series: "Iphone 11",
     searchTag: 'Iphone',
     quantity: 10,
+    price: 31990,
     tag: 'iphone-11',
     searchUrl: '6.1-inch-display-64gb-purple',
     descriptionHeader: 'Buy Iphone 11',
-    variant: [
-      {
-        key: 'iphone-11-purple',
-        type: 'purple',
-        price: 31990,
-        url: '6.1-inch-display-64gb-purple',
-        img: iphone11Purple,
-        name: 'Iphone 11',
-        header: 'Buy Iphone 11',
-        size: [
-          {
-            storage: '64gb',
-            price: 31990,
-          },
-          {
-            storage: '128gb',
-            price: 34990,
-          }
-        ]   
-      },
-      {
-        key: 'iphone-11-green',
-        type: 'green',
-        price: 31990,
-        url: '6.1-inch-display-64gb-green',
-        img: iphone11Green,
-        name: 'Iphone 11',
-        header: 'Buy Iphone 11',
-        size: [
-          {
-            storage: '64gb',
-            price: 31990,
-          },
-          {
-            storage: '128gb',
-            price: 34990,
-          }
-        ]      
-      },
-      {
-        key: 'iphone-11-yellow',
-        type: 'yellow',
-        price: 31990,
-        url: '6.1-inch-display-64gb-yellow',
-        img: iphone11Yellow,
-        name: 'Iphone 11',
-        header: 'Buy Iphone 11',
-        size: [
-          {
-            storage: '64gb',
-            price: 31990,
-          },
-          {
-            storage: '128gb',
-            price: 34990,
-          }
-        ]      
-      },
-      {
-        key: 'iphone-11-white',
-        type: 'white',
-        price: 31990,
-        url: '6.1-inch-display-64gb-white',
-        img: iphone11White,
-        name: 'Iphone 11',
-        header: 'Buy Iphone 11',
-        size: [
-          {
-            storage: '64gb',
-            price: 31990,
-          },
-          {
-            storage: '128gb',
-            price: 34990,
-          }
-        ]      
-      },
-      {
-        key: 'iphone-11-black',
-        type: 'black',
-        price: 31990,
-        url: '6.1-inch-display-64gb-black',
-        img: iphone11Black,
-        name: 'Iphone 11',
-        header: 'Buy Iphone 11',
-        size: [
-          {
-            storage: '64gb',
-            price: 31990,
-          },
-          {
-            storage: '128gb',
-            price: 34990,
-          }
-        ]     
-      },
-      {
-        key: 'iphone-11-red',
-        type: 'red',
-        price: 31990,
-        url: '6.1-inch-display-64gb-red',
-        img: iphone11Red,
-        name: 'Iphone 11',
-        header: 'Buy Iphone 11',
-        size: [
-          {
-            storage: '64gb',
-            price: 31990,
-          },
-          {
-            storage: '128gb',
-            price: 34990,
-          }
-        ]      
-      },
-      
-      
-    ],
-
+    color: 'Purple',
+    size: '64gb',
+    colorTag: buttonColorPurple
+  },
+  {
+    id: 11,
+    alt: "mobile",
+    name: "Mobile",
+    img: iphone11Purple,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-128gb-purple',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'Purple',
+    size: '128gb',
+    price: 31990,
+  },
+  {
+    id: 12,
+    alt: "mobile",
+    name: "Mobile",
+    img: iphone11Green,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-green',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'Green',
+    size: '64gb',
+    price: 31990,
+    colorTag: buttonColorGreen
+    
+  },
+  {
+    id: 13,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone11Green,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-green',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'green',
+    size: '128gb'
+    
+  },
+  {
+    id: 14,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone11Red,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-red',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'Red',
+    size: '64gb',
+    colorTag: buttonColorRed
+  },
+  {
+    id: 15,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone11Red,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    price: 31990,
+    searchUrl: '6.1-inch-display-64gb-red',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'red',
+    size: '128gb'
+  },
+  {
+    id: 16,
+    alt: "mobile",
+    price: 31990,
+    name: "Mobile",
+    img: iphone11Black,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-Black',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'Black',
+    size: '64gb',
+    colorTag: buttonColorBlack
+  },
+  {
+    id: 17,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone11Black,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-Black',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'black',
+    size: '128gb'
+  },
+  {
+    id: 18,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone11White,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-white',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'White',
+    size: '64gb',
+    colorTag: buttonColorWhite
+    
+  },
+  {
+    id: 19,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone11White,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-white',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'white',
+    size: '128gb'
+  },
+  {
+    id: 20,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone11Yellow,
+    series: "Iphone 11",
+    quantity: 10,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'Yellow',
+    size: '64gb',
+    colorTag: buttonColorYellow
+  },
+  {
+    id: 21,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone11Yellow,
+    series: "Iphone 11",
+    quantity: 10,
+    price: 31990,
+    tag: 'iphone-11',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 11',
+    color: 'yellow',
+    size: '128gb'
+  },
+  ////IPHONE12
+  {
+    id: 22,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12BlackMini,
+    searchTag: 'Iphone',
+    series: "Iphone 12",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Black',
+    size: '64gb',
+    colorTag: buttonColorBlackMini
+  },
+  {
+    id: 23,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12BlackMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Black',
+    size: '128gb',
+    colorTag: buttonColorBlackMini
+  },
+  {
+    id: 24,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12BlackMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Black',
+    size: '256gb',
+    colorTag: buttonColorBlackMini
+  },
+  {
+    id: 25,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12BlueMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Blue',
+    size: '64gb',
+    colorTag: buttonColorBlueMini
+  },
+  {
+    id: 26,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12BlueMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Blue',
+    size: '128gb',
+    colorTag: buttonColorBlueMini
+  },
+  {
+    id: 27,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12BlueMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Blue',
+    size: '256gb',
+    colorTag: buttonColorBlueMini
+  },
+  {
+    id: 28,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12GreenMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Green',
+    size: '64gb',
+    colorTag: buttonColorGreenMini
+  },
+  {
+    id: 29,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12GreenMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Green',
+    size: '128gb',
+    colorTag: buttonColorGreenMini
+  },
+  {
+    id: 30,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12GreenMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Green',
+    size: '256gb',
+    colorTag: buttonColorGreenMini
+  },
+  {
+    id: 31,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12PurpleMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Purple',
+    size: '64gb',
+    colorTag: buttonColorPurpleMini
+  },
+  {
+    id: 32,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12PurpleMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Purple',
+    size: '128gb',
+    colorTag: buttonColorPurpleMini
+  },
+  {
+    id: 33,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12PurpleMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Purple',
+    size: '256gb',
+    colorTag: buttonColorPurpleMini
+  },
+  {
+    id: 34,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12WhiteMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'White',
+    size: '64gb',
+    colorTag: buttonColorWhiteMini
+  },
+  {
+    id: 35,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12WhiteMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'White',
+    size: '128gb',
+    colorTag: buttonColorWhiteMini
+  },
+  {
+    id: 36,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12WhiteMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'White',
+    size: '256gb',
+    colorTag: buttonColorWhiteMini
+  },
+  {
+    id: 37,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12RedMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Red',
+    size: '64gb',
+    colorTag: buttonColorRedMini
+  },
+  {
+    id: 38,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12RedMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Red',
+    size: '128gb',
+    colorTag: buttonColorRedMini
+  },
+  {
+    id: 39,
+    alt: "mobile",
+    name: "Mobile",
+    price: 31990,
+    img: iphone12RedMini,
+    series: "Iphone 12 Mini",
+    quantity: 10,
+    price: 38990,
+    tag: 'iphone-12',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 12',
+    color: 'Red',
+    size: '256gb',
+    colorTag: buttonColorWhiteMini
+  },
+////IPHONE 13
+  {
+    id: 40,
+    alt: "mobile",
+    name: "Mobile",
+    img: iphone13ColorBlue,
+    series: "Iphone 13",
+    quantity: 10,
+    price: 70990,
+    searchTag: 'Iphone',
+    tag: 'iphone-13',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 13',
+    color: 'Seirra Blue',
+    size: '64gb',
+    colorTag: buttonColorIphoneBlue
+  },
+  {
+    id: 41,
+    alt: "mobile",
+    name: "Mobile",
+    price: 70990,
+    img: iphone13ColorGold,
+    series: "Iphone 13",
+    quantity: 10,
+    tag: 'iphone-13',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 13',
+    color: 'Gold',
+    size: '64gb',
+    colorTag: buttonColorIphoneGold
+  },
+  {
+    id: 42,
+    alt: "mobile",
+    name: "Mobile",
+    price: 70990,
+    img: iphone13ColorGraphite,
+    series: "Iphone 13",
+    quantity: 10,
+    tag: 'iphone-13',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 13',
+    color: 'Graphite',
+    size: '64gb',
+    colorTag: buttonColorIphoneGraphite
+  },
+  {
+    id: 43,
+    alt: "mobile",
+    name: "Mobile",
+    price: 70990,
+    img: iphone13ColorSilver,
+    series: "Iphone 13",
+    quantity: 10,
+    tag: 'iphone-13',
+    searchUrl: '6.1-inch-display-64gb-yellow',
+    descriptionHeader: 'Buy Iphone 13',
+    color: 'Silver',
+    size: '64gb',
+    colorTag: buttonColorIphoneSilver
   },
 
   

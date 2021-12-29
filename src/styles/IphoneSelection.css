@@ -1,0 +1,146 @@
+.image-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+ 
+}
+
+
+
+.details-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.button-iphone {
+  height: 100px;
+  width: 190px;
+  background-color: #fff;
+  border: 2px solid #D2D2D7;
+  border-radius: 12px;
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button-iphone-active {
+  height: 100px;
+  width: 190px;
+  background-color: #fff;
+  border: 5px solid #66B1FC;
+  border-radius: 12px;
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.storage-iphone-button {
+  height: 100px;
+  width: 190px;
+  background-color: #fff;
+  border: 2px solid #D2D2D7;
+  border-radius: 12px;
+  margin: 12px;
+}
+
+.storage-iphone-button-active {
+  height: 100px;
+  width: 190px;
+  background-color: #fff;
+  border: 5px solid #66B1FC;
+  border-radius: 12px;
+  margin: 12px;
+}
+
+
+.iphone-container-select {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  position: relative;
+}
+
+.button-wrapper-iphone {
+  text-align: start;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-ships-desc {
+  display: flex;
+  text-align: start;
+}
+
+.iphone-footer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  text-align: start;
+  height: 300px;
+  width: 400px;
+  background-color: #FBFBFD;
+}
+.iphone-footer h1 {
+  margin: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #D2D2D7;
+
+}
+
+
+.button-circle-color {
+  height: 35px;
+}
+
+.button-price {
+  margin: 0;
+}
+
+.iphone-12-button {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  height: auto;
+  width: 400px;
+  background-color: #fff;
+  border: 2px solid #D2D2D7;
+  border-radius: 12px;
+  margin: 12px;
+  text-align: start;
+  padding: 15px;
+}
+
+.iphone-12-button-active {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  height: auto;
+  width: 400px;
+  background-color: #fff;
+  border: 5px solid #66B1FC;
+  border-radius: 12px;
+  margin: 12px;
+  text-align: start;
+  padding: 15px;
+}
+.image-iphone-12 {
+  height: 700px;
+  position: sticky;
+}
+
+.storage-button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}

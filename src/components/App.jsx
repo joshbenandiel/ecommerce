@@ -14,6 +14,7 @@ import { useSelector} from 'react-redux'
 import ProductPage from './ProductPage'
 import SelectedProduct from './SelectedProduct'
 import ProductCardPro from './ProductCardPro'
+import IphoneSelection from './IphoneSelection'
 
 
 
@@ -69,6 +70,9 @@ function App() {
           />} />
           <Route exact path='/product/:tag/:inch/item' element={
             <ProductCardPro
+          />} />
+          <Route exact path='/product/buy/:tag' element={
+            <IphoneSelection
           />} />
         </Routes>
         <Footer/>
