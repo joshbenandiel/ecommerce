@@ -41,7 +41,14 @@ import buttonColorIphoneBlue from '../../images/Iphone/iphone13/iphone-finish-bl
 import buttonColorIphoneGold from '../../images/Iphone/iphone13/iphone-finish-gold-2021.jpg'
 import buttonColorIphoneGraphite from '../../images/Iphone/iphone13/iphone-finish-graphite-2021.jpg'
 import buttonColorIphoneSilver from '../../images/Iphone/iphone13/iphone-finish-silver-2021.jpg'
-
+import ipadColorPink from '../../images/Tablets/ipad-mini-select-wifi-pink-202109.png'
+import ipadColorPurple from '../../images/Tablets/ipad-mini-select-wifi-purple-202109.png'
+import ipadColorSpaceGray from '../../images/Tablets/ipad-mini-select-wifi-space-gray-202109.png'
+import ipadColorStarlight from '../../images/Tablets/ipad-mini-select-wifi-starlight-202109.png'
+import buttonColorIpadPink from '../../images/Tablets/finish-pink-202109.png'
+import buttonColorIpadPurple from '../../images/Tablets/finish-purple-202109.png'
+import buttonColorIpadSpaceGray from '../../images/Tablets/finish-spacegray-201903.png'
+import buttonColorIpadStarlight from '../../images/Tablets/finish-starlight-202109.png'
 
 const recomendations = [
   ///FOR MACBOOK AIR/////
@@ -1592,6 +1599,64 @@ const recomendations = [
     size: '64gb',
     colorTag: buttonColorIphoneSilver
   },
+  {
+    id: 44,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    searchTag: 'Ipad',
+    img: ipadColorPink,
+    series: "iPad Mini",
+    quantity: 10,
+    tag: 'ipad-mini',
+    descriptionHeader: 'Buy iPad Mini',
+    color: 'Pink',
+    size: '64gb',
+    colorTag: buttonColorIpadPink
+  },
+  {
+    id: 45,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadColorPurple,
+    series: "iPad Mini",
+    quantity: 10,
+    tag: 'ipad-mini',
+    descriptionHeader: 'Buy iPad Mini',
+    color: 'Purple',
+    size: '64gb',
+    colorTag: buttonColorIpadPurple
+  },
+  {
+    id: 46,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadColorSpaceGray,
+    series: "iPad Mini",
+    quantity: 10,
+    tag: 'ipad-mini',
+    descriptionHeader: 'Buy iPad Mini',
+    color: 'Space Gray',
+    size: '64gb',
+    colorTag: buttonColorIpadSpaceGray
+  },
+  {
+    id: 47,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadColorStarlight,
+    series: "iPad Mini",
+    quantity: 10,
+    tag: 'ipad-mini',
+    descriptionHeader: 'Buy iPad Mini',
+    color: 'Starlight',
+    size: '64gb',
+    colorTag: buttonColorIpadStarlight
+  },
+
 
   
  

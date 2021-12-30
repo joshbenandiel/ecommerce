@@ -125,7 +125,7 @@ const Navbar = ({searchFilter,searchTerm}) => {
                           <div className="search-wrapper">
                             <div className="search-container d-flex">
                               <Link style={{textDecoration: 'none', color: 'black'}} to={
-                                searchItem.searchTag == 'Iphone'
+                                searchItem.searchTag == 'Iphone' || searchItem.searchTag == 'Ipad'
                                 ? `/product/buy/${searchItem.tag}`
                                 : searchItem.inch ? `/product/${searchItem.tag}/${searchItem.inch}/item` : `/product/${searchItem.tag}` 
                               }>                         

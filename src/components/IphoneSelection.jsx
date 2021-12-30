@@ -3,6 +3,7 @@ import '../styles/IphoneSelection.css'
 import { useSelector } from 'react-redux'
 import { useParams , useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import TabletSelection from './TabletSelection'
 
 
 
@@ -10,10 +11,6 @@ const IphoneSelection = () => {
 
   const navigate = useNavigate()
   const params = useParams()
-  const products = useSelector((state) => {
-    return state.product.products
-  })
-
   const [selectedProduct, setSelectedProduct] = useState([])
   const [selectedVariant, setSelectedVariant] = useState({})
   const [storageIsClick, setStorageIsClick] = useState(true)
@@ -24,7 +21,14 @@ const IphoneSelection = () => {
   const [header, setHeader] = useState('')
   const [buttonIphoneMini ,setButtonIphoneMini] = useState(true)
   const [buttonIphone12 ,setButtonIphone12] = useState(false)
- 
+  const storage128 = selectedVariant.price  + 3000;
+  const storageIphone256 = selectedVariant.price  + 6000;
+  const storage256 = selectedVariant.price  + 9000;
+  const storageIphone512 = selectedVariant.price  + 18000;
+  const storageTb = selectedVariant.price + 31000
+  const products = useSelector((state) => {
+    return state.product.products
+  })
 
   useEffect(() => {
     const items = []
@@ -38,18 +42,10 @@ const IphoneSelection = () => {
     setHeader(items[0].descriptionHeader)
   }, [params])
 
-  const storage128 = selectedVariant.price  + 3000;
-  const storageIphone256 = selectedVariant.price  + 6000;
-  const storage256 = selectedVariant.price  + 9000;
-  const storageIphone512 = selectedVariant.price  + 18000;
-  const storageTb = selectedVariant.price + 31000
-
-
-    
-  console.log(params.tag)
   
   return (
-    <div className='iphone-container-select container'>
+    <>
+    {params.tag.includes('iphone') && <div className='iphone-container-select container'>
       <div className="row">
         <div className="image-container col-6">
           <img className={buttonIphone12 && 'image-iphone-12'}src={selectedVariant.img}></img>
@@ -154,8 +150,14 @@ const IphoneSelection = () => {
          </div>
         </div>
       </div>
-      
     </div>
+    }
+    {params.tag.includes('ipad') && 
+      <>
+        <TabletSelection/>
+      </>
+    }
+    </>
   )
 }
 
