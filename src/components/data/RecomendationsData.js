@@ -49,6 +49,27 @@ import buttonColorIpadPink from '../../images/Tablets/finish-pink-202109.png'
 import buttonColorIpadPurple from '../../images/Tablets/finish-purple-202109.png'
 import buttonColorIpadSpaceGray from '../../images/Tablets/finish-spacegray-201903.png'
 import buttonColorIpadStarlight from '../../images/Tablets/finish-starlight-202109.png'
+import ipadSpaceGray from '../../images/Tablets/ipad-2021-hero-space-wifi-select.png'
+import ipadSilver from '../../images/Tablets/ipad-2021-hero-silver-wifi-select.png'
+import ipadButtonSilver from '../../images/Tablets/finish-silver-201903.png'
+import ipadAirBlue from '../../images/Tablets/IpadAir/ipad-air-select-wifi-blue-202009.png'
+import ipadAirGold from '../../images/Tablets/IpadAir/ipad-air-select-wifi-gold-202009.png'
+import ipadAirGreen from '../../images/Tablets/IpadAir/ipad-air-select-wifi-green-202009.png'
+import ipadAirSilver from '../../images/Tablets/IpadAir/ipad-air-select-wifi-silver-202009.png'
+import ipadAirSpaceGray from '../../images/Tablets/IpadAir/ipad-air-select-wifi-spacegray-202009.png'
+import ipadProSpaceGray from '../../images/Tablets/IpadAir/ipad-pro-11-select-wifi-spacegray-202104.jpg'
+import ipadProSilver from '../../images/Tablets/IpadAir/ipad-pro-11-select-wifi-silver-202104.jpg'
+import newIcon from '../../images/MacbookPro/mbp14-m1-pro-icon-202110.png'
+
+
+export const macbookPhotos = [
+  { inch: '13-inch', image: macbookProSpace13, color: 'Space Gray' },
+  { inch: '13-inch', image: macbookProSilver13, color: 'Silver' },
+  { inch: '14-inch', image: macbookProSpace14, color: 'Space Gray' },
+  { inch: '14-inch', image: macbookProSilver14, color: 'Silver' },
+  { inch: '16-inch', image: macbookProSpace16, color: 'Space Gray' },
+  { inch: '16-inch', image: macbookProSilver16, color: 'Silver' },
+]
 
 const recomendations = [
   ///FOR MACBOOK AIR/////
@@ -56,6 +77,7 @@ const recomendations = [
      id: 1,
      alt: "laptop1",
      name: "Laptop",
+     img: macbookSpaceGray,
      series: "Macbook Air",
      searchTag: 'Macbook',
      quantity: 10,
@@ -365,708 +387,176 @@ const recomendations = [
   //////FOR MACBOOK PRO////////
   {
     id: 3,
-    inch: '13-inch',
     alt: "laptop",
     name: "Laptop",
-    searchTag: 'Macbook Pro',
+    inch: '13-inch',
+    img: macbookProSpace13,
     series: "Macbook Pro",
     quantity: 10,
-    tag: 'macbook-air-pro',
-    descriptionHeader: 'Apple M1 Chip with 8‑Core CPU and 8‑Core GPU 256GB SSD Storage¹',
-    variant: [
-       {
-         key: 'space-gray-macbook',
-         type: 'spacegray',
-         img: macbookProSpace13,
-         name: 'Space Gray',
-         header: '13-inch Macbook Pro',
-         price: 71990,
-         url: '13-inch-space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '256GB SSD storage',
-          '13-inch Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch Bar and Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-
-       },
-       {
-         key: 'silver-macbook',
-         type: 'silver',
-         price: 71990,
-         header: '13-inch Macbook Pro',
-         img: macbookProSilver13,
-         name: 'Silver',
-         url: '13-inch-silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage',
-          'Retina display with True Tone',
-          'Magic Keyboard',
-          'TTouch Bar and Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-        ],
-        size: [
-          {
-            memory: '8GB unified storage',
-            fee: 0
-          },
-          {
-            memory: '16GB unified storage',
-            fee: 12000,
-          }
-        ],
-        storage: [
-          {
-            storage: '512GB SSD Storage',
-            fee: 0
-          },
-          {
-            storage: '1TB SSD Storage',
-            fee: 24000
-          },
-          {
-            storage: '2TB SSD Storage',
-            fee: 48000
-          },
-
-        ]    
-       }
-    ],
-
+    price: 71990,
+    tag: 'macbook-pro',
+    color: 'Space Gray',
+    colorTag: buttonColorIpadSpaceGray,
+    header: 'Apple M1 Chip with 8‑Core CPU and 8‑Core GPU 256GB SSD Storage¹',
+    description: [
+      'Apple M1 chip with 8-core CPU, 8-core',
+      'GPU, and 16-core Neural Engine',
+      '8GB unified memory',
+      '256GB SSD storage',
+      '13-inch Retina display with True Tone',
+      'Magic Keyboard',
+      'Touch Bar and Touch ID',
+      'Force Touch trackpad',
+      'Two Thunderbolt / USB 4 ports'
+    ]
   },
   {
     id: 4,
-    inch: '13-inch',
     alt: "laptop",
     name: "Laptop",
-    header: '13-inch Macbook Pro',
+    inch: '13-inch',
+    img: macbookProSilver13,
     series: "Macbook Pro",
     quantity: 10,
-    tag: 'macbook-air-pro',
-    descriptionHeader: 'Apple M1 Chip with 8‑Core CPU and 8‑Core GPU 512GB SSD Storage¹',
-    variant: [
-       {
-         key: 'space-gray-macbook',
-         type: 'spacegray',
-         img: macbookProSpace13,
-         name: 'Space Gray',
-         price: 83990,
-         url: '13-inch-space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          '13-inch Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch Bar and Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-
-       },
-       {
-         key: 'silver-macbook',
-         type: 'silver',
-         price: 83990,
-         img: macbookProSilver13,
-         name: 'Silver',
-         header: '13-inch Macbook Pro',
-         url: '13-inch-silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          '13-inch Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch Bar and Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-        ],
-        size: [
-          {
-            memory: '8GB unified storage',
-            fee: 0
-          },
-          {
-            memory: '16GB unified storage',
-            fee: 12000,
-          }
-        ],
-        storage: [
-          {
-            storage: '512GB SSD Storage',
-            fee: 0
-          },
-          {
-            storage: '1TB SSD Storage',
-            fee: 24000
-          },
-          {
-            storage: '2TB SSD Storage',
-            fee: 48000
-          },
-
-        ]    
-       }
-    ],
-
+    price: 71990,
+    tag: 'macbook-pro',
+    color: 'Silver',
+    colorTag: buttonColorIphoneSilver,
+    header: 'Apple M1 Chip with 8‑Core CPU and 8‑Core GPU 512GB SSD Storage¹',
+    description: [
+      'Apple M1 chip with 8-core CPU, 8-core',
+      'GPU, and 16-core Neural Engine',
+      '8GB unified memory',
+      '512GB SSD storage',
+      '13-inch Retina display with True Tone',
+      'Magic Keyboard',
+      'Touch Bar and Touch ID',
+      'Force Touch trackpad',
+      'Two Thunderbolt / USB 4 ports'
+    ]
   },
   {
     id: 5,
-    inch: '14-inch',
     alt: "laptop",
     name: "Laptop",
+    inch: '14-inch',
+    icon: 'New',
+    iconImg: newIcon,
+    img: macbookProSpace14,
     series: "Macbook Pro",
     quantity: 10,
-    tag: 'macbook-air-pro',
-    descriptionHeader: 'Apple M1 Chip with 8-Core CPU and 8-Core GPU 512 GB Storage',
-    variant: [
-       {
-         key: 'space-gray-macbook',
-         type: 'spacegray',
-         img: macbookProSpace14,
-         name: 'Space Gray',
-         header: '14-inch Macbook Pro',
-         price: 68000,
-         url: '14-inch-space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          'Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-
-       },
-       {
-         key: 'silver-macbook',
-         type: 'silver',
-         price: 68000,
-         img: macbookProSilver14,
-         name: 'Silver',
-         header: '14-inch Macbook Pro',
-         url: '14-inch-silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          'Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-        ],
-        size: [
-          {
-            memory: '8GB unified storage',
-            fee: 0
-          },
-          {
-            memory: '16GB unified storage',
-            fee: 12000,
-          }
-        ],
-        storage: [
-          {
-            storage: '512GB SSD Storage',
-            fee: 0
-          },
-          {
-            storage: '1TB SSD Storage',
-            fee: 24000
-          },
-          {
-            storage: '2TB SSD Storage',
-            fee: 48000
-          },
-
-        ]    
-       }
-    ],
-
+    price: 116990,
+    tag: 'macbook-pro',
+    color: 'Space Gray',
+    colorTag: buttonColorIpadSpaceGray,
+    header: '8-Core CPU 14-Core GPU 16GB Unified Memory 512GB SSD Storage¹',
+    description: [
+      '16-core Neural Engine',
+      '14-inch Liquid Retina XDR display',
+      'Three Thunderbolt 4 ports, HDMI port',
+      'SDXC card slot, MagSafe 3 port',
+      'Magic Keyboard with Touch ID',
+      'Force Touch trackpad',
+      '67W USB-C Power Adapter',
+    ]
   },
   {
     id: 6,
-    inch: '14-inch',
     alt: "laptop",
     name: "Laptop",
+    inch: '14-inch',
+    icon: 'New',
+    iconImg: newIcon,
+    img: macbookProSilver14,
     series: "Macbook Pro",
     quantity: 10,
-    tag: 'macbook-air-pro',
-    descriptionHeader: 'Apple M1 Chip with 8-Core CPU and 8-Core GPU 512 GB Storage',
-    variant: [
-       {
-         key: 'space-gray-macbook',
-         type: 'spacegray',
-         img: macbookProSpace14,
-         name: 'Space Gray',
-         header: '14-inch Macbook Pro',
-         price: 68000,
-         url: '14-inch-space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          'Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-
-       },
-       {
-         key: 'silver-macbook',
-         type: 'silver',
-         price: 68000,
-         img: macbookProSilver14,
-         name: 'Silver',
-         header: '14-inch Macbook Pro',
-         url: '14-inch-silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          'Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-        ],
-        size: [
-          {
-            memory: '8GB unified storage',
-            fee: 0
-          },
-          {
-            memory: '16GB unified storage',
-            fee: 12000,
-          }
-        ],
-        storage: [
-          {
-            storage: '512GB SSD Storage',
-            fee: 0
-          },
-          {
-            storage: '1TB SSD Storage',
-            fee: 24000
-          },
-          {
-            storage: '2TB SSD Storage',
-            fee: 48000
-          },
-
-        ]    
-       }
-    ],
-
+    price: 146990,
+    tag: 'macbook-pro',
+    color: 'Silver',
+    colorTag: buttonColorIphoneSilver,
+    header: '10-Core CPU 16-Core GPU 16GB Unified Memory 1TB SSD Storage',
+    description: [
+      '16-core Neural Engine',
+      '14-inch Liquid Retina XDR display',
+      'Three Thunderbolt 4 ports, HDMI port',
+      'SDXC card slot, MagSafe 3 port',
+      'Magic Keyboard with Touch ID',
+      'Force Touch trackpad',
+      '96W USB-C Power Adapter',
+    ]
   },
   {
     id: 7,
-    inch: '16-inch',
     alt: "laptop",
     name: "Laptop",
+    inch: '16-inch',
+    icon: 'New',
+    iconImg: newIcon,
     series: "Macbook Pro",
     quantity: 10,
-    tag: 'macbook-air-pro',
-    descriptionHeader: '10-Core CPU 16-Core GPU 16GB Unified Memory 512GB SSD Storage¹',
-    variant: [
-       {
-         key: 'space-gray-macbook',
-         type: 'spacegray',
-         img: macbookProSpace16,
-         name: 'Space Gray',
-         header: '16-inch Macbook Pro',
-         price: 146990,
-         url: '16-inch-space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          '16-core Neural Engine',
-          '16-inch Liquid Retina XDR display',
-          'Three Thunderbolt 4 ports, HDMI port, SDXC card slot, MagSafe 3 port',
-          'Magic Keyboard with Touch ID',
-          'Force Touch trackpad',
-          '140W USB-C Power Adapter'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-
-       },
-       {
-         key: 'silver-macbook',
-         type: 'silver',
-         price: 68000,
-         img: macbookProSilver16,
-         name: 'Silver',
-         header: '16-inch Macbook Pro',
-         url: '16-inch-silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          '16-core Neural Engine',
-          '16-inch Liquid Retina XDR display',
-          'Three Thunderbolt 4 ports, HDMI port, SDXC card slot, MagSafe 3 port',
-          'Magic Keyboard with Touch ID',
-          'Force Touch trackpad',
-          '140W USB-C Power Adapter'
-          ],
-        size: [
-          {
-            memory: '8GB unified storage',
-            fee: 0
-          },
-          {
-            memory: '16GB unified storage',
-            fee: 12000,
-          }
-        ],
-        storage: [
-          {
-            storage: '512GB SSD Storage',
-            fee: 0
-          },
-          {
-            storage: '1TB SSD Storage',
-            fee: 24000
-          },
-          {
-            storage: '2TB SSD Storage',
-            fee: 48000
-          },
-
-        ]    
-       }
-    ],
-
+    price: 146990,
+    tag: 'macbook-pro',
+    color: 'Space Gray',
+    colorTag: buttonColorIpadSpaceGray,
+    header: '10-Core CPU 16-Core GPU 16GB Unified Memory 512GB SSD Storage',
+    description: [
+      '16-core Neural Engine',
+      '16-inch Liquid Retina XDR display',
+      'Three Thunderbolt 4 ports, HDMI port',
+      'SDXC card slot, MagSafe 3 port',
+      'Magic Keyboard with Touch ID',
+      'Force Touch trackpad',
+      '140W USB-C Power Adapter',
+    ]
   },
   {
     id: 8,
-    inch: '16-inch',
     alt: "laptop",
     name: "Laptop",
+    inch: '16-inch',
+    icon: 'New',
+    iconImg: newIcon,
     series: "Macbook Pro",
     quantity: 10,
-    tag: 'macbook-air-pro',
-    descriptionHeader: '10-Core CPU 16-Core GPU 16GB Unified Memory 1TB SSD Storage¹',
-    variant: [
-       {
-         key: 'space-gray-macbook',
-         type: 'spacegray',
-         img: macbookProSpace16,
-         name: 'Space Gray',
-         header: '16-inch Macbook Pro',
-         price: 158990,
-         url: '16-inch-space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          '16-core Neural Engine',
-          '16-inch Liquid Retina XDR display',
-          'Three Thunderbolt 4 ports, HDMI port, SDXC card slot, MagSafe 3 port',
-          'Magic Keyboard with Touch ID',
-          'Force Touch trackpad',
-          '140W USB-C Power Adapter'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-
-       },
-       {
-         key: 'silver-macbook',
-         type: 'silver',
-         price: 158990,
-         img: macbookProSilver16,
-         name: 'Silver',
-         header: '16-inch Macbook Pro',
-         url: '16-inch-silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          '16-core Neural Engine',
-          '16-inch Liquid Retina XDR display',
-          'Three Thunderbolt 4 ports, HDMI port, SDXC card slot, MagSafe 3 port',
-          'Magic Keyboard with Touch ID',
-          'Force Touch trackpad',
-          '140W USB-C Power Adapter'
-          ],
-        size: [
-          {
-            memory: '8GB unified storage',
-            fee: 0
-          },
-          {
-            memory: '16GB unified storage',
-            fee: 12000,
-          }
-        ],
-        storage: [
-          {
-            storage: '512GB SSD Storage',
-            fee: 0
-          },
-          {
-            storage: '1TB SSD Storage',
-            fee: 24000
-          },
-          {
-            storage: '2TB SSD Storage',
-            fee: 48000
-          },
-
-        ]    
-       }
-    ],
-
-  },
+    price: 158990,
+    tag: 'macbook-pro',
+    color: 'Silver',
+    colorTag: buttonColorIphoneSilver,
+    header: '10-Core CPU 16-Core GPU 16GB Unified Memory 1TB SSD Storage',
+    description: [
+      '16-core Neural Engine',
+      '16-inch Liquid Retina XDR display',
+      'Three Thunderbolt 4 ports, HDMI port',
+      'SDXC card slot, MagSafe 3 port',
+      'Magic Keyboard with Touch ID',
+      'Force Touch trackpad',
+      '140W USB-C Power Adapter',
+    ]
+  }, 
   {
     id: 9,
-    inch: '16-inch',
     alt: "laptop",
     name: "Laptop",
+    inch: '16-inch',
+    icon: 'New',
+    iconImg: newIcon,
     series: "Macbook Pro",
     quantity: 10,
-    tag: 'macbook-air-pro',
-    descriptionHeader: '10-Core CPU 32-Core GPU 32GB Unified Memory 1TB SSD Storage¹',
-    variant: [
-       {
-         key: 'space-gray-macbook',
-         type: 'spacegray',
-         img: macbookProSpace16,
-         name: 'Space Gray',
-         header: '16-inch Macbook Pro',
-         price: 206990,
-         url: '16-inch-space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          '16-core Neural Engine',
-          '16-inch Liquid Retina XDR display',
-          'Three Thunderbolt 4 ports, HDMI port, SDXC card slot, MagSafe 3 port',
-          'Magic Keyboard with Touch ID',
-          'Force Touch trackpad',
-          '140W USB-C Power Adapter'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-
-       },
-       {
-         key: 'silver-macbook',
-         type: 'silver',
-         price: 206990,
-         img: macbookProSilver16,
-         name: 'Silver',
-         header: '16-inch Macbook Pro',
-         url: '16-inch-silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          '16-core Neural Engine',
-          '16-inch Liquid Retina XDR display',
-          'Three Thunderbolt 4 ports, HDMI port, SDXC card slot, MagSafe 3 port',
-          'Magic Keyboard with Touch ID',
-          'Force Touch trackpad',
-          '140W USB-C Power Adapter'
-          ],
-        size: [
-          {
-            memory: '8GB unified storage',
-            fee: 0
-          },
-          {
-            memory: '16GB unified storage',
-            fee: 12000,
-          }
-        ],
-        storage: [
-          {
-            storage: '512GB SSD Storage',
-            fee: 0
-          },
-          {
-            storage: '1TB SSD Storage',
-            fee: 24000
-          },
-          {
-            storage: '2TB SSD Storage',
-            fee: 48000
-          },
-
-        ]    
-       }
-    ],
-
-  },
-  ////FOR IPHONE 6.1-inch-display-{storage}-{color}
+    price: 206990,
+    tag: 'macbook-pro',
+    header: '10-Core CPU 32-Core GPU 32GB Unified Memory 1TB SSD Storage',
+    description: [
+      '16-core Neural Engine',
+      '16-inch Liquid Retina XDR display',
+      'Three Thunderbolt 4 ports, HDMI port',
+      'SDXC card slot, MagSafe 3 port',
+      'Magic Keyboard with Touch ID',
+      'Force Touch trackpad',
+      '140W USB-C Power Adapter',
+    ]
+  }, 
+  
+  ////FOR IPHONE
   {
     id: 10,
     alt: "mobile",
@@ -1655,6 +1145,135 @@ const recomendations = [
     color: 'Starlight',
     size: '64gb',
     colorTag: buttonColorIpadStarlight
+  },
+  {
+    id: 48,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadSpaceGray,
+    searchTag: 'Ipad',
+    series: "iPad",
+    quantity: 10,
+    tag: 'ipad',
+    descriptionHeader: 'Buy iPad',
+    color: 'Space Gray',
+    size: '64gb',
+    colorTag: buttonColorIpadSpaceGray
+  },
+  {
+    id: 49,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadSilver,
+    series: "iPad",
+    quantity: 10,
+    tag: 'ipad',
+    descriptionHeader: 'Buy iPad',
+    color: 'Silver',
+    size: '64gb',
+    colorTag: ipadButtonSilver
+  },
+  {
+    id: 50,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadAirBlue,
+    series: "iPad Air",
+    quantity: 10,
+    tag: 'ipad-air',
+    searchTag: 'ipad-air',
+    descriptionHeader: 'Buy iPad Air',
+    color: 'Blue',
+    size: '64gb',
+    colorTag: buttonColorBlueMini
+  },
+  {
+    id: 51,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadAirGold,
+    series: "iPad Air",
+    quantity: 10,
+    tag: 'ipad-air',
+    descriptionHeader: 'Buy iPad Air',
+    color: 'Gold',
+    size: '64gb',
+    colorTag: buttonColorIphoneGold
+  },
+  {
+    id: 52,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadAirGreen,
+    series: "iPad Air",
+    quantity: 10,
+    tag: 'ipad-air',
+    descriptionHeader: 'Buy iPad Air',
+    color: 'Silver',
+    size: '64gb',
+    colorTag: buttonColorGreen
+  },
+  {
+    id: 53,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadAirSilver,
+    series: "iPad Air",
+    quantity: 10,
+    tag: 'ipad-air',
+    descriptionHeader: 'Buy iPad Air',
+    color: 'Silver',
+    size: '64gb',
+    colorTag: ipadButtonSilver
+  },
+  {
+    id: 54,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadAirSpaceGray,
+    series: "iPad Air",
+    quantity: 10,
+    tag: 'ipad-air',
+    descriptionHeader: 'Buy iPad Air',
+    color: 'Space Gray',
+    size: '64gb',
+    colorTag: buttonColorIpadSpaceGray
+  },
+  {
+    id: 55,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    searchTag: 'ipad',
+    img: ipadProSpaceGray,
+    series: "iPad Pro",
+    quantity: 10,
+    tag: 'ipad-pro',
+    descriptionHeader: 'Buy iPad Pro',
+    color: 'Space Gray',
+    size: '64gb',
+    colorTag: buttonColorIpadSpaceGray
+  },
+  {
+    id: 56,
+    alt: "tablet",
+    name: "Tablet",
+    price: 29990,
+    img: ipadProSilver,
+    series: "iPad Pro",
+    quantity: 10,
+    tag: 'ipad-pro',
+    descriptionHeader: 'Buy iPad Pro',
+    color: 'Silver',
+    size: '64gb',
+    colorTag: buttonColorIphoneSilver
   },
 
 

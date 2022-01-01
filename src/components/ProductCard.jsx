@@ -37,7 +37,7 @@ const ProductCard = ({item}) => {
           })}
         </div>
         <h3><strong>₱{selectedVariant.price.toLocaleString()}.00</strong></h3>
-        <Link to={`/product/${item.tag}/${variantUrl}`}>
+        <Link to={`/product/buy/${item.tag}/${variantUrl}`}>
           <Button variant='contained' fullWidth>Select</Button>
         </Link>
       </div>

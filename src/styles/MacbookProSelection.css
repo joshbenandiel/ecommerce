@@ -1,0 +1,75 @@
+.inch-button-pro {
+  height: 80px;
+  width: 140px;
+  border: 1px solid #D2D2D7;
+  background-color: transparent;
+  position: relative;
+}
+
+.button-wrapper-pro button:nth-child(1) {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.button-wrapper-pro button:nth-child(3) {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.button-wrapper-pro button:nth-child(2)::before {
+    content: 'New';
+    color: red;
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    position: absolute;
+    top: 12px;
+    right: 40%;
+}
+.button-wrapper-pro button:nth-child(3)::before {
+  content: 'New';
+  color: red;
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  position: absolute;
+  top: 12px;
+  right: 40%;
+  
+}
+
+.inch-button-pro-active {
+  height: 80px;
+  width: 140px;
+  background-color: transparent;
+  border: 3px solid #66B1FC;
+  position: relative;
+}
+
+.button-color-pro {
+  border: none;
+  background-color: transparent;
+}
+
+.button-color-pro-active {
+  border: 3px solid #66B1FC;
+  border-radius: 100%;
+  display: flex;
+  width: 43px;
+  justify-content: center;
+}
+
+.button-circle-color-pro {
+  height: 35px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-wrapper-pro {
+  width: 300px;
+}
+
+.image-pro {
+  height: 300px;
+}

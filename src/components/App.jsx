@@ -62,14 +62,8 @@ function App() {
             searchTerm={searchTerm}
             searchFilter={searchFilter}
           />} />
-          <Route exact path='/product/:tag' element={
-            <ProductPage
-          />} />
-          <Route exact path='/product/:tag/:item' element={
+          <Route exact path='/product/buy/:tag/:item' element={
             <SelectedProduct
-          />} />
-          <Route exact path='/product/:tag/:inch/item' element={
-            <ProductCardPro
           />} />
           <Route exact path='/product/buy/:tag' element={
             <IphoneSelection

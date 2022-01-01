@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import { useParams , useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TabletSelection from './TabletSelection'
-
+import MacbookSelection  from './MacbookSelection';
+import MacbookProSelection  from './MacbookProSelection';
 
 
 const IphoneSelection = () => {
@@ -48,10 +49,12 @@ const IphoneSelection = () => {
     {params.tag.includes('iphone') && <div className='iphone-container-select container'>
       <div className="row">
         <div className="image-container col-6">
-          <img className={buttonIphone12 && 'image-iphone-12'}src={selectedVariant.img}></img>
-          <div className='mt-5 text-center'>
-            <i class="far fa-shipping-fast"></i>
-            <p>Free Delivery</p>
+          <div className='image-container-sticky'>
+            <img className={buttonIphone12 && 'image-iphone-12'}src={selectedVariant.img}></img>
+            <div className='mt-5 text-center'>
+              <i class="far fa-shipping-fast"></i>
+              <p>Free Delivery</p>
+            </div>
           </div>
         </div>
         <div className="details-container col-6">
@@ -155,6 +158,16 @@ const IphoneSelection = () => {
     {params.tag.includes('ipad') && 
       <>
         <TabletSelection/>
+      </>
+    }
+    {params.tag == 'macbook-air' && 
+      <>
+        <MacbookSelection/>
+      </>
+    }
+    {params.tag == 'macbook-pro' && 
+      <>
+        <MacbookProSelection/>
       </>
     }
     </>

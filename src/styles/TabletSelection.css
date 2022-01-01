@@ -215,3 +215,29 @@
   top: 80px;
   z-index: -1;
 }
+
+
+.remove-button-smart {
+  border: none;
+  color: blue;
+  background-color: transparent;
+}
+.remove-button-smart:hover {
+  text-decoration: underline;
+}
+
+.model-button-ipad  {
+  border: none;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 2px solid #D2D2D7;
+  width: 420px;
+}
+
+.model-button-ipad-active  {
+  border: none;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 5px solid #66B1FC;
+  width: 420px;
+}
