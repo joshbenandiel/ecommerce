@@ -1,17 +1,22 @@
 import React , {useState, useEffect} from 'react'
 import Button from '@mui/material/Button';
-import { useSelector } from 'react-redux';
 import { macbookPhotos } from './data/RecomendationsData';
+import { Link } from 'react-router-dom';
+import { useSelector , useDispatch} from 'react-redux'
+import { setDisplayItem } from '../redux/ImageForMacbook';
 
 
-const MacbookCardPro = ({ product, availableColors, inchIsClick }) => {
+
+const MacbookCardPro = ({ product, availableColors, inchIsClick , macbookProSelectedProduct }) => {
 
   const [selectedVariant, setSelectedVariant] = useState({});
   const [buttonColorClick, setButtonColorClick] = useState('');
-  const [displayImage, setDisplayImage] = useState('');
-  console.log(buttonColorClick)
+  
 
   const products = useSelector((state) => state.product.products)
+  const [displayImage, setDisplayImage] = useState('')
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setButtonColorClick('Space Gray');
@@ -25,8 +30,8 @@ const MacbookCardPro = ({ product, availableColors, inchIsClick }) => {
         return;
       } 
     }));
- 
-    setDisplayImage(image);
+    setDisplayImage(image)
+    dispatch(setDisplayItem(image))
 
   }, [buttonColorClick, inchIsClick]);
 
@@ -66,14 +71,18 @@ const MacbookCardPro = ({ product, availableColors, inchIsClick }) => {
         {product.description && product.description.map(item => {
           return <p>{item}</p>
         })}
-        <Button variant='contained' fullWidth>Select</Button>
+        <Link to={`/product/buy/${product.tag}/${product.inch}/${product.id}`}>
+          <Button
+          onClick={() => macbookProSelectedProduct(product)} 
+          variant='contained' fullWidth>Select</Button>
+        </Link>
       </div>
-      <div className='item-ships'>
+      <div className='item-ships d-flex mt-5'>
         <i class="far fa-shipping-fast"></i>
         <div className='item-ships-desc'>
-          <p><strong>Ships:</strong></p>
-          <p>3-4w business days</p>
-          <p>Free Shipping</p>
+          <p className='ms-1 m-0'><strong>Ships:</strong></p>
+          <p className='ms-1 m-0'>3-4w business days</p>
+          <p className='ms-1 m-0'>Free Shipping</p>
         </div>
       </div>
     </div>

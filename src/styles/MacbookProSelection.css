@@ -2,7 +2,7 @@
   height: 80px;
   width: 140px;
   border: 1px solid #D2D2D7;
-  background-color: transparent;
+  background-color: #fff;
   position: relative;
 }
 
@@ -41,7 +41,7 @@
 .inch-button-pro-active {
   height: 80px;
   width: 140px;
-  background-color: transparent;
+  background-color: #fff;
   border: 3px solid #66B1FC;
   position: relative;
 }

@@ -8,7 +8,7 @@ import MacbookSelection  from './MacbookSelection';
 import MacbookProSelection  from './MacbookProSelection';
 
 
-const IphoneSelection = () => {
+const IphoneSelection = ({macbookProSelectedProduct}) => {
 
   const navigate = useNavigate()
   const params = useParams()
@@ -141,12 +141,12 @@ const IphoneSelection = () => {
          </div>
          <div className='iphone-footer'>
           <h1><strong>₱{price.toLocaleString()}.00</strong></h1>
-          <div className='item-ships'>
+          <div className='item-ships d-flex mt-5'>
             <i class="far fa-shipping-fast"></i>
             <div className='item-ships-desc'>
-              <p><strong>Ships:</strong></p>
-              <p>1-3 business days</p>
-              <p>Free Shipping</p>
+              <p className='ms-1 m-0'><strong>Ships:</strong></p>
+              <p className='ms-1 m-0'>3-4w business days</p>
+              <p className='ms-1 m-0'>Free Shipping</p>
             </div>
           </div>
           <Button variant='contained' className=''>Add to cart</Button>  
@@ -162,12 +162,16 @@ const IphoneSelection = () => {
     }
     {params.tag == 'macbook-air' && 
       <>
-        <MacbookSelection/>
+        <MacbookSelection
+        macbookProSelectedProduct={macbookProSelectedProduct}
+        />
       </>
     }
     {params.tag == 'macbook-pro' && 
       <>
-        <MacbookProSelection/>
+        <MacbookProSelection
+        macbookProSelectedProduct={macbookProSelectedProduct}
+        />   
       </>
     }
     </>

@@ -9,6 +9,7 @@ import productItemReducer from './productItem'
 import selectedItemReducer from './selectedItem'
 import inchReducer from './inches'
 import selectedProductReducer from './selectedProduct'
+import imageReducer from './ImageForMacbook'
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     productItem: productItemReducer,
     selectedItem: selectedItemReducer,
     inch: inchReducer,
-    selectedProduct: selectedProductReducer
+    selectedProduct: selectedProductReducer,
+    image: imageReducer
   },
 })

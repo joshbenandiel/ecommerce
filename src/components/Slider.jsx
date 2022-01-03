@@ -48,6 +48,7 @@ const Slider = () => {
         {sliderData.map((item, index) => {
           return (
             <div
+              key={index}
               onClick={() => setActiveSlider(item.id)}
               className={
               `d-flex justify-content-center align-items-center ${

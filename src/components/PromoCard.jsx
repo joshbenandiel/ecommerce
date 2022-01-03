@@ -1,128 +1,24 @@
-import React , { useState , useEffect } from 'react'
-import "../styles/PromoCard.css"
-import recomendations from "./data/RecomendationsData"
-import { useSelector, useDispatch } from 'react-redux'
-import { addToCart } from '../redux/product';
-import { decrement, increment } from '../redux/count';
+import React from 'react'
+import '../styles/PromoCard.css'
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+
+const PromoCard = ({selectedItem}) => {
 
 
-
-const PromoCard = ({value,mobileId,tabletId,laptopId,watchId}) => {
-
-  const [random, setRandom] = useState(0);
-  
-
-  useEffect(() => {
-    setRandom(Math.floor(Math.random() * 12) + 1);
-    
-  }, [])
-
-  const { products }  = useSelector((state) => state.product) 
-
-
-  const dispatch = useDispatch()
 
   return (
-    <div className="promo-container">   
-      {products.map((item,index)=> {
-          if (item.id === random & value === 1) {
-            return (            
-                <div key={index}>
-                  <img className="img" src={item.img}/>
-                  <p className="text-white mt-3">{item.name}</p>
-                  <h5 className="text-white">{item.series}</h5>
-                  <h5 className="price-text">₱ {item.price}</h5>
-                  <div
-                    onClick={() => {
-                      dispatch(addToCart(item))
-                      dispatch(increment())
-                    }}
-                    className="cart-wrapp">
-                    <div className="cart-container">     
-                      <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
-                    </div>  
-                  </div>
-                </div>         
-            )       
-          }  else if (item.id === mobileId && value === 2) {
-            return (            
-              <div key={index}>
-                <img className="img" src={item.img}/>
-                <p className="text-white mt-3">{item.name}</p>
-                <h5 className="text-white">{item.series}</h5>
-                <h5 className="text-white">₱ {item.price}</h5>
-                <div
-                  onClick={() => {
-                    dispatch(addToCart(item))
-                    dispatch(increment())
-                  }}
-                  className="cart-wrapp">
-                  <div className="cart-container">     
-                    <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
-                  </div>  
-                </div>
-              </div>  
-            )
-          } else if (item.id === tabletId && value === 3) {
-            return (            
-              <div key={index}>
-                <img className="img" src={item.img}/>
-                <p className="text-white mt-3">{item.name}</p>
-                <h5 className="text-white">{item.series}</h5>
-                <h5 className="text-white">₱ {item.price}</h5>
-                <div
-                  onClick={() => {
-                    dispatch(addToCart(item))
-                    dispatch(increment())
-                  }}
-                  className="cart-wrapp">
-                  <div className="cart-container">     
-                    <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
-                  </div>  
-                </div>
-              </div>  
-            )
-          } else if (item.id === laptopId && value === 4) {
-            return (            
-              <div key={index}>
-                <img className="img" src={item.img}/>
-                <p className="text-white mt-3">{item.name}</p>
-                <h5 className="text-white">{item.series}</h5>
-                <h5 className="text-white">₱ {item.price}</h5>
-                <div
-                  onClick={() => {
-                    dispatch(addToCart(item))
-                    dispatch(increment())
-                  }}
-                  className="cart-wrapp">
-                  <div className="cart-container">     
-                    <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
-                  </div>  
-                </div>
-              </div>  
-            )
-          } else if (item.id === watchId && value === 5) {
-            return (            
-              <div key={index}>
-                <img className="img" src={item.img}/>
-                <p className="text-white mt-3">{item.name}</p>
-                <h5 className="text-white">{item.series}</h5>
-                <h5 className="text-white">₱ {item.price}</h5>
-                <div
-                  onClick={() => {
-                    dispatch(addToCart(item))
-                    dispatch(increment())
-                  }}
-                  className="cart-wrapp">
-                  <div className="cart-container">     
-                    <i style={{paddingLeft: 0}}className="far fa-shopping-cart text-white cart" ></i>
-                  </div>  
-                </div>
-              </div>  
-            )
-          }
-                              
-      })}       
+    <div className='promo-card-container mt-5 position-relative'>
+      <div className=''>
+        <img className='promo-item-image 'src={selectedItem.image} alt='promo-item' />
+        <h4 className='promo-item-name mt-4 fw-bold'>{selectedItem.name}</h4>
+        <h4 className='promo-item-name mt-4'>₱{selectedItem.price.toLocaleString()}</h4>
+        <Link to={`/product/buy/${selectedItem.tag}`}>
+          <div className='promo-card-button'>
+          <i class="far fa-eye"></i>
+          </div>
+        </Link>
+      </div>
     </div>
   )
 }

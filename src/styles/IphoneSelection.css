@@ -86,10 +86,7 @@
   flex-wrap: wrap;
 }
 
-.item-ships-desc {
-  display: flex;
-  text-align: start;
-}
+
 
 .iphone-footer {
   margin-top: 30px;

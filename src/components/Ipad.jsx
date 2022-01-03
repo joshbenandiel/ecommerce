@@ -49,7 +49,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         <div className="row">
         <div className="img-wrapper-ipad d-flex align-items-center flex-column col-6">
           <div className='img-ipad-sticky'>
-            <img src={selectedVariant.img}/>
+            <img src={selectedVariant.img} alt='ipad'/>
             <div className='mt-5 text-center'>
               <i class="far fa-shipping-fast"></i>
               <p>Free Delivery</p>
@@ -58,26 +58,26 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         </div>
         <div className="details-ipad-wrapper d-flex align-items-start flex-column col-6">   
         <h1><strong>{selectedVariant.descriptionHeader}</strong></h1>
-        {buttonClose == false && <div>
+        {buttonClose === false && <div>
           <p className='mt-5'><strong>Finish</strong></p>
           <div className='button-wrapper'>
             {selectedProduct && selectedProduct.map(item => {
               return <button
               key={item.id}
-              className={activeButton == item.id ? 'ipad-button-active' : 'ipad-button'}
+              className={activeButton === item.id ? 'ipad-button-active' : 'ipad-button'}
               onClick={()=> {
                 setSelectedVariant(item)
                 setActiveButton(item.id)
                 setButtonClose(true)
               }}
               >
-              <img src={item.colorTag}/>
+              <img src={item.colorTag} alt='ipad'/>
               {item.color}
               </button>
             })}
           </div>
         </div>}
-        {buttonClose == true && 
+        {buttonClose === true && 
               <div className='button-close-wrapper'>
                 <h1 className='fw-bolder fs-4'>{selectedVariant.color}</h1>
                 <button 
@@ -86,7 +86,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
               </div>
         }
         
-        {buttonCloseStorage == false && <>
+        {buttonCloseStorage === false && <>
           <p className='fw-bolder'>Storage</p>
           <div className='d-flex'>
           {ipadMiniStorage.map(item => {
@@ -96,14 +96,14 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
               setButtonCloseStorage(true)
               setGetPrice(item.price)
             }}
-            className={activeButtonStorage == item.storage ? 'button-storage-active' : 'button-storage'}>    
+            className={activeButtonStorage === item.storage ? 'button-storage-active' : 'button-storage'}>    
             <p className='m-0 fw-bolder fs-4'>{item.storage}</p> 
             <p className='m-0'>₱{item.price.toLocaleString()}</p> 
             </button>
           })}
           </div>
         </>}
-        {buttonCloseStorage == true && 
+        {buttonCloseStorage === true && 
               <div className='button-close-wrapper-storage'>
                 <h1 className='fw-bolder fs-4'>{activeButtonStorage}</h1>
                 <button 
@@ -111,7 +111,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
                 className='change-button'>Change</button>
               </div>
         }   
-        {buttonCloseWifi == false && 
+        {buttonCloseWifi === false && 
         <>
         <p className='fw-bolder'>Connectivity</p>
         <div className='d-flex'>
@@ -122,17 +122,17 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
               setButtonCloseWifi(true)
 
             }}
-            className={activeButtonWifi == itemWifi.wifi ? 'button-storage-active' : 'button-storage'}>    
+            className={activeButtonWifi === itemWifi.wifi ? 'button-storage-active' : 'button-storage'}>    
             <p className='m-0 fw-bolder fs-5'>{itemWifi.wifi}</p> 
             {buttonCloseStorage && <>
-            {itemWifi.wifi == 'Wi-Fi' ? <p className='m-0'>₱{getPrice.toLocaleString()}</p> : <p className='m-0'>₱{(getPrice + 9000).toLocaleString()}</p>} 
+            {itemWifi.wifi === 'Wi-Fi' ? <p className='m-0'>₱{getPrice.toLocaleString()}</p> : <p className='m-0'>₱{(getPrice + 9000).toLocaleString()}</p>} 
             </>}
             </button>
           })}
         </div>
         </>
         }
-        {buttonCloseWifi == true && 
+        {buttonCloseWifi === true && 
           <div className='button-close-wrapper-storage'>
             <h1 className='fw-bolder fs-4'>{activeButtonWifi}</h1>
             <button 
@@ -142,8 +142,8 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
             className='change-button'>Change</button>
           </div>
         } 
-        <p className='fw-bold'>Apple Pencil {params.tag =='ipad-mini' && 'and Smart Folio'}</p>
-        {pencilButtonAdded == false && <div className='apple-pencil-wrapper'>
+        <p className='fw-bold'>Apple Pencil {params.tag ==='ipad-mini' && 'and Smart Folio'}</p>
+        {pencilButtonAdded === false && <div className='apple-pencil-wrapper'>
           <button
           onClick={() => setPencilButton(!pencilButton)} 
           className={pencilButton ? 'apple-pencil-button-active' : 'apple-pencil-button'}>
@@ -151,7 +151,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           </button>
           {pencilButton && 
           <div className='pencil-img-wrapper d-flex justify-content-center flex-column'>
-            <img className='pencil-img'src={applePencil}/>
+            <img className='pencil-img'src={applePencil} alt='pencil'/>
             <p className='fw-bold mt-3'>Apple Pencil (2nd generation)</p>
             <p className='fw-bold'>₱7,990</p>
             <button
@@ -162,7 +162,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
             className='pencil-button'>Add</button>
           </div>}
         </div>}
-        {pencilButtonAdded == true && 
+        {pencilButtonAdded === true && 
           <div>
             <div className='d-flex justify-content-between'>
               <p className='fw-bold m-0'>Apple Pencil</p>
@@ -174,7 +174,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
               className='edit-button fs-6'>Remove</button>
             </div>
             <div className='d-flex'>
-              <img src={pencil}/>
+              <img src={pencil} alt='pencil'/>
               <div className='d-flex flex-column justify-content-center'>
                 <p className='fw-bold'>Apple Pencil (2nd generation)</p>
                 <p className='fw-bold'>₱7,990</p>
@@ -182,7 +182,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
             </div>
           </div>
         }
-        {ipadButtonAdded == false && <div className='apple-pencil-wrapper'>
+        {ipadButtonAdded === false && <div className='apple-pencil-wrapper'>
         <button
         onClick={()=> setSmartButton(!smartButton)} 
         className={smartButton ? 'apple-pencil-button-active' : 'apple-pencil-button'}>
@@ -190,7 +190,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         </button>
         {smartButton &&
         <div className='pencil-img-wrapper d-flex justify-content-center flex-column'>
-        <img className='pencil-img'src={smartFolio}/>
+        <img className='pencil-img'src={smartFolio} alt='folio'/>
         <p className='fw-bold mt-3'>Smart Folio for iPad mini</p>
         <p className='fw-bold'>₱3,990</p>
         <p>Color - {smartFolioButton}</p>
@@ -201,8 +201,8 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
             setSmartFolioButton(itemButton.color)
             setFolioImg(itemButton)
             }}
-          className={smartFolioButton == itemButton.color ? 'smart-folio-button-active' : 'smart-folio-button'}>
-            <img src={itemButton.colorImg}/>
+          className={smartFolioButton === itemButton.color ? 'smart-folio-button-active' : 'smart-folio-button'}>
+            <img src={itemButton.colorImg} alt='button-color'/>
           </button>
         })}
         </div>    
@@ -214,7 +214,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         className='pencil-button mt-3'>Add</button>
         </div>} 
       </div>}
-      {ipadButtonAdded == true && 
+      {ipadButtonAdded === true && 
       <div>
         <div className='d-flex justify-content-between'>
           <p className='fw-bold m-0'>Smart Folio</p>
@@ -226,7 +226,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           className='edit-button fs-6'>Remove</button>
         </div>
         <div className='d-flex folio-wrapper'>
-          <img src={getFolioImg.colorFolio}/>
+          <img src={getFolioImg.colorFolio} alt='folio'/>
           <div className='d-flex flex-column justify-content-center'>
             <p className='fw-bold'>{getFolioImg.color}</p>
             <p className='fw-bold'>₱3,990</p>
@@ -235,12 +235,12 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
       </div>} 
       <div className='iphone-footer'>
         <h1><strong>₱{totalPrice.toLocaleString()}</strong></h1>
-        <div className='item-ships'>
+        <div className='item-ships d-flex mt-5'>
           <i class="far fa-shipping-fast"></i>
           <div className='item-ships-desc'>
-            <p><strong>Ships:</strong></p>
-            <p>1-3 business days</p>
-            <p>Free Shipping</p>
+            <p className='ms-1 m-0'><strong>Ships:</strong></p>
+            <p className='ms-1 m-0'>3-4w business days</p>
+            <p className='ms-1 m-0'>Free Shipping</p>
           </div>
         </div>
         <Button variant='contained' className=''>Add to cart</Button>  

@@ -14,7 +14,7 @@ const buttonInch = [
   {type: '16-inch'}
 ]
 
-const MacbookProSelection = () => {
+const MacbookProSelection = ({macbookProSelectedProduct}) => {
 
 
   const [inchIsClick, setInchIsClick] = useState('13-inch')
@@ -35,7 +35,6 @@ const MacbookProSelection = () => {
     const items = [];
 
     products.map(item => {
-      console.log(item.inch)
       if(item.inch == inchIsClick){
         items.push(item)
       }
@@ -47,7 +46,6 @@ const MacbookProSelection = () => {
       })))
     }
 
-    console.log(items)
     setProductResult(items);
 
   }, [params, inchIsClick])
@@ -57,16 +55,18 @@ const MacbookProSelection = () => {
 
 
   return (
-    <div className='product-pro-container'>
+    <div className='product-pro-container position-relative'>
       <h1 className='fw-bold'>Choose Your New Macbook Pro</h1>
-      <div className='button-wrapper-pro d-flex m-4'>
-        {buttonInch.map(inch => {
-          return <button
-          onClick={() => setInchIsClick(inch.type)}
-          className={`${inchIsClick == inch.type ? 'inch-button-pro-active' : 'inch-button-pro'} fw-bold`}
-          ><p className='m-0'>{inch.type}</p>
-          </button>
-        })}
+      <div className='button-wrapper-pro d-flex m-4 position-sticky top-0'>
+        <div className=''>
+          {buttonInch.map(inch => {
+            return <button
+            onClick={() => setInchIsClick(inch.type)}
+            className={`${inchIsClick == inch.type ? 'inch-button-pro-active' : 'inch-button-pro'} fw-bold`}
+            ><p className='m-0'>{inch.type}</p>
+            </button>
+          })}
+        </div>
       </div>
       <div className="d-flex justify-content-center container">
         {productResult.map((product, index) => (
@@ -75,6 +75,7 @@ const MacbookProSelection = () => {
             product={product}
             inchIsClick={inchIsClick}
             availableColors={productColors}
+            macbookProSelectedProduct={macbookProSelectedProduct}
           />
         ))}  
       </div>       

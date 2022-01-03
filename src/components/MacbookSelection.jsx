@@ -1,76 +1,48 @@
-import React from 'react'
-import '../styles/ProductPage.css'
+import React , {useState, useEffect} from 'react'
 import Button from '@mui/material/Button';
-import { useState , useEffect } from 'react'
+import { macbookPhotos } from './data/RecomendationsData';
+import { Link } from 'react-router-dom';
 import { useSelector , useDispatch} from 'react-redux'
 import { useParams } from 'react-router-dom';
-import macbookSpaceGray from '../images/Macbook/macbook-air-space-gray-select-201810.jpg'
-import macbookGold from '../images/Macbook/macbook-air-gold-select-201810.jpg'
-import macbookSilver from '../images/Macbook/macbook-air-silver-select-201810.jpg'
-import ProductCard from './ProductCard'
-import ProductCardPro from './ProductCardPro'
+import MacbookAirCard from './MacbookAirCard';
 
 
-const Products = () => {
+const MacbookSelection = ({macbookProSelectedProduct}) => {
 
+  const [availProducts, setAvailProducts] = useState([])
   const products = useSelector((state) => {
     return state.product.products
   })
 
-
-  const [macbookHeader , setMacbookHeader] = useState('')
-  const [handleProduct, setHandleProduct] = useState({})
-  console.log(handleProduct)
-  
-  
-
-  const dispatch = useDispatch();
-
-
   const params = useParams()
 
   useEffect(() => {
-    const macbookItems = []
-    products.map((item) => {
-      if(item.tag == params.tag) {
-        macbookItems.push(item)
-        setHandleProduct(macbookItems)
-        setMacbookHeader(item.series)
-      }
-    })   
-  }, [params])
-
+   const items = []
+   products.map(item => {
+     if(item.tag == params.tag){
+       items.push(item)
+     }
+   })
+   setAvailProducts(items)
+  }, [])
 
   return (
-    <div className='products-item-container'>  
-      <div className='macbook-header m-5'>
-        {macbookHeader == 'Macbook Air' &&
-        <>
-          <h1>Choose your new {macbookHeader} and select a finish.</h1>
-          <h4 className='mt-5 fw-bold'>13-inch {macbookHeader}</h4>
-        </>}    
+    <div className='d-flex justify-content-center align-items-center flex-column'>
+      <h2 className='fw-bold w-25 text-center mt-5'>Choose your new Macbook Air and select a finish.</h2>
+      <h4 className='fw-bold mt-5'>13-inch Macbook Air</h4>
+      <div className='d-flex justify-content-center align-items-center'>
+        {availProducts.map((products, index) => {
+          return (
+            <MacbookAirCard
+            key={index}
+            products={products}
+            macbookProSelectedProduct={macbookProSelectedProduct}
+            />
+          )
+        })}
       </div>
-        <div className="item-feature">
-          {handleProduct.length > 0 && handleProduct.map(item => {       
-            return (
-              <>
-              <ProductCard
-                item={item}
-                key={item.id}
-              />         
-              </>
-            )
-          })} 
-        </div>          
-      </div>
+    </div>
   )
 }
 
-
-
-
-
-
-
-
-export default Products
+export default MacbookSelection

@@ -10,25 +10,25 @@ const Footer = () => {
           <div className="row">
             <div className="col-3 footer-text">
               <p className="footer-head">GADGETS</p>
-              <a href="">Mobile</a>
-              <a href="">Laptop</a>
-              <a href="">Tablet</a>
-              <a href="">Watch</a>
+              <a href="/">Mobile</a>
+              <a href="/">Laptop</a>
+              <a href="/">Tablet</a>
+              <a href="/">Watch</a>
             </div>
             <div className="col-3 footer-text">
               <p className="footer-head">CUSTOMER SERVICE</p>
-              <a href="">Return and Exchange</a>
-              <a href="">Order Cancellations</a>
-              <a href="">Product Warranty</a>
-              <a href="">FAQs</a>
-              <a href="">Store Locations</a>
-              <a href="">Contact Us</a>
+              <a href="/">Return and Exchange</a>
+              <a href="/">Order Cancellations</a>
+              <a href="/">Product Warranty</a>
+              <a href="/">FAQs</a>
+              <a href="/">Store Locations</a>
+              <a href="/">Contact Us</a>
             </div>
             <div className="col-3 footer-text">
               <p className="footer-head">FOLLOW US</p>
-              <a href="">Facebook</a>
-              <a href="">Twitter</a>
-              <a href="">Instagram</a>
+              <a href="/">Facebook</a>
+              <a href="/">Twitter</a>
+              <a href="/">Instagram</a>
               
             </div>
             <div className="col-3 footer-text">

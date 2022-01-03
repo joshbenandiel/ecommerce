@@ -11,10 +11,9 @@ import {
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useSelector} from 'react-redux'
-import ProductPage from './ProductPage'
 import SelectedProduct from './SelectedProduct'
-import ProductCardPro from './ProductCardPro'
 import IphoneSelection from './IphoneSelection'
+import SelectedMacbookAir from './SelectedMacbookAir'
 
 
 
@@ -30,10 +29,8 @@ function App() {
   const checkState = useSelector((state) => { return state})
 
 
-  const getInches = useSelector(state => {
-    return state.inch.inch
-  })
 
+  const [selectedProductMacbookPro, setSelectedProduct] = useState({})
 
   return (
     <div className='app-container'>
@@ -62,11 +59,18 @@ function App() {
             searchTerm={searchTerm}
             searchFilter={searchFilter}
           />} />
-          <Route exact path='/product/buy/:tag/:item' element={
+          <Route exact path='/product/buy/:tag/:item/:id' element={
             <SelectedProduct
+            selectedProductMacbookPro={selectedProductMacbookPro}
           />} />
+          <Route exact path='/product/buy/:tag/:id' element={
+            <SelectedMacbookAir
+            selectedProductMacbookPro={selectedProductMacbookPro}
+            />}
+          />
           <Route exact path='/product/buy/:tag' element={
             <IphoneSelection
+            macbookProSelectedProduct={setSelectedProduct}
           />} />
         </Routes>
         <Footer/>

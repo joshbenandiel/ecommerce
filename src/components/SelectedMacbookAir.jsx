@@ -32,7 +32,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
       <div className="row">
         <div className="position-relative d-flex flex-column align-items-center p-5 col-6">
           <div className='position-sticky top-0'>
-            <img className='selected-image'src={displayImage.image} alt="" />
+            <img className='selected-image'src={displayImage.itemImage} alt="" />
             <div className='mt-5 text-center'>
                 <i class="far fa-shipping-fast"></i>
                 <p>Free Delivery</p>
@@ -41,7 +41,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
         </div>
         <div className="p-5 col-6">
           <div className='header-selected-item'>
-            <h2 className='fw-bolder text-justify w-75'>Customize your {displayImage.inch} {selectedProductMacbookPro.series} - {displayImage.color}</h2>
+            <h2 className='fw-bolder text-justify w-75'>Customize your {selectedProductMacbookPro.series} - {displayImage.color}</h2>
             {selectedProductMacbookPro.description && selectedProductMacbookPro.description.map(item => {
               return <p className='m-2'>{item}</p>
             })}
@@ -73,14 +73,14 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
     </div>
     <div className='macbook-footer position-fixed bottom-0'>
       <div className='footer-wrapper-selected'>
-        <div className='item-ships'>
+        <div className='item-ships d-flex mt-4 mb-2'>
           <i class="far fa-shipping-fast"></i>
           <div className='item-ships-desc'>
-            <p><strong>Ships:</strong></p>
-            <p>1-3 business days</p>
-            <p>Free Shipping</p>
+            <p className='ms-1 m-0'><strong>Ships:</strong></p>
+            <p className='ms-1 m-0'>3-4w business days</p>
+            <p className='ms-1 m-0'>Free Shipping</p>
           </div>
-        </div>
+        </div>  
         <h4 className='fw-bold ps-5'>₱{totalPrice.toLocaleString()}</h4>
         <Button variant='contained' className=''>Add to cart</Button> 
       </div>

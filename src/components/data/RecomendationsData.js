@@ -71,318 +71,79 @@ export const macbookPhotos = [
   { inch: '16-inch', image: macbookProSilver16, color: 'Silver' },
 ]
 
+export const macbookMemory = [
+  {memory: '8GB unified memory', price: 0},
+  {memory: '16GB unified memory', price: 12000}
+]
+
+export const macbookStorage = [
+  {storage: '256GB SSD storage', price: 0},
+  {storage: '512GB SSD storage', price: 12000},
+  {storage: '1TB SSD storage', price: 24000},
+  {storage: '2TB SSD storage',price: 48000}
+]
+
+export const buttonColor = [
+  {color: 'Space Gray', colorImg: buttonColorIpadSpaceGray ,itemImage: macbookSpaceGray},
+  {color: 'Gold', colorImg: buttonColorIphoneGold, itemImage: macbookGold},
+  {color: 'Silver', colorImg: ipadButtonSilver, itemImage: macbookSilver},
+]
+
+
+
+
+
 const recomendations = [
   ///FOR MACBOOK AIR/////
   {
-     id: 1,
-     alt: "laptop1",
-     name: "Laptop",
-     img: macbookSpaceGray,
-     series: "Macbook Air",
-     searchTag: 'Macbook',
-     quantity: 10,
-     tag: 'macbook-air',
-     descriptionHeader: 'Apple M1 Chip with 8-Core CPU and 7-Core GPU 256 GB Storage',
-     variant: [
-        {
-          key: 'space-gray-macbook',
-          type: 'spacegray',
-          price: 54990,
-          img: macbookSpaceGray,
-          name: 'Space Gray',
-          header: 'Macbook Air',
-          url: 'space-gray-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
-          description: [
-            'Apple M1 chip with 8‑core CPU, 7‑core GPU, and 16‑core Neural Engine',
-            '8GB unified memory',
-            '256GB SSD storage¹',
-            'Retina display with True Tone',
-            'Magic Keyboard',
-            'Touch ID',
-            'Force Touch trackpad',
-            'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],  
-          storage: [
-            {
-              storage: '256GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '512GB SSD Storage',
-              fee: 12000
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-        },
-        {
-          key: 'gold-macbook',
-          type: 'gold',
-          price: 54990,
-          header: 'Macbook Air',
-          img: macbookGold,
-          name: 'Gold',
-          url: 'gold-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
-          description: [
-            'Apple M1 chip with 8‑core CPU, 7‑core GPU, and 16‑core Neural Engine',
-            '8GB unified memory',
-            '256GB SSD storage¹',
-            'Retina display with True Tone',
-            'Magic Keyboard',
-            'Touch ID',
-            'Force Touch trackpad',
-            'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage'
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '256GB SSD Storage'
-            },
-            {
-              storage: '512GB SSD Storage',
-              fee: 12000
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-        },
-        {
-          key: 'silver-macbook',
-          type: 'silver',
-          header: 'Macbook Air',
-          img: macbookSilver,
-          name: 'Silver',
-          price: 54990,
-          url: 'silver-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb',
-          description: [
-            'Apple M1 chip with 8‑core CPU, 7‑core GPU, and 16‑core Neural Engine',
-            '8GB unified memory',
-            '256GB SSD storage¹',
-            'Retina display with True Tone',
-            'Magic Keyboard',
-            'Touch ID',
-            'Force Touch trackpad',
-            'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000
-            }
-          ],
-          storage: [
-            {
-              storage: '256GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '512GB SSD Storage',
-              fee: 12000
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]      
-        }
-     ],
-
-  },
-  {
-    id: 2,
-    alt: "laptop1",
+    id: 1,
+    alt: "laptop",
     name: "Laptop",
+    searchTag: "Macbook",
     series: "Macbook Air",
     quantity: 10,
+    isRecommended: 'recommendation',
+    img: macbookSpaceGray,
+    price: 54990,
     tag: 'macbook-air',
-    descriptionHeader: 'Apple M1 Chip with 8-Core CPU and 8-Core GPU 512 GB Storage',
+    color: 'Space Gray',
+    header: 'Apple M1 Chip with 8‑Core CPU and 7‑Core GPU 256GB SSD Storage¹',
     description: [
-      'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
+      'Apple M1 chip with 8-core CPU, 7-core',
+      'GPU, and 16-core Neural Engine',
       '8GB unified memory',
-      '512GB SSD storage¹',
+      '256GB SSD storage',
       'Retina display with True Tone',
       'Magic Keyboard',
       'Touch ID',
       'Force Touch trackpad',
       'Two Thunderbolt / USB 4 ports'
-    ],
-    variant: [
-       {
-         key: 'space-gray-macbook',
-         type: 'spacegray',
-         header: 'Macbook Air',
-         img: macbookSpaceGray,
-         name: 'Space Gray',
-         price: 68000,
-         url: 'space-gray-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          'Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]   
-
-       },
-       {
-         key: 'gold-macbook',
-         type: 'gold',
-         img: macbookGold,
-         name: 'Gold',
-         header: 'Macbook Air',
-         price: 68000,
-         url: 'gold-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          'Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-          ],
-          size: [
-            {
-              memory: '8GB unified storage',
-              fee: 0
-            },
-            {
-              memory: '16GB unified storage',
-              fee: 12000,
-            }
-          ],
-          storage: [
-            {
-              storage: '512GB SSD Storage',
-              fee: 0
-            },
-            {
-              storage: '1TB SSD Storage',
-              fee: 24000
-            },
-            {
-              storage: '2TB SSD Storage',
-              fee: 48000
-            },
-
-          ]  
-       },
-       {
-         key: 'silver-macbook',
-         type: 'silver',
-         price: 68000,
-         img: macbookSilver,
-         name: 'Silver',
-         header: 'Macbook Air',
-         url: 'silver-apple-m1-chip-with-8-core-cpu-and-8-core-gpu-512gb',
-         description: [
-          'Apple M1 chip with 8‑core CPU, 8‑core GPU, and 16‑core Neural Engine',
-          '8GB unified memory',
-          '512GB SSD storage¹',
-          'Retina display with True Tone',
-          'Magic Keyboard',
-          'Touch ID',
-          'Force Touch trackpad',
-          'Two Thunderbolt / USB 4 ports'
-        ],
-        size: [
-          {
-            memory: '8GB unified storage',
-            fee: 0
-          },
-          {
-            memory: '16GB unified storage',
-            fee: 12000,
-          }
-        ],
-        storage: [
-          {
-            storage: '512GB SSD Storage',
-            fee: 0
-          },
-          {
-            storage: '1TB SSD Storage',
-            fee: 24000
-          },
-          {
-            storage: '2TB SSD Storage',
-            fee: 48000
-          },
-
-        ]    
-       }
-    ],
-
+    ]
+  },
+   {
+    id: 2,
+    alt: "laptop",
+    name: "Laptop",
+    series: "Macbook Air",
+    isRecommended: true,
+    quantity: 10,
+    price: 54990,
+    isRecommended: 'laptop',
+    img: macbookSilver,
+    tag: 'macbook-air',
+    color: 'Space Gray',
+    header: 'Apple M1 Chip with 8‑Core CPU and 8‑Core GPU 512GB SSD Storage¹',
+    description: [
+      'Apple M1 chip with 8-core CPU, 7-core',
+      'GPU, and 16-core Neural Engine',
+      '8GB unified memory',
+      '512GB SSD storage',
+      'Retina display with True Tone',
+      'Magic Keyboard',
+      'Touch ID',
+      'Force Touch trackpad',
+      'Two Thunderbolt / USB 4 ports'
+    ]
   },
   //////FOR MACBOOK PRO////////
   {
@@ -391,11 +152,13 @@ const recomendations = [
     name: "Laptop",
     inch: '13-inch',
     img: macbookProSpace13,
+    searchTag: "Macbook",
     series: "Macbook Pro",
     quantity: 10,
     price: 71990,
     tag: 'macbook-pro',
     color: 'Space Gray',
+    isRecommended: 'laptop',
     colorTag: buttonColorIpadSpaceGray,
     header: 'Apple M1 Chip with 8‑Core CPU and 8‑Core GPU 256GB SSD Storage¹',
     description: [
@@ -656,6 +419,7 @@ const recomendations = [
     img: iphone11Black,
     series: "Iphone 11",
     quantity: 10,
+    isRecommended: 'recommendation',
     tag: 'iphone-11',
     searchUrl: '6.1-inch-display-64gb-Black',
     descriptionHeader: 'Buy Iphone 11',
@@ -686,6 +450,7 @@ const recomendations = [
     series: "Iphone 11",
     quantity: 10,
     tag: 'iphone-11',
+    isRecommended: 'mobile',
     searchUrl: '6.1-inch-display-64gb-white',
     descriptionHeader: 'Buy Iphone 11',
     color: 'White',
@@ -812,6 +577,7 @@ const recomendations = [
     series: "Iphone 12 Mini",
     quantity: 10,
     price: 38990,
+    isRecommended: 'mobile',
     tag: 'iphone-12',
     searchUrl: '6.1-inch-display-64gb-yellow',
     descriptionHeader: 'Buy Iphone 12',
@@ -1052,6 +818,7 @@ const recomendations = [
     img: iphone13ColorGold,
     series: "Iphone 13",
     quantity: 10,
+    isRecommended: 'mobile',
     tag: 'iphone-13',
     searchUrl: '6.1-inch-display-64gb-yellow',
     descriptionHeader: 'Buy Iphone 13',
@@ -1111,6 +878,7 @@ const recomendations = [
     price: 29990,
     img: ipadColorPurple,
     series: "iPad Mini",
+    isRecommended: 'tablet',
     quantity: 10,
     tag: 'ipad-mini',
     descriptionHeader: 'Buy iPad Mini',
@@ -1139,6 +907,7 @@ const recomendations = [
     price: 29990,
     img: ipadColorStarlight,
     series: "iPad Mini",
+    isRecommended: 'recommendation',
     quantity: 10,
     tag: 'ipad-mini',
     descriptionHeader: 'Buy iPad Mini',
@@ -1179,9 +948,10 @@ const recomendations = [
     id: 50,
     alt: "tablet",
     name: "Tablet",
-    price: 29990,
+    price: 38990,
     img: ipadAirBlue,
     series: "iPad Air",
+    isRecommended: 'tablet',
     quantity: 10,
     tag: 'ipad-air',
     searchTag: 'ipad-air',
@@ -1199,6 +969,7 @@ const recomendations = [
     series: "iPad Air",
     quantity: 10,
     tag: 'ipad-air',
+
     descriptionHeader: 'Buy iPad Air',
     color: 'Gold',
     size: '64gb',
@@ -1250,12 +1021,13 @@ const recomendations = [
     id: 55,
     alt: "tablet",
     name: "Tablet",
-    price: 29990,
+    price: 45899,
     searchTag: 'ipad',
     img: ipadProSpaceGray,
     series: "iPad Pro",
     quantity: 10,
     tag: 'ipad-pro',
+    isRecommended: 'tablet',
     descriptionHeader: 'Buy iPad Pro',
     color: 'Space Gray',
     size: '64gb',
@@ -1284,5 +1056,75 @@ const recomendations = [
     
 
 ]
+
+
+export const getData = {
+  recommendData: () => {
+    const list = [];
+    recomendations.forEach((item) => {
+      if (item.isRecommended == 'recommendation') {
+        list.push({
+          id: item.id,
+          image: item.img,
+          name: item.series,
+          price: item.price,
+          tag: item.tag
+        })
+      }
+    });
+
+    return list;
+  },
+
+  laptopData: () => {
+    const list = [];
+    recomendations.forEach((item) => {
+      if (item.isRecommended == 'laptop') {
+        list.push({
+          id: item.id,
+          image: item.img,
+          name: item.series,
+          price: item.price,
+          tag: item.tag
+        })
+      }
+    });
+
+    
+    return list;
+  },
+
+  mobileData: () => {
+    const list = []
+    recomendations.forEach(item => {
+      if(item.isRecommended === 'mobile'){
+        list.push({
+          id: item.id,
+          image: item.img,
+          name: item.series,
+          price: item.price,
+          tag: item.tag
+        })
+      }
+    })
+    return list;
+  },
+
+  tabletData: () => {
+    const list = []
+    recomendations.forEach(item => {
+      if(item.isRecommended === 'tablet'){
+        list.push({
+          id: item.id,
+          image: item.img,
+          name: item.series,
+          price: item.price,
+          tag: item.tag
+        })
+      }
+    })
+    return list;
+  }
+}
 
 export default recomendations;
