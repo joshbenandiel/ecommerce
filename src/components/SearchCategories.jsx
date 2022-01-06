@@ -41,19 +41,15 @@ const SearchItemsCategories = ({value, setValue, searchTerm,setAvailIsCheck,avai
 
   const checkboxes = [
     { 
-      name: 'laptop', 
+      name: 'macbook', 
       label: 'Laptop' 
     },
     { 
-      name: 'mobile', 
+      name: 'iphone', 
       label: 'Mobile' 
     },
-    { name: 'tablet', 
+    { name: 'ipad', 
       label: 'Tablet' 
-    },
-    { 
-      name: 'watch', 
-      label: 'Watch' 
     },
   ]
 

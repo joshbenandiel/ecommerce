@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 
-const Search = ({searchTerm,searchFilter, searchTermNavbar, searchFilterNavbar}) => {
+const Search = ({searchTerm}) => {
 
 
 
@@ -27,21 +27,24 @@ const Search = ({searchTerm,searchFilter, searchTermNavbar, searchFilterNavbar})
 
   return (
     <div>
-        <div className="search-main-wrapper d-flex p-5">
-          <SearchCategories
-          setAvailIsCheck={setAvailIsCheck}
-          value={value}
-          setValue={setValue}
-          searchTerm={searchTerm}
-          availIsCheck={availIsCheck}
-          
-          />
-          <SearchItems
-            value={value}
-            setValue={setValue}
-            searchTerm={searchTerm}
-            availIsCheck={availIsCheck}
-          />
+        <div className="search-main-wrapper p-5 container-fluid px-0">
+          <div className="row m-0">
+            <div className="col-2">
+              <SearchCategories
+                setAvailIsCheck={setAvailIsCheck}
+                value={value}
+                setValue={setValue}
+                searchTerm={searchTerm}
+                availIsCheck={availIsCheck}
+              />
+            </div>
+            <div className="col-10">
+              <SearchItems
+                searchTerm={searchTerm}
+                value={value}
+              />
+            </div>
+          </div>
         </div>
     </div>
   )

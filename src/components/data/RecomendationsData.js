@@ -919,7 +919,7 @@ const recomendations = [
     id: 48,
     alt: "tablet",
     name: "Tablet",
-    price: 29990,
+    price: 19900,
     img: ipadSpaceGray,
     searchTag: 'Ipad',
     series: "iPad",
@@ -954,7 +954,7 @@ const recomendations = [
     isRecommended: 'tablet',
     quantity: 10,
     tag: 'ipad-air',
-    searchTag: 'ipad-air',
+    searchTag: 'ipad',
     descriptionHeader: 'Buy iPad Air',
     color: 'Blue',
     size: '64gb',
@@ -969,7 +969,6 @@ const recomendations = [
     series: "iPad Air",
     quantity: 10,
     tag: 'ipad-air',
-
     descriptionHeader: 'Buy iPad Air',
     color: 'Gold',
     size: '64gb',
@@ -1126,5 +1125,6 @@ export const getData = {
     return list;
   }
 }
+
 
 export default recomendations;
