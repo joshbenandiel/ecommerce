@@ -13,21 +13,12 @@ const Navbar = ({searchFilter,searchTerm}) => {
   
   const [activeLogin, setActiveLogin] = useState(false)
   const [activeCart, setActiveCart] = useState(false);
+  const productsInCart = useSelector((state) => state.product.cart);
 
 
   const productsData = useSelector((state) => state.product.products);
 
-  const productsInCart = useSelector((state) => state.product.cart);
 
-  const getCartTotal = () => {
-    let finalCount = 0;
-
-    productsInCart.map((item) => {
-      finalCount = finalCount + item.count
-    });
-
-    return finalCount;
-  }
 
   const [searchEmpty , setSearchEmpty] = useState(false)
 
@@ -52,6 +43,7 @@ const Navbar = ({searchFilter,searchTerm}) => {
   
   useEffect(() => {
       const items = []
+      if(productsData) {
       productsData.map(item => {
         if(item.searchTag){
           if (item.searchTag.toLowerCase().includes(searchTerm.toLowerCase()) || item.searchTag.toLowerCase().includes(searchTerm.toLowerCase())){
@@ -62,6 +54,7 @@ const Navbar = ({searchFilter,searchTerm}) => {
           }
         }
       })
+      }
       setFilteredResult(items)
       dispatch(setSearchisClose(true));
   }, [searchTerm])
@@ -119,7 +112,6 @@ const Navbar = ({searchFilter,searchTerm}) => {
                         onClick={() => {
                           dispatch(setSearchisClose(false))
                           dispatch(getProductItem(searchItem))
-                          console.log(selectedProduct)
                         }} 
                         key={index}>
                           <div className="search-wrapper">
@@ -164,11 +156,11 @@ const Navbar = ({searchFilter,searchTerm}) => {
                 </button>
               </div>
               <div className="cart-wrapper">
-                <div className="cart-wrap">
+                <div className="cart-wrap position-relative">
                   <i className="cart-nav far fa-shopping-cart"></i>
                   <div
+                    className=''
                     onClick={() => {
-                        console.log(productsInCart);
                         setActiveCart(!activeCart)
                         if (activeLogin) {
                           setActiveLogin(!activeLogin);
@@ -176,8 +168,11 @@ const Navbar = ({searchFilter,searchTerm}) => {
 
                     }} 
                     className="cart-count">
-                    <h5>{getCartTotal()}</h5>
+                    <h5>{productsInCart.length}</h5>
                   </div>
+                  <Cart
+                    activeCart={activeCart}
+                  />
                 </div>      
                 <h5 className="cart-name">Cart</h5>
               </div>
@@ -187,9 +182,6 @@ const Navbar = ({searchFilter,searchTerm}) => {
           <Login
             activeLogin={activeLogin}
             setActiveLogin={setActiveLogin}
-          />
-          <Cart
-          activeCart={activeCart}
           />
       </div>
 

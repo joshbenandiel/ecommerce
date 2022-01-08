@@ -35,9 +35,8 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
 
   
 
-
-
   const totalPrice = getPrice + pencilPrice + folioPrice
+  
   return (
     <>
     <div>

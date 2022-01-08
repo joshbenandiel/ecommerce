@@ -1,33 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import sliderData from "./data/SliderData"
 import "../styles/Slider.css"
-import Navbar from './Navbar'
-import Footer from './Footer'
 
 const Slider = () => {
 
-  const [activeSlider, setActiveSlider] = useState(sliderData[0].id);
-  
+  const [activeSlider, setActiveSlider] = useState(1);
 
-  const handleNextClick = () => {
-    const current = sliderData.find((item) => item.id == activeSlider);
-    
-    if (current.id === 5) {
-      setActiveSlider(1)
-    } else {
-      setActiveSlider(current.id + 1);
-    }
-  }
-
-  const handlePrevClick = () => {
-    const current = sliderData.find((item) => item.id == activeSlider);
-    
-    if (current.id === 1) {
-      setActiveSlider(5)
-    } else {
-      setActiveSlider(current.id - 1);
-    }
-  }
+  useEffect(() => {
+      const intervalID = setTimeout(() =>  {
+        if(activeSlider == 3) {
+          setActiveSlider(1)
+        } else {
+          setActiveSlider(activeSlider + 1)
+        }
+      }, 5000);
+      return () => clearInterval(intervalID);
+  }, [activeSlider])
 
   return (
     <>
@@ -60,17 +48,7 @@ const Slider = () => {
             </div>
           )         
         })}   
-      </div>
-      <div className="arrow-wrapper">
-        <div>
-          <i
-            onClick={handlePrevClick} 
-            className="fal fa-arrow-circle-left"></i>
-        </div>
-        <i
-          onClick={handleNextClick} 
-          className="fal fa-arrow-circle-right"></i>
-      </div>
+      </div> 
     </div>
     </>
   )

@@ -1,92 +1,60 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 import products from '../components/data/RecomendationsData'
 import { josLog } from '.././utils/log'
+import price from './price'
 
 const initialState = {
   products,
-  cart: []
+  cart: [],
+  totalPrice: [],
+  total: [],
+  count: 1
 }
 
 export const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    addToCart: (state, {payload}) => {
-      const existingCart = state.cart;
-      const itemInCart = state.cart.find(item => item.id == payload.id)
-
-      if (itemInCart) {
-        existingCart.map(item => {
-          if (item.id == payload.id) {
-            return {
-              ...item,
-              count: item.count += 1
-            }
-          } 
-
-        })
-
-      } else {
-
-        const itemsWithCount = {
-          ...payload,
-          count: 1
-        }
-        existingCart.push(itemsWithCount);
+    addCart: (state, payload) => {
+      const cartList = state.cart
+      const item = payload.payload
+      let cartListWithCount = {
+        ...item,
+        count: 1,
+        totalPrice: 0
       }
-
-
+      state.totalPrice.push(payload.payload.price)
+      cartList.push(cartListWithCount)
 
     },
-
-    incrementProductCount: (state, payload) => {
-
-      const existingCart = state.cart;
-      
-      const updatedList = existingCart.map((item) => {
-
-        if (item.id == payload.payload.id) {
+    removeToCart: (state, payload) => {
+      const id = payload.payload.id
+      const filtered = state.cart.filter(item => item.id !== id)
+      state.cart = filtered
+    },
+    getTotal: (state, payload) => {
+      const updatedPrice = payload.payload
+      state.total.push(updatedPrice)
+    },
+    setQuantityItemCart: (state, payload) => {
+      const cart = state.cart.map(item => {
+        if(item.id == payload.payload.id){
           return {
             ...item,
-            count: item.count + 1
+            count: payload.payload.quantity,
+            totalPrice: payload.payload.quantity*item.price
           }
         } else {
-          return item
+          return item;
         }
-      });
-
-      state.cart = updatedList;
-    },
-
-
-    
-    decrementProductCount: (state, payload) => {
-      const existingCart = state.cart;
-      
-      const updatedList = existingCart.map((item) => {
-
-        if (item.id == payload.payload.id) {
-          return {
-            ...item,
-            count: item.count - 1
-          }
-        } else {
-          return item
-        }
-      });
-
-      state.cart = updatedList;
-    },
-
-    removeToCart: (state, { payload }) => {
-      const id = payload.id;
-      const filtered = state.cart.filter((item) => item.id !== id)
-      state.cart = filtered;
+      })
+      state.cart = cart;
     }
+    
   },
 })
 
 
-export const { addToCart, incrementProductCount, removeToCart , decrementProductCount} = productSlice.actions
+export const { addCart, removeToCart, getTotal , setQuantityItemCart} = productSlice.actions
 
 export default productSlice.reducer

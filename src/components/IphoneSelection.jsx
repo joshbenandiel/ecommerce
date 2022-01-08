@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from 'react'
 import '../styles/IphoneSelection.css'
-import { useSelector } from 'react-redux'
+import { useSelector , useDispatch } from 'react-redux'
 import { useParams , useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TabletSelection from './TabletSelection'
 import MacbookSelection  from './MacbookSelection';
 import MacbookProSelection  from './MacbookProSelection';
+import { addCart } from '../redux/product';
 
 
 const IphoneSelection = ({macbookProSelectedProduct}) => {
@@ -27,9 +28,13 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
   const storage256 = selectedVariant.price  + 9000;
   const storageIphone512 = selectedVariant.price  + 18000;
   const storageTb = selectedVariant.price + 31000
+  const [getSize, setGetSize] = useState('')
+  const [getModel, setModel] = useState('')
   const products = useSelector((state) => {
     return state.product.products
   })
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const items = []
@@ -42,6 +47,7 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
     setPrice(items[0].price)
     setHeader(items[0].descriptionHeader)
   }, [params])
+
 
   
   return (
@@ -63,17 +69,18 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
             <>
             <p><strong>Choose your model.</strong></p>
             <button 
-            onClick={() => {
+            onClick={(e) => {
               setButtonIphoneMini(!buttonIphoneMini)
               setButtonIphone12(false)
+              console.log(e.target.innerText)
             }}
-            className={buttonIphoneMini ? 'iphone-12-button-active' : 'iphone-12-button'} ><strong>{params.tag == 'iphone-13' ? 'Iphone 13' : 'Iphone 12 mini'}</strong><p className='m-0'>{params.tag == 'iphone-13' ? '6.1-inch display' : '5.4-inch display'}</p></button>
+            className={buttonIphoneMini ? 'iphone-12-button-active' : 'iphone-12-button'} ><p className='fw-bold m-0'>{params.tag == 'iphone-13' ? 'Iphone 13' : 'Iphone 12 mini'}</p><p className='m-0'>{params.tag == 'iphone-13' ? '6.1-inch display' : '5.4-inch display'}</p></button>
             <button
-            onClick={() => {
+            onClick={(e) => {
               setButtonIphone12(!buttonIphone12)
               setButtonIphoneMini(false)
             }} 
-            className={buttonIphone12 ? 'iphone-12-button-active' : 'iphone-12-button'} ><strong>{params.tag == 'iphone-13' ? 'Iphone 13 Pro Max' : 'Iphone 12'}</strong> <p className='m-0'>{params.tag == 'iphone-13' ? '6.7-inch display' : '6.1-inch display'}</p></button>
+            className={buttonIphone12 ? 'iphone-12-button-active' : 'iphone-12-button'} ><p className='fw-bold m-0'>{params.tag == 'iphone-13' ? 'Iphone 13 Pro Max' : 'Iphone 12'}</p><p className='m-0'>{params.tag == 'iphone-13' ? '6.7-inch display' : '6.1-inch display'}</p></button>
             </>
           }    
           <p><strong>Choose your finish.</strong></p>
@@ -91,16 +98,17 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
          <div className='storage-button-wrapper'>
           <button 
           className={storageIsClick ? 'storage-iphone-button-active' :'storage-iphone-button'}
-          onClick={() => {
+          onClick={(e) => {
             setPrice(selectedVariant.price)
             setStorageIsClick(!storageIsClick)
             setStorageIsClickSecond(false)
             setStorageIsClickThird(false)
             setStorageIsClickFourth(false)
-          }}><h3><strong>{params.tag == 'iphone-13' ? '128GB' : '64GB'}</strong></h3><p className='button-price'>₱{selectedVariant.price && selectedVariant.price.toLocaleString()}.00</p></button>
+            setGetSize(e.target.innerText)
+          }}><h3 className='fw-bold'>{params.tag == 'iphone-13' ? '128GB' : '64GB'}</h3><p className='button-price'>₱{selectedVariant.price && selectedVariant.price.toLocaleString()}.00</p></button>
           <button 
           className={storageIsClickSecond ? 'storage-iphone-button-active' :'storage-iphone-button'}
-          onClick={() => {
+          onClick={(e) => {
             if (params.tag == 'iphone-13') {
               setPrice(selectedVariant.price + 6000)
             } else {
@@ -110,12 +118,14 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
             setStorageIsClick(false)
             setStorageIsClickThird(false)
             setStorageIsClickFourth(false)
-          }}><h3><strong>{params.tag == 'iphone-13' ? '256GB' : '128GB'}</strong></h3><p className='button-price'>₱
-          {params.tag =='iphone-13' ? storageIphone256.toLocaleString() : storage128.toLocaleString()}.00</p></button>
+            setGetSize(e.target.innerText)
+          }}><h3 className='fw-bold'>{params.tag == 'iphone-13' ? '256GB' : '128GB'}</h3><p className='button-price'>₱
+          {params.tag =='iphone-13' ? storageIphone256.toLocaleString() : storage128.toLocaleString()}.00</p>
+          </button>
           {(params.tag == 'iphone-12' || params.tag == 'iphone-13') && 
            <button 
            className={storageIsClickThird ? 'storage-iphone-button-active' :'storage-iphone-button'}
-           onClick={() => {
+           onClick={(e) => {
             if (params.tag == 'iphone-13') {
               setPrice(selectedVariant.price + 18000)
             } else {
@@ -125,17 +135,19 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
              setStorageIsClick(false)
              setStorageIsClickSecond(false)
              setStorageIsClickFourth(false)
+             setGetSize(e.target.innerText)
            }}><h3><strong>{params.tag == 'iphone-13' ? '512GB' : '256GB'}</strong></h3><p className='button-price'>₱{params.tag == 'iphone-13' ? storageIphone512.toLocaleString() : storage256.toLocaleString()}.00</p></button>
           }
           {params.tag == 'iphone-13' && 
            <button 
            className={storageIsClickFourth ? 'storage-iphone-button-active' :'storage-iphone-button'}
-           onClick={() => {
+           onClick={(e) => {
              setPrice(selectedVariant.price + 31000)
              setStorageIsClickFourth(!storageIsClickFourth)
              setStorageIsClick(false)
              setStorageIsClickSecond(false)
              setStorageIsClickThird(false)
+             setGetSize(e.target.innerText)
            }}><h3><strong>1TB</strong></h3><p className='button-price'>₱{storageTb.toLocaleString()}.00</p></button>
           }
          </div>
@@ -149,7 +161,18 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
               <p className='ms-1 m-0'>Free Shipping</p>
             </div>
           </div>
-          <Button variant='contained' className=''>Add to cart</Button>  
+          <Button 
+            onClick={()=> {
+              dispatch(addCart({
+                id: selectedVariant.id,
+                name: selectedVariant.series,
+                img: selectedVariant.img,
+                color: selectedVariant.color,
+                size: getSize,
+                price: price
+              }))
+            }}
+            variant='contained' className=''>Add to bag</Button>  
          </div>
         </div>
       </div>

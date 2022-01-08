@@ -14,6 +14,7 @@ import { useSelector} from 'react-redux'
 import SelectedProduct from './SelectedProduct'
 import IphoneSelection from './IphoneSelection'
 import SelectedMacbookAir from './SelectedMacbookAir'
+import Bag from "./Bag";
 
 
 
@@ -71,6 +72,9 @@ function App() {
           <Route exact path='/product/buy/:tag' element={
             <IphoneSelection
             macbookProSelectedProduct={setSelectedProduct}
+          />} />
+          <Route exact path='/product/shop/bag' element={
+            <Bag
           />} />
         </Routes>
         <Footer/>
