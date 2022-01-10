@@ -1,13 +1,15 @@
-import React , { useState } from 'react'
+import React , { useEffect, useState } from 'react'
 import Keyboard from '../images/Tablets/IpadAir/ipadair-accessory-magickeyboard-card2.jpg'
 import KeyboardImg from '../images/Tablets/MX3L2.png'
 import Button from '@mui/material/Button';
 import applePencil from '../images/Tablets/ipad-mini-accessory-pencil-card1_GEO_PH.jpg'
-import pencil from '../images/Tablets/MU8F2.png'
+import pencilImage from '../images/Tablets/MU8F2.png'
 import KeyboardBlack from '../images/Tablets/IpadAir/MXQT2LL_DEFAULT_FV1.png'
 import KeyboardWhite from '../images/Tablets/IpadAir/MJQJ3LL_DEFAULT_FV1.png'
 import KeyboardButtonBlack from '../images/Tablets/IpadAir/MXQT2LL_SW_COLOR.jpg'
 import KeyboardButtonWhite from '../images/Tablets/IpadAir/MJQJ3LL_SW_COLOR.jpg'
+import { useDispatch } from 'react-redux'
+import { addCart } from '../redux/product'
 
 
 const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
@@ -23,13 +25,29 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
   const [pencilButton, setPencilButton] = useState(false)
   const [pencilButtonAdded, setPencilButtonAdded] = useState(false)
   const [pencilPrice, setPencilPrice] = useState(0)
-  const [getPrice, setGetPrice] = useState('')
+  const [getPrice, setGetPrice] = useState(0)
   const [smartFolioButton , setSmartFolioButton] = useState('')
   const [getFolioImg, setFolioImg] = useState('')
   const [keyBoardPrice, setKeyboardPrice] = useState('')
+  const [pencil, setPencil] = useState('')
+  const [keyboard, setKeyboard] = useState('')
 
-
+  const dispatch = useDispatch()
   const totalPrice = getPrice + pencilPrice + keyBoardPrice
+
+  useEffect(() => {
+
+    ipadWifiConnectivity.forEach(item => {
+      if(item.id == 2){
+       item.price = getPrice + 9000;
+      } else {
+        item.price = getPrice
+      }
+
+      console.log(item)
+    })
+
+  }, [buttonCloseStorage])
   
   return (
     <div>
@@ -114,7 +132,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
           }}
           className={activeButtonWifi == itemWifi.wifi ? 'button-storage-active' : 'button-storage'}>    
           <p className='m-0 fw-bolder fs-5'>{itemWifi.wifi}</p> 
-          {itemWifi.wifi == 'Wi-Fi' ? <p className='m-0'>₱{getPrice.toLocaleString()}</p> : <p className='m-0'>₱{(getPrice + 8000).toLocaleString()}</p>} 
+          <p>₱{itemWifi.price.toLocaleString()}</p>
           </button>
         })}
       </div>
@@ -138,12 +156,13 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
         {pencilButton && 
         <div className='pencil-img-wrapper d-flex justify-content-center flex-column'>
           <img className='pencil-img'src={applePencil}/>
-          <p className='fw-bold mt-3'>Apple Pencil (2nd generation)</p>
-          <p className='fw-bold'>₱7,990</p>
+          <p className='fw-bold mt-3'>{pencilData.description}</p>
+          <p className='fw-bold'>₱{pencilData.price.toLocaleString()}</p>
           <button
           onClick={()=> {
             setPencilButtonAdded(true)
             setPencilPrice(7990)
+            setPencil(pencilData.description)
           }}
           className='pencil-button'>Add</button>
         </div>}
@@ -155,14 +174,15 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
             <button
             onClick={() => {
               setPencilButtonAdded(false)
+              setPencil()
             }}
             className='edit-button fs-6'>Remove</button>
           </div>
           <div className='d-flex'>
-            <img src={pencil}/>
+            <img src={pencilImage}/>
             <div className='d-flex flex-column justify-content-center'>
-              <p className='fw-bold'>Apple Pencil (2nd generation)</p>
-              <p className='fw-bold'>₱7,990</p>
+              <p className='fw-bold'>{pencilData.description}</p>
+              <p className='fw-bold'>₱{pencilData.price.toLocaleString()}</p>
             </div>
           </div>
         </div>
@@ -176,8 +196,8 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
       {smartButton &&
       <div className='pencil-img-wrapper d-flex justify-content-center flex-column'>
       <img className='pencil-img'src={Keyboard}/>
-      <p className='fw-bold mt-3'>Magic Keyboard for iPad Air (4th generation)</p>
-      <p className='fw-bold'>₱16,990</p>  
+      <p className='fw-bold mt-3'>{keyboardData.description}</p>
+      <p className='fw-bold'>₱{keyboardData.price.toLocaleString()}</p>  
       <p>Color - {smartFolioButton}</p>
       <div className='d-flex'>
         {smartFolioData.map(itemButton => {
@@ -195,6 +215,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
       onClick={() => {
         setIpadButtonAdded(true)
         setKeyboardPrice(16990)
+        setKeyboard(keyboardData.description)
         }} 
       className='pencil-button mt-3'>Add</button>
       </div>} 
@@ -202,11 +223,12 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
     {ipadButtonAdded == true && 
     <div>
       <div className='d-flex justify-content-between'>
-        <p className='fw-bold m-0'>Magic Keyboard for iPad Air (4th generation)</p>
+        <p className='fw-bold m-0'>{keyboardData.description}</p>
         <button
         onClick={() => {
           setIpadButtonAdded(false)
           setKeyboardPrice(0)
+          setKeyboard()
         }}
         className='edit-button fs-6'>Remove</button>
       </div>
@@ -214,12 +236,12 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
         <img className='p-3' src={getFolioImg.colorFolio}/>
         <div className='d-flex flex-column justify-content-center'>
           <p className='fw-bold'>{getFolioImg.color}</p>
-          <p className='fw-bold'>₱16,990</p>
+          <p className='fw-bold'>₱{keyboardData.price.toLocaleString()}</p>
         </div>
       </div>
     </div>}
     <div className='iphone-footer'>
-      <h1><strong>₱.00</strong></h1>
+      <h1><strong>₱{totalPrice.toLocaleString()}.00</strong></h1>
       <div className='item-ships'>
         <i class="far fa-shipping-fast"></i>
         <div className='item-ships-desc'>
@@ -228,7 +250,21 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
           <p>Free Shipping</p>
         </div>
       </div>
-      <Button variant='contained' className=''>Add to cart</Button>  
+      <Button
+      onClick={()=> {
+        dispatch(addCart({
+          id: selectedVariant.id,
+          name: selectedVariant.series,
+          img: selectedVariant.img,
+          color: selectedVariant.color, 
+          size: activeButtonStorage,
+          price: totalPrice,
+          pencil: pencil,
+          keyboard: keyboard,
+          keyboardColor: getFolioImg.color
+        }))
+      }}  
+      variant='contained' className=''>Add to cart</Button>  
     </div>  
     </div>
     </div> 
@@ -249,10 +285,14 @@ const ipadStorage = [
 ]
 const ipadWifiConnectivity = [
   {
+    id: 1,
     wifi: 'Wi-Fi',
+    price: 33990
   },
-  {
+  { 
+    id: 2,
     wifi: 'Wi-Fi + Cellular',
+    price: 42990
   }
 ]
 
@@ -268,4 +308,17 @@ const smartFolioData = [
     colorFolio: KeyboardWhite
   },
 ]
+
+
+const pencilData = {
+  id: 1,
+  description: 'Apple Pencil (2nd generation)',
+  price: 7990
+}
+
+const keyboardData = {
+  id: 1,
+  description: 'Magic Keyboard for iPad Air (4th generation)',
+  price: 16990
+}
 export default SmartKeyBoard

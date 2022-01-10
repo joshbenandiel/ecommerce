@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import '../styles/Bag.css'
 import BagCard from './BagCard';
+import { Link } from 'react-router-dom'
 
 const Bag = () => {
 
@@ -22,6 +23,18 @@ const Bag = () => {
   }, [productsInCart])
 
   return (
+    <>
+    {productsInCart.length == 0 ? 
+      <div className='d-flex flex-column align-items-center p-5'>
+        <h1 className='fw-bold mt-4'>Your bag is empty.</h1>
+        <Link to='/'>
+          <Button
+            className='mt-4 bag-button' 
+            variant='contained' color='info' >Continue Shopping
+          </Button>
+        </Link>
+      </div> 
+    : 
     <div className='bag-container d-flex flex-column align-items-center justify-content-center'>
       <div className='bag-header-wrapper pb-5 d-flex flex-column align-items-center justify-content-center'>
         <h1 className='fw-bold mt-4'>Your bag total is ₱ {totalPrice.toLocaleString()}.00</h1>
@@ -35,10 +48,11 @@ const Bag = () => {
         return <BagCard
         item={item}
         index={index}
-
         />
       })}
-    </div>
+    </div> 
+    }
+    </>
   )
 }
 

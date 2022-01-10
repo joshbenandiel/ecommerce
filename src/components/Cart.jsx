@@ -15,23 +15,27 @@ const Cart = ({activeCart}) => {
     {activeCart && 
       <div className='cart-container'>
         <div className='cart-item-wrapper'>
+          {productsInCart.length == 0 ? <p>Your bag is empty</p>    
+          : 
+          <>
           {productsInCart.map((item, index) => {
             return (
-              <div
-              key={index}
-              className='d-flex align-items-center mb-3'>
-                <img className='cart-image' src={item.img} alt='cart-image' />
-                <div className='d-flex flex-column'>
-                  <p className='m-0'>{item.name} {item.color} {item.size}</p>
-                  <p className='m-0'>₱{item.price.toLocaleString()}</p>
-                </div>
+            <div
+            key={index}
+            className='d-flex align-items-center mb-3'>
+              <img className='cart-image' src={item.img} alt='cart-image' />
+              <div className='d-flex flex-column'>
+                <p className='m-0'>{item.name} {item.color} {item.size}</p>
+                <p className='m-0'>₱{item.price.toLocaleString()}</p>
               </div>
+            </div>
             )
           })}
+          </>}    
         </div>
-        <Button
+        {productsInCart.length > 0 && <Button
         className='mt-4' 
-        variant='contained' fullWidth='true'>Check Out</Button>
+        variant='contained' fullWidth='true'>Check Out</Button>}
         <Link className='bag-button w-100' to='/product/shop/bag'>
           <Button
           className='mt-2' 

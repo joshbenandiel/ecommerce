@@ -1,4 +1,4 @@
-import React , { useState} from 'react'
+import React , { useEffect, useState} from 'react'
 import darkLavender from '../images/Tablets/MM6L3_SW_COLOR.jpg'
 import electricOrange from '../images/Tablets/MM6J3_SW_COLOR.jpg'
 import darkCherry from '../images/Tablets/MM6K3_SW_COLOR.jpg'
@@ -12,10 +12,14 @@ import folioBlack from '../images/Tablets/MM6G3_DEFAULT_FV1.png'
 import folioWhite from '../images/Tablets/MM6H3_DEFAULT_FV1.png'
 import Button from '@mui/material/Button'
 import applePencil from '../images/Tablets/ipad-mini-accessory-pencil-card1_GEO_PH.jpg'
-import pencil from '../images/Tablets/MU8F2.png'
+import pencilImage from '../images/Tablets/MU8F2.png'
+import { useDispatch } from 'react-redux'
+import { addCart } from '../redux/product'
 
 
 const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
+
+  
 
   const [ipadButtonAdded, setIpadButtonAdded] = useState(false)
   const [smartButton, setSmartButton] = useState(false)
@@ -31,12 +35,46 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
   const [pencilButton, setPencilButton] = useState(false)
   const [pencilButtonAdded, setPencilButtonAdded] = useState(false)
   const [pencilPrice, setPencilPrice] = useState(0);
-  const [getPrice, setGetPrice] = useState(0);
+  const [getPrice, setGetPrice] = useState(29990);
+  const [wifiPrice, setWifiPrice] = useState(0)
+  const [pencil, setPencil] = useState('')
+  const [folio, setFolio] = useState('')
 
+  const dispatch = useDispatch()
+
+  console.log(folio)
+
+  const totalPrice = wifiPrice + pencilPrice + folioPrice
+
+ 
+  
   
 
-  const totalPrice = getPrice + pencilPrice + folioPrice
-  
+  useEffect(() => {
+    ipadConnectivity.forEach(item => {
+      if(item.id == 2){
+        item.price = getPrice + 9000
+      } else {
+        item.price = getPrice
+      }
+
+      console.log(item)
+    })
+    
+  }, [buttonCloseStorage])
+
+  const handleWifiSection = (item) => {
+    setActiveButtonWifi(item)
+    setButtonCloseWifi(true)
+    setWifiPrice(item.price)
+  }
+
+  const handleStorageSection = (item) => {
+    setActiveButtonStorage(item.storage)
+    setButtonCloseStorage(true)
+    setGetPrice(item.price)
+   
+  }
   return (
     <>
     <div>
@@ -77,12 +115,12 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           </div>
         </div>}
         {buttonClose === true && 
-              <div className='button-close-wrapper'>
-                <h1 className='fw-bolder fs-4'>{selectedVariant.color}</h1>
-                <button 
-                onClick={()=> setButtonClose(false)}
-                className='change-button'>Change</button>
-              </div>
+          <div className='button-close-wrapper'>
+            <h1 className='fw-bolder fs-4'>{selectedVariant.color}</h1>
+            <button 
+            onClick={()=> setButtonClose(false)}
+            className='change-button'>Change</button>
+          </div>
         }
         
         {buttonCloseStorage === false && <>
@@ -91,9 +129,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           {ipadMiniStorage.map(item => {
             return <button 
             onClick={()=>{
-              setActiveButtonStorage(item.storage)
-              setButtonCloseStorage(true)
-              setGetPrice(item.price)
+              handleStorageSection(item)
             }}
             className={activeButtonStorage === item.storage ? 'button-storage-active' : 'button-storage'}>    
             <p className='m-0 fw-bolder fs-4'>{item.storage}</p> 
@@ -117,15 +153,11 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           {ipadConnectivity.map(itemWifi => {
             return <button 
             onClick={()=>{
-              setActiveButtonWifi(itemWifi.wifi)
-              setButtonCloseWifi(true)
-
+              handleWifiSection(itemWifi)
             }}
-            className={activeButtonWifi === itemWifi.wifi ? 'button-storage-active' : 'button-storage'}>    
+            className={activeButtonWifi.wifi === itemWifi.wifi ? 'button-storage-active' : 'button-storage'}>    
             <p className='m-0 fw-bolder fs-5'>{itemWifi.wifi}</p> 
-            {buttonCloseStorage && <>
-            {itemWifi.wifi === 'Wi-Fi' ? <p className='m-0'>₱{getPrice.toLocaleString()}</p> : <p className='m-0'>₱{(getPrice + 9000).toLocaleString()}</p>} 
-            </>}
+            <p>₱{itemWifi.price.toLocaleString()}</p>
             </button>
           })}
         </div>
@@ -133,7 +165,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         }
         {buttonCloseWifi === true && 
           <div className='button-close-wrapper-storage'>
-            <h1 className='fw-bolder fs-4'>{activeButtonWifi}</h1>
+            <h1 className='fw-bolder fs-4'>{activeButtonWifi.wifi}</h1>
             <button 
             onClick={()=> {
               setButtonCloseWifi(false)
@@ -151,12 +183,13 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           {pencilButton && 
           <div className='pencil-img-wrapper d-flex justify-content-center flex-column'>
             <img className='pencil-img'src={applePencil} alt='pencil'/>
-            <p className='fw-bold mt-3'>Apple Pencil (2nd generation)</p>
-            <p className='fw-bold'>₱7,990</p>
+            <p className='fw-bold mt-3'>{pencilData.description}</p>
+            <p className='fw-bold'>₱{pencilData.price.toLocaleString()}</p>
             <button
             onClick={()=> {
               setPencilButtonAdded(true)
               setPencilPrice(7990)
+              setPencil(pencilData.description)
             }}
             className='pencil-button'>Add</button>
           </div>}
@@ -169,14 +202,15 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
               onClick={() => {
                 setPencilButtonAdded(false)
                 setPencilPrice(0)
+                setPencil()
               }}
               className='edit-button fs-6'>Remove</button>
             </div>
             <div className='d-flex'>
-              <img src={pencil} alt='pencil'/>
+              <img src={pencilImage} alt='pencil'/>
               <div className='d-flex flex-column justify-content-center'>
-                <p className='fw-bold'>Apple Pencil (2nd generation)</p>
-                <p className='fw-bold'>₱7,990</p>
+                <p className='fw-bold'>{pencilData.description}</p>
+                <p className='fw-bold'>₱{pencilData.price.toLocaleString()}</p>
               </div>
             </div>
           </div>
@@ -190,8 +224,8 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         {smartButton &&
         <div className='pencil-img-wrapper d-flex justify-content-center flex-column'>
         <img className='pencil-img'src={smartFolio} alt='folio'/>
-        <p className='fw-bold mt-3'>Smart Folio for iPad mini</p>
-        <p className='fw-bold'>₱3,990</p>
+        <p className='fw-bold mt-3'>{folioData.description}</p>
+        <p className='fw-bold'>₱{folioData.price.toLocaleString()}</p>
         <p>Color - {smartFolioButton}</p>
         <div className='d-flex'>  
         {smartFolioData.map(itemButton => {
@@ -209,6 +243,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         onClick={() => {
           setIpadButtonAdded(true)
           setFolioPrice(3990)
+          setFolio({folio: folioData.description, folioColor: smartFolioButton})
           }} 
         className='pencil-button mt-3'>Add</button>
         </div>} 
@@ -221,6 +256,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           onClick={() => {
             setIpadButtonAdded(false)
             setFolioPrice(0)
+            setFolio()
           }}
           className='edit-button fs-6'>Remove</button>
         </div>
@@ -228,7 +264,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           <img src={getFolioImg.colorFolio} alt='folio'/>
           <div className='d-flex flex-column justify-content-center'>
             <p className='fw-bold'>{getFolioImg.color}</p>
-            <p className='fw-bold'>₱3,990</p>
+            <p className='fw-bold'>₱{folioData.price.toLocaleString()}</p>
           </div>
         </div>
       </div>} 
@@ -242,7 +278,20 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
             <p className='ms-1 m-0'>Free Shipping</p>
           </div>
         </div>
-        <Button variant='contained' className=''>Add to cart</Button>  
+        <Button
+        onClick={()=> {
+          dispatch(addCart({
+            id: selectedVariant.id,
+            name: selectedVariant.series,
+            img: selectedVariant.img,
+            color: selectedVariant.color, 
+            size: activeButtonStorage,
+            price: totalPrice,
+            pencil: pencil,
+            folio: folio
+          }))
+        }}
+        variant='contained' className=''>Add to cart</Button>  
       </div> 
       </div>
       </div> 
@@ -292,12 +341,28 @@ const ipadMiniStorage = [
 ]
 const ipadConnectivity = [
   {
+    id: 1,
     wifi: 'Wi-Fi',
+    price: 29990,
   },
   {
+    id: 2,
     wifi: 'Wi-Fi + Cellular',
+    price: 38990
   }
 ]
+
+const pencilData = {
+  id: 1,
+  description: 'Apple Pencil (2nd generation)',
+  price: 7990
+}
+
+const folioData = {
+  id: 1,
+  description: 'Smart Folio for iPad mini',
+  price: 3990
+}
 
 
 export default Ipad

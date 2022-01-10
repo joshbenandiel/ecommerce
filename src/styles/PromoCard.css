@@ -29,9 +29,9 @@
 
 
 .promo-item-image:hover {
-  box-shadow: -3px -1px 29px 1px rgba(246,255,116,0.75);
-  -webkit-box-shadow: -3px -1px 29px 1px rgba(246,255,116,0.75);
-  -moz-box-shadow: -3px -1px 29px 1px rgba(246,255,116,0.75);
+  box-shadow: -3px -1px 29px 1px #D2D2D7;
+  -webkit-box-shadow: -3px -1px 29px 1px #D2D2D7;
+  -moz-box-shadow: -3px -1px 29px 1px #D2D2D7;
 }
 
 .promo-card-button {
