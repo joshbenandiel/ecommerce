@@ -3,6 +3,7 @@ import React , { useState } from 'react'
 import { useSelector , useDispatch} from 'react-redux'
 import '../styles/SelectedProduct.css'
 import { macbookMemory, macbookStorage } from './data/RecomendationsData'
+import { addCart } from '../redux/product'
 
 
 const SelectedProduct = ({selectedProductMacbookPro}) => {
@@ -23,6 +24,8 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
     setStorage(item.storage)
     setStoragePrice(item.price)
   }
+
+  const dispatch = useDispatch()
 
   const totalPrice = selectedProductMacbookPro.price + memoryPrice + storagePrice
   console.log(totalPrice)
@@ -73,16 +76,28 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
     </div>
     <div className='macbook-footer position-fixed bottom-0'>
       <div className='footer-wrapper-selected'>
-        <div className='item-ships'>
+        <div className='item-ships mt-2 mb-2'>
           <i class="far fa-shipping-fast"></i>
           <div className='item-ships-desc'>
-            <p><strong>Ships:</strong></p>
-            <p>1-3 business days</p>
-            <p>Free Shipping</p>
+            <p className='m-0'><strong>Ships:</strong></p>
+            <p className='m-0'>1-3 business days</p>
+            <p className='m-0'>Free Shipping</p>
           </div>
         </div>
         <h4 className='fw-bold ps-5'>₱{totalPrice.toLocaleString()}</h4>
-        <Button variant='contained' className=''>Add to cart</Button> 
+        <Button 
+         onClick={()=> {
+          dispatch(addCart({
+            id: selectedProductMacbookPro.id,
+            name: selectedProductMacbookPro.series,
+            img: displayImage.image,
+            color: displayImage.color, 
+            inch: displayImage.inch,
+            size: '',
+            price: totalPrice,
+          }))
+        }}  
+        variant='contained' className=''>Add to cart</Button> 
       </div>
     </div>
   </div>

@@ -41,6 +41,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
   const [keyboard, setKeyboard] = useState('')
   const [keyboardSmart, setSmartKeyboard] = useState('')
   const [wifiPrice, setWifiPrice] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(45899);
 
   console.log({pencil: pencilName, keyboard: keyboard, smart: keyboardSmart, wifi: wifiPrice})
 
@@ -59,7 +60,14 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
     setGetKeyboard(newObj)
   }
 
-  const totalPrice = getPrice + pencilPrice + keyBoardPrice + magicKeyBoardPrice
+  const price = wifiPrice + pencilPrice + keyBoardPrice + magicKeyBoardPrice
+
+  useEffect(() => {
+
+    if(price){
+      setTotalPrice(price)
+    }
+  }, [price])
 
   useEffect(() => {
     ipadWifiConnectivity.map(item => {
@@ -352,7 +360,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
         </div>
       </div>}
     </div>}
-    <div className='iphone-footer'>
+    <div className='iphone-footer mb-5'>
       <h1><strong>₱{totalPrice.toLocaleString()}.00</strong></h1>
       <div className='item-ships'>
         <i class="far fa-shipping-fast"></i>

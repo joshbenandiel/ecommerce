@@ -36,14 +36,6 @@ function App() {
   return (
     <div className='app-container'>
       <BrowserRouter>
-        <button
-        onClick={() => {
-          console.log(checkState);
-        } }
-        >
-          Check Global State
-
-        </button>
         <Navbar
           searchTerm={searchTerm}
           searchFilter={searchFilter}

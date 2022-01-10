@@ -2,7 +2,7 @@
 .navbar-wrapper {
   font-family: 'Roboto', sans-serif;
   padding: 30px 0px;
-  background-color: yellow;
+  background-color: #E5EAEE;
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -193,4 +193,10 @@
   padding: 5px 15px;
   color: rgb(193, 193, 215);
   background: rgb(240, 240, 245);
+}
+
+.logo-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
 }

@@ -77,7 +77,7 @@ const MacbookCardPro = ({ product, availableColors, inchIsClick , macbookProSele
           variant='contained' fullWidth>Select</Button>
         </Link>
       </div>
-      <div className='item-ships d-flex mt-5'>
+      <div className='item-ships d-flex mt-5 m-0'>
         <i class="far fa-shipping-fast"></i>
         <div className='item-ships-desc'>
           <p className='ms-1 m-0'><strong>Ships:</strong></p>

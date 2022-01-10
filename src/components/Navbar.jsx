@@ -8,6 +8,7 @@ import { setSearchisClose } from '../redux/SearchClose'
 import { handleSearchResult } from '../redux/SearchResult'
 import { setSelectedCheckbox } from '../redux/SelectedCheckBox'
 import { getProductItem } from '../redux/productItem'
+import apple from '../images/Watches/applelogogadgetspage-15753501854p8cl.jpg'
 
 const Navbar = ({searchFilter,searchTerm}) => {
   
@@ -73,8 +74,11 @@ const Navbar = ({searchFilter,searchTerm}) => {
         <div className="container">
           <div className="row">
             <div className="col logo">
-            <Link to='/'>
-            <h1 className="logo-name">JOSH SHOPEE</h1>
+            <Link style={{textDecoration: 'none'}}to='/'>
+            <div className='d-flex'>
+              <h1 className="logo-name fw-bold">SOJJ</h1>
+              <img className='logo-image'src={apple} alt="" />
+            </div>
             </Link>
             </div>
             <div className="col-6"> 

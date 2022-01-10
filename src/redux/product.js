@@ -17,14 +17,31 @@ export const productSlice = createSlice({
   reducers: {
     addCart: (state, payload) => {
       const cartList = state.cart
+      console.log(current(cartList))
       const item = payload.payload
-      let cartListWithCount = {
-        ...item,
-        count: 1,
-        totalPrice: 0
-      }
       state.totalPrice.push(payload.payload.price)
-      cartList.push(cartListWithCount)
+      const itemInCart = state.cart.find(cart => cart.id == item.id)
+
+      if(itemInCart){
+        cartList.map(cart => {
+          if(cart.id == item.id){
+            cart.count += 1
+          }
+        })
+      } else {
+        let cartListWithCount = {
+          ...item,
+          count: 1,
+          totalPrice: 0
+        }
+        cartList.push(cartListWithCount)
+      }
+      
+      
+      
+      
+
+
 
     },
     removeToCart: (state, payload) => {

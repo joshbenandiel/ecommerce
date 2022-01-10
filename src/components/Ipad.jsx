@@ -42,13 +42,17 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
 
   const dispatch = useDispatch()
 
-  console.log(folio)
+  const [totalPrice, setTotalPrice] = useState(29990)
 
-  const totalPrice = wifiPrice + pencilPrice + folioPrice
 
- 
-  
-  
+  const price = wifiPrice + pencilPrice + folioPrice
+
+  useEffect(() => {
+
+    if(buttonCloseWifi){
+      setTotalPrice(price)
+    }
+  }, [price])
 
   useEffect(() => {
     ipadConnectivity.forEach(item => {
@@ -57,8 +61,6 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
       } else {
         item.price = getPrice
       }
-
-      console.log(item)
     })
     
   }, [buttonCloseStorage])

@@ -9,8 +9,6 @@ const BagCard = ({item , index, setTotalPrice}) => {
   const dispatch = useDispatch()
   const [value, setValue] = useState(1)
 
-  console.log(item)
-
 
   useEffect(() => {
     dispatch(setQuantityItemCart({id: item.id, quantity: parseInt(value)}))
@@ -24,12 +22,11 @@ const BagCard = ({item , index, setTotalPrice}) => {
         <div className="row card-details-wrapper">
           <div className="col-7">
             <div className='item-header-bag'>
-              <h3 className='fw-bold me-5'>{item.name} {item.size} {item.color}</h3>
+              <h3 className='fw-bold me-5'>{item.inch} {item.name} {item.size} {item.color}</h3>
             </div>
-            {item.pencil.length > 0 && <p className='m-0'>*{item.pencil}</p>}
-            
+            {item.pencil && <p className='m-0'>*{item.pencil}</p>}
             {item.folio && <p>*{item.folio.folio} - {item.folio.folioColor}</p>}
-            {item.keyboard && <p className='m-0'>*{item.keyboard} {item.keyboardColor}</p>}
+            {item.keyboard && <p className='m-0'>*{item.keyboard} - {item.keyboardColor}</p>}
             {item.smartKey && <p className='m-0'>*{item.smartKey}</p>}
           </div>
           <div className="col-1 d-flex align-items-center">

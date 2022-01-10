@@ -27,11 +27,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
   const [pencil, setPencil] = useState('')
   const [keyboard, setKeyboard]= useState('')
 
-  console.log(selectedProduct)
 
-
-
-  const price = wifiPrice + pencilPrice + keyBoardPrice
   const dispatch = useDispatch()
 
 
@@ -47,6 +43,16 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
     setWifiPrice(itemWifi.price) 
   }
 
+
+
+  const price = wifiPrice + pencilPrice + keyBoardPrice
+
+  useEffect(() => {
+
+    if(buttonCloseWifi){
+      setTotalPrice(price)
+    }
+  }, [price])
 
   useEffect(() => {
     ipadWifiConnectivity.forEach(item => {
@@ -64,7 +70,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
     <div>
       <div className='ipad-header'>
         <h1 className='fs-4'>{selectedVariant.series}</h1>
-        <h1 className='fs-4'>₱{price.toLocaleString()}</h1>
+        <h1 className='fs-4'>₱{totalPrice.toLocaleString()}</h1>
       </div>
       <div className="container mt-5">
         <div className="row">

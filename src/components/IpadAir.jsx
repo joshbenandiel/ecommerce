@@ -31,9 +31,20 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
   const [keyBoardPrice, setKeyboardPrice] = useState('')
   const [pencil, setPencil] = useState('')
   const [keyboard, setKeyboard] = useState('')
+  const [wifiPrice, setWifiPrice] = useState(0)
+
+  const [totalPrice, setTotalPrice] = useState(38990);
 
   const dispatch = useDispatch()
-  const totalPrice = getPrice + pencilPrice + keyBoardPrice
+
+  const price = wifiPrice + pencilPrice + keyBoardPrice
+
+  useEffect(() => {
+
+    if(buttonCloseWifi){
+      setTotalPrice(price)
+    }
+  }, [price])
 
   useEffect(() => {
 
@@ -129,6 +140,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
           onClick={()=>{
             setActiveButtonWifi(itemWifi.wifi)
             setButtonCloseWifi(true)     
+            setWifiPrice(itemWifi.price)
           }}
           className={activeButtonWifi == itemWifi.wifi ? 'button-storage-active' : 'button-storage'}>    
           <p className='m-0 fw-bolder fs-5'>{itemWifi.wifi}</p> 
@@ -174,6 +186,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
             <button
             onClick={() => {
               setPencilButtonAdded(false)
+              setPencilPrice(0)
               setPencil()
             }}
             className='edit-button fs-6'>Remove</button>
@@ -240,7 +253,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
         </div>
       </div>
     </div>}
-    <div className='iphone-footer'>
+    <div className='iphone-footer mb-5'>
       <h1><strong>₱{totalPrice.toLocaleString()}.00</strong></h1>
       <div className='item-ships'>
         <i class="far fa-shipping-fast"></i>
