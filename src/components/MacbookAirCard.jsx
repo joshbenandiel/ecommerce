@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../styles/MacbookAirCard.css'
@@ -25,17 +25,18 @@ const MacbookAirCard = ({products, macbookProSelectedProduct}) => {
       <img src={image} alt="" />
       <p>{color}</p>
       <div className='d-flex mb-2'>
-        {buttonColor.map(button => {
+        {buttonColor.map((button,index) => {
           return <button
+          key={index}
           onClick={()=> handleButtonColor(button)}
-          className={color == button.color ? 'button-color-air-active' : 'button-color-air'}
+          className={color === button.color ? 'button-color-air-active' : 'button-color-air'}
           ><img src={button.colorImg} alt="" />
           </button>
         })}
       </div>
       <h5 className='fw-bold w-75'>{products.header}</h5>
-      {products.description && products.description.map(item => {
-          return <p className='m-1'>{item}</p>
+      {products.description && products.description.map((item,index) => {
+          return <p key={index} className='m-1'>{item}</p>
       })}
       <Link to={`/product/buy/${products.tag}/${products.id}`}>
         <Button
@@ -43,7 +44,7 @@ const MacbookAirCard = ({products, macbookProSelectedProduct}) => {
         variant='contained' fullWidth>Select</Button>
       </Link>
       <div className='item-ships d-flex mt-5'>
-        <i class="far fa-shipping-fast"></i>
+        <i className="far fa-shipping-fast"></i>
         <div className='item-ships-desc'>
           <p className='ms-1 m-0'><strong>Ships:</strong></p>
           <p className='ms-1 m-0'>3-4w business days</p>

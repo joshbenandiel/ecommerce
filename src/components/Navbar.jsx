@@ -15,19 +15,9 @@ const Navbar = ({searchFilter,searchTerm}) => {
   const [activeLogin, setActiveLogin] = useState(false)
   const [activeCart, setActiveCart] = useState(false);
   const productsInCart = useSelector((state) => state.product.cart);
-
-
   const productsData = useSelector((state) => state.product.products);
-
-
-
   const [searchEmpty , setSearchEmpty] = useState(false)
-
   const [filteredResult, setFilteredResult] = useState([])
-
-  const [searchIsClick , setSearchIsClick] = useState(false)
-
-
   const searchIsVisible = useSelector((state) => { 
     return (
       state.search.searchIsVisible
@@ -36,38 +26,30 @@ const Navbar = ({searchFilter,searchTerm}) => {
   
 
   const dispatch = useDispatch();
-
-
-  const selectedUrl = useSelector(state => {
-    return state.selectedProduct.selectedPhone
-  })
   
   useEffect(() => {
       const items = []
       if(productsData) {
-      productsData.map(item => {
+      productsData.forEach(item => {
         if(item.searchTag){
-          if (item.searchTag.toLowerCase().includes(searchTerm.toLowerCase()) || item.searchTag.toLowerCase().includes(searchTerm.toLowerCase())){
+          if (item.searchTag.toLowerCase().includes(searchTerm.toLowerCase())){
             items.push(item)
             setSearchEmpty(false);
-          } else if (items.length == 0){
+          } else if (items.length === 0){
             setSearchEmpty(true);
+          } else {
+            return null;
           }
+        } else {
+          return null;
         }
       })
+      } else {
+        return null;
       }
       setFilteredResult(items)
       dispatch(setSearchisClose(true));
-  }, [searchTerm])
-
-
-  const selectedProduct = useSelector(state => {
-    return state.productItem.productItem;
-
-    
-  })
-  
-  
+  }, [searchTerm, dispatch, productsData])
 
   return (
       <div className="navbar-wrapper">
@@ -96,13 +78,13 @@ const Navbar = ({searchFilter,searchTerm}) => {
                 >
                   <div
                   className="search-btn">
-                    <i class="far fa-search"></i>
+                    <i className="far fa-search"></i>
                   </div>
                 </Link>
                 
                 {searchIsVisible && 
                   <div>
-                    {searchTerm == ""  ? 
+                    {searchTerm === ""  ? 
                       null
                     : 
                     <div className="search-item mt-2">
@@ -155,7 +137,7 @@ const Navbar = ({searchFilter,searchTerm}) => {
                   }}
                   type="button">
                   <h5 className="account">
-                    My Account <i class="fas fa-chevron-down"></i>
+                    My Account <i className="fas fa-chevron-down"></i>
                   </h5>
                 </button>
               </div>
@@ -163,13 +145,11 @@ const Navbar = ({searchFilter,searchTerm}) => {
                 <div className="cart-wrap position-relative">
                   <i className="cart-nav far fa-shopping-cart"></i>
                   <div
-                    className=''
                     onClick={() => {
                         setActiveCart(!activeCart)
                         if (activeLogin) {
                           setActiveLogin(!activeLogin);
                         }
-
                     }} 
                     className="cart-count">
                     <h5>{productsInCart.length}</h5>

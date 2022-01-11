@@ -1,4 +1,4 @@
-import React from "react"
+
 import macbookSpaceGray from '../../images/Macbook/macbook-air-space-gray-select-201810.jpg'
 import macbookGold from '../../images/Macbook/macbook-air-gold-select-201810.jpg'
 import macbookSilver from '../../images/Macbook/macbook-air-silver-select-201810.jpg'
@@ -8,7 +8,6 @@ import macbookProSpace14 from '../../images/MacbookPro/mbp14-spacegray-14.jpg'
 import macbookProSilver14 from '../../images/MacbookPro/mbp14-silver-14.jpg'
 import macbookProSpace16 from '../../images/MacbookPro/mbp16-spacegray-16.jpg'
 import macbookProSilver16 from '../../images/MacbookPro/mbp16-silver-select-16.jpg'
-import iphone11Family from '../../images/Iphone/iphone11-select-2019-family.jpg'
 import iphone11Purple from '../../images/Iphone/iphone11-purple-select-2019.png'
 import iphone11Green from '../../images/Iphone/iphone11-green-select-2019.png'
 import iphone11Red from '../../images/Iphone/iphone11-red-select-2019.png'
@@ -125,7 +124,6 @@ const recomendations = [
     alt: "laptop",
     name: "Laptop",
     series: "Macbook Air",
-    isRecommended: true,
     quantity: 10,
     price: 54990,
     isRecommended: 'laptop',
@@ -405,7 +403,6 @@ const recomendations = [
     series: "Iphone 11",
     quantity: 10,
     tag: 'iphone-11',
-    price: 31990,
     searchUrl: '6.1-inch-display-64gb-red',
     descriptionHeader: 'Buy Iphone 11',
     color: 'red',
@@ -495,7 +492,6 @@ const recomendations = [
     img: iphone11Yellow,
     series: "Iphone 11",
     quantity: 10,
-    price: 31990,
     tag: 'iphone-11',
     searchUrl: '6.1-inch-display-64gb-yellow',
     descriptionHeader: 'Buy Iphone 11',
@@ -507,7 +503,6 @@ const recomendations = [
     id: 22,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12BlackMini,
     searchTag: 'Iphone',
     series: "Iphone 12",
@@ -524,7 +519,6 @@ const recomendations = [
     id: 23,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12BlackMini,
     series: "Iphone 12",
     quantity: 10,
@@ -540,7 +534,6 @@ const recomendations = [
     id: 24,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12BlackMini,
     series: "Iphone 12",
     quantity: 10,
@@ -556,7 +549,6 @@ const recomendations = [
     id: 25,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12BlueMini,
     series: "Iphone 12",
     quantity: 10,
@@ -572,7 +564,6 @@ const recomendations = [
     id: 26,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12BlueMini,
     series: "Iphone 12",
     quantity: 10,
@@ -589,7 +580,6 @@ const recomendations = [
     id: 27,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12BlueMini,
     series: "Iphone 12",
     quantity: 10,
@@ -605,7 +595,6 @@ const recomendations = [
     id: 28,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12GreenMini,
     series: "Iphone 12",
     quantity: 10,
@@ -621,7 +610,6 @@ const recomendations = [
     id: 29,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12GreenMini,
     series: "Iphone 12",
     quantity: 10,
@@ -637,7 +625,6 @@ const recomendations = [
     id: 30,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12GreenMini,
     series: "Iphone 12",
     quantity: 10,
@@ -653,7 +640,6 @@ const recomendations = [
     id: 31,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12PurpleMini,
     series: "Iphone 12",
     quantity: 10,
@@ -669,7 +655,6 @@ const recomendations = [
     id: 32,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12PurpleMini,
     series: "Iphone 12",
     quantity: 10,
@@ -685,7 +670,6 @@ const recomendations = [
     id: 33,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12PurpleMini,
     series: "Iphone 12",
     quantity: 10,
@@ -701,7 +685,6 @@ const recomendations = [
     id: 34,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12WhiteMini,
     series: "Iphone 12",
     quantity: 10,
@@ -717,7 +700,6 @@ const recomendations = [
     id: 35,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12WhiteMini,
     series: "Iphone 12",
     quantity: 10,
@@ -733,7 +715,6 @@ const recomendations = [
     id: 36,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12WhiteMini,
     series: "Iphone 12",
     quantity: 10,
@@ -749,7 +730,6 @@ const recomendations = [
     id: 37,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12RedMini,
     series: "Iphone 12",
     quantity: 10,
@@ -765,7 +745,6 @@ const recomendations = [
     id: 38,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12RedMini,
     series: "Iphone 12",
     quantity: 10,
@@ -781,7 +760,6 @@ const recomendations = [
     id: 39,
     alt: "mobile",
     name: "Mobile",
-    price: 31990,
     img: iphone12RedMini,
     series: "Iphone 12",
     quantity: 10,
@@ -1061,7 +1039,7 @@ export const getData = {
   recommendData: () => {
     const list = [];
     recomendations.forEach((item) => {
-      if (item.isRecommended == 'recommendation') {
+      if (item.isRecommended === 'recommendation') {
         list.push({
           id: item.id,
           image: item.img,
@@ -1078,7 +1056,7 @@ export const getData = {
   laptopData: () => {
     const list = [];
     recomendations.forEach((item) => {
-      if (item.isRecommended == 'laptop') {
+      if (item.isRecommended === 'laptop') {
         list.push({
           id: item.id,
           image: item.img,

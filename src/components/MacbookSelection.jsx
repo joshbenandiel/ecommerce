@@ -1,8 +1,5 @@
 import React , {useState, useEffect} from 'react'
-import Button from '@mui/material/Button';
-import { macbookPhotos } from './data/RecomendationsData';
-import { Link } from 'react-router-dom';
-import { useSelector , useDispatch} from 'react-redux'
+import { useSelector} from 'react-redux'
 import { useParams } from 'react-router-dom';
 import MacbookAirCard from './MacbookAirCard';
 
@@ -19,12 +16,14 @@ const MacbookSelection = ({macbookProSelectedProduct}) => {
   useEffect(() => {
    const items = []
    products.map(item => {
-     if(item.tag == params.tag){
-       items.push(item)
+     if(item.tag === params.tag){
+       return items.push(item)
+     } else {
+       return null;
      }
    })
    setAvailProducts(items)
-  }, [])
+  }, [products, params])
 
   return (
     <div className='d-flex justify-content-center align-items-center flex-column'>

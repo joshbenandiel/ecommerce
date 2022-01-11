@@ -1,5 +1,4 @@
 import React , { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import "../styles/Promo.css"
 import PromoCard from "./PromoCard"
 import { getData} from './data/RecomendationsData'
@@ -32,6 +31,8 @@ const Promo = () => {
       case 'Tablet': {
         return setData(getData.tabletData())
       }
+      default:
+        return null;
     }
 
   }, [menuIsClick])
@@ -47,7 +48,7 @@ const Promo = () => {
                   key={index}
                   onClick={()=> setMenuIsClick(item.item)}
                   style={{listStyle: 'none'}}
-                  className={`${menuIsClick == item.item ? 'active-menu-items' : 'menu-items'} text-white p-4`} >
+                  className={`${menuIsClick === item.item ? 'active-menu-items' : 'menu-items'} text-white p-4`} >
                   {item.item}
                 </li>
               )
@@ -55,9 +56,11 @@ const Promo = () => {
           </ul>
         </div>
         <div className="d-flex">
-          { data.map(item => {
+          {data.map((item, index) => {
             return (
-              <div className='d-flex m-4'> 
+              <div 
+              key={index}
+              className='d-flex m-4'> 
                 <PromoCard
                 selectedItem={item}
                 />    

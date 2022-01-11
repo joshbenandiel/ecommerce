@@ -1,4 +1,4 @@
-import React , { useEffect, useState} from 'react'
+import React , { useEffect, useState , useRef} from 'react'
 import darkLavender from '../images/Tablets/MM6L3_SW_COLOR.jpg'
 import electricOrange from '../images/Tablets/MM6J3_SW_COLOR.jpg'
 import darkCherry from '../images/Tablets/MM6K3_SW_COLOR.jpg'
@@ -47,21 +47,27 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
 
   const price = wifiPrice + pencilPrice + folioPrice
 
-  useEffect(() => {
+  const temp = useRef()
 
-    if(buttonCloseWifi){
-      setTotalPrice(price)
-    }
-  }, [price])
-
-  useEffect(() => {
-    ipadConnectivity.forEach(item => {
-      if(item.id == 2){
+  const handleWifiPrice = () => {
+    ipadConnectivity.forEach((item) => {
+      if(item.id === 2){
         item.price = getPrice + 9000
       } else {
         item.price = getPrice
       }
     })
+  }
+
+  temp.current = handleWifiPrice
+  useEffect(() => {
+    if(price){
+      setTotalPrice(price)
+    }
+  }, [price])
+
+  useEffect(() => {
+    temp.current()
     
   }, [buttonCloseStorage])
 
@@ -90,7 +96,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           <div className='img-ipad-sticky'>
             <img src={selectedVariant.img} alt='ipad'/>
             <div className='mt-5 text-center'>
-              <i class="far fa-shipping-fast"></i>
+              <i className="far fa-shipping-fast"></i>
               <p>Free Delivery</p>
             </div>
           </div>
@@ -128,8 +134,9 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         {buttonCloseStorage === false && <>
           <p className='fw-bolder'>Storage</p>
           <div className='d-flex'>
-          {ipadMiniStorage.map(item => {
+          {ipadMiniStorage.map((item, index) => {
             return <button 
+            key={index}
             onClick={()=>{
               handleStorageSection(item)
             }}
@@ -152,8 +159,9 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         <>
         <p className='fw-bolder'>Connectivity</p>
         <div className='d-flex'>
-          {ipadConnectivity.map(itemWifi => {
+          {ipadConnectivity.map((itemWifi,index) => {
             return <button 
+            key={index}
             onClick={()=>{
               handleWifiSection(itemWifi)
             }}
@@ -230,8 +238,9 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         <p className='fw-bold'>₱{folioData.price.toLocaleString()}</p>
         <p>Color - {smartFolioButton}</p>
         <div className='d-flex'>  
-        {smartFolioData.map(itemButton => {
+        {smartFolioData.map((itemButton, index) => {
           return <button
+          key={index}
           onClick={() => {
             setSmartFolioButton(itemButton.color)
             setFolioImg(itemButton)
@@ -273,7 +282,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
       <div className='iphone-footer'>
         <h1><strong>₱{totalPrice.toLocaleString()}</strong></h1>
         <div className='item-ships d-flex mt-5'>
-          <i class="far fa-shipping-fast"></i>
+          <i className="far fa-shipping-fast"></i>
           <div className='item-ships-desc'>
             <p className='ms-1 m-0'><strong>Ships:</strong></p>
             <p className='ms-1 m-0'>3-4w business days</p>

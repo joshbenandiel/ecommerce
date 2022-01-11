@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react'
 import '../styles/TabletSelection.css'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
-import Button from '@mui/material/Button';
 import IpadAir from './IpadAir'
 import Ipad from './Ipad'
 import SmartKeyboard from './SmartKeyBoard'
@@ -24,19 +23,21 @@ const TabletSelection = () => {
   useEffect(() => {
     const items = []
     products.map(item => {
-      if(params.tag == item.tag)
-      items.push(item)
+      if(params.tag === item.tag){
+        return items.push(item)
+      } else {
+        return null;
+      }
     })
     setSelectedProduct(items)
     setSelectedVariant(items[0])
-    console.log(selectedVariant)
 
-  },[params])
+  },[params, products, selectedVariant])
 
 
   return (
     <>
-    {params.tag == 'ipad-mini' && 
+    {params.tag === 'ipad-mini' && 
       <>
       <Ipad   
         selectedVariant={selectedVariant} 
@@ -45,7 +46,7 @@ const TabletSelection = () => {
         params={params}    
       />
     </>}
-    {params.tag == 'ipad' && 
+    {params.tag === 'ipad' && 
       <>
         <SmartKeyboard
         selectedVariant={selectedVariant} 
@@ -54,7 +55,7 @@ const TabletSelection = () => {
         params={params}    
       />
     </>}
-    {params.tag == 'ipad-air' && 
+    {params.tag === 'ipad-air' && 
       <>
         <IpadAir
         selectedVariant={selectedVariant} 
@@ -63,7 +64,7 @@ const TabletSelection = () => {
         params={params}    
       />
     </>}
-    {params.tag == 'ipad-pro' && 
+    {params.tag === 'ipad-pro' && 
       <>
         <IpadPro
         selectedVariant={selectedVariant} 

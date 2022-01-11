@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import spacegray from '../images/Macbook/macbook-air-space-gray-select-201810.jpg'
+
 
 const initialState = {
   selectedItem: 'Space Gray',

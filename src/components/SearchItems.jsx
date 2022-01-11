@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { setHighestPrice , setLowestPrice } from '../redux/price';
 import { Link } from 'react-router-dom';
 
-const SearchItems = ({searchTerm, value}) => {
+const SearchItems = ({searchTerm}) => {
 
   const [gridIsClick, setGridIsClick] = useState(true)
   const dispatch = useDispatch()
@@ -22,13 +22,15 @@ const SearchItems = ({searchTerm, value}) => {
   
   useEffect(() => {
     const list = []
-    const result = products.map(item => {
-      if(item.searchTag && item.searchTag.toLowerCase() == selectedCheckbox){
-        list.push(item)
+    products.map(item => {
+      if(item.searchTag && item.searchTag.toLowerCase() === selectedCheckbox){
+        return list.push(item)
+      } else {
+        return null;
       }
     })
     setItemSearch(list)
-  }, [selectedCheckbox])
+  }, [selectedCheckbox, products])
   
   useEffect(() => {
     let biggestNumber = 0
@@ -42,7 +44,7 @@ const SearchItems = ({searchTerm, value}) => {
     let price = itemSearch.map(item => item.price)
     const lowestNumber = Math.min(...price)
     dispatch(setLowestPrice(lowestNumber))
-  }, [itemSearch])
+  }, [itemSearch, dispatch])
 
 
 
@@ -50,11 +52,13 @@ const SearchItems = ({searchTerm, value}) => {
     let searchList = []
     products.map(item => {
       if(item.searchTag && item.searchTag.toLowerCase().includes(searchTerm.toLowerCase())) {
-        searchList.push(item)
+        return searchList.push(item)
+      } else{
+        return null;
       }
     })
     setItemSearch(searchList)
-  }, [searchTerm])
+  }, [searchTerm, products])
 
   
   return (
@@ -68,19 +72,19 @@ const SearchItems = ({searchTerm, value}) => {
             <p className='m-0'>View</p>
             <i
             onClick={() => setGridIsClick(true)} 
-            class={`${gridIsClick ? 'search-grid-active' : 'search-grid'} fas fa-th m-1`}></i>
+            className={`${gridIsClick ? 'search-grid-active' : 'search-grid'} fas fa-th m-1`}></i>
             <i
             onClick={() => setGridIsClick(false)}  
-            class={`${gridIsClick ? 'search-grid' : 'search-grid-active'} fas fa-list m-1`}></i>
+            className={`${gridIsClick ? 'search-grid' : 'search-grid-active'} fas fa-list m-1`}></i>
           </div>
         </div>
         <div className='container-fluid px-0'>
           <div className="row m-0">
-            {itemSearch.length > 0 && itemSearch.map(item => {
+            {itemSearch.length > 0 && itemSearch.map((item, index) => {
               return (
-                <div className={gridIsClick ? 'col-sm-6 col-md-3 item-search-card' : 'item-search-card-list'}>
+                <div key={index} className={gridIsClick ? 'col-sm-6 col-md-3 item-search-card' : 'item-search-card-list'}>
                   <img src={item.img} alt="item-searched"/>
-                  <div className={gridIsClick == false && 'w-25 m-5'}>
+                  <div className={gridIsClick ? null : 'w-25 m-5'}>
                     <p className='fw-bold text-start fs-5 w-100 mt-4'>{item.series}</p>
                     <p className='fw-bold text-start fs-5 w-100'>₱{item.price.toLocaleString()}</p>
                   </div>

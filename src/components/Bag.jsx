@@ -1,6 +1,6 @@
-import { Button, MenuItem, NativeSelect, Select, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import '../styles/Bag.css'
 import BagCard from './BagCard';
 import { Link } from 'react-router-dom'
@@ -9,7 +9,6 @@ const Bag = () => {
 
   
   const productsInCart = useSelector((state) => state.product.cart);
-  const total = useSelector((state) => state.product.totalPrice)
   
   const [totalPrice, setTotalPrice] = useState([])
   
@@ -24,7 +23,7 @@ const Bag = () => {
 
   return (
     <>
-    {productsInCart.length == 0 ? 
+    {productsInCart.length === 0 ? 
       <div className='d-flex flex-column align-items-center p-5'>
         <h1 className='fw-bold mt-4'>Your bag is empty.</h1>
         <Link to='/'>
@@ -46,6 +45,7 @@ const Bag = () => {
       </div>
       {productsInCart.map((item, index) => {
         return <BagCard
+        key={index}
         item={item}
         index={index}
         />

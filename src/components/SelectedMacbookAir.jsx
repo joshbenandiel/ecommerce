@@ -37,7 +37,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
           <div className='position-sticky top-0'>
             <img className='selected-image'src={displayImage.itemImage} alt="" />
             <div className='mt-5 text-center'>
-                <i class="far fa-shipping-fast"></i>
+                <i className="far fa-shipping-fast"></i>
                 <p>Free Delivery</p>
             </div>
           </div>
@@ -54,7 +54,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
             {macbookMemory.map(itemMemory => {
               return <button
               onClick={() => handleMemory(itemMemory)}
-              className={`${memory == itemMemory.memory ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
+              className={`${memory === itemMemory.memory ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
               ><p className='fw-bold m-0'>{itemMemory.memory}</p>
                {itemMemory.price > 0 && <p className='fw-bold m-0'>₱{itemMemory.price.toLocaleString()}</p>}
               </button>
@@ -65,7 +65,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
             {macbookStorage.map(itemStorage => {
               return <button
               onClick={() => handleStorage(itemStorage)}
-              className={`${storage == itemStorage.storage ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
+              className={`${storage === itemStorage.storage ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
               ><p className='fw-bold m-0'>{itemStorage.storage}</p>
               {itemStorage.price > 0 && <p className='fw-bold m-0'>₱{itemStorage.price.toLocaleString()}</p>}
               </button>
@@ -77,7 +77,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
     <div className='macbook-footer position-fixed bottom-0'>
       <div className='footer-wrapper-selected'>
         <div className='item-ships d-flex mt-2 mb-2'>
-          <i class="far fa-shipping-fast"></i>
+          <i className="far fa-shipping-fast"></i>
           <div className='item-ships-desc'>
             <p className='ms-1 m-0'><strong>Ships:</strong></p>
             <p className='ms-1 m-0'>3-4w business days</p>

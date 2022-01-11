@@ -42,7 +42,7 @@ const ProductCard = ({item}) => {
         </Link>
       </div>
       <div className='item-ships'>
-        <i class="far fa-shipping-fast"></i>
+        <i className="far fa-shipping-fast"></i>
         <div className='item-ships-desc'>
           <p><strong>Ships:</strong></p>
           <p>1-3 business days</p>

@@ -1,23 +1,31 @@
-import React, { useState } from 'react'
-import { getCount, getTotal, removeToCart, setQuantityItemCart } from '../redux/product';
-import { Button, MenuItem, NativeSelect, Select, TextField } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
+import { removeToCart, setQuantityItemCart } from '../redux/product';
+import { MenuItem,Select, TextField } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
-const BagCard = ({item , index, setTotalPrice}) => {
+const BagCard = ({item , index}) => {
 
   const dispatch = useDispatch()
-  const [value, setValue] = useState(1)
+
+  const [value, setValue] = useState(item.count)
+  const temp = useRef()
 
 
-  useEffect(() => {
+  
+  const handleQuantity = () => {
     dispatch(setQuantityItemCart({id: item.id, quantity: parseInt(value)}))
+  }
+  temp.current = handleQuantity;
+  useEffect(() => {
+    temp.current();
+    
   }, [value])
+
   return (
     <div 
     key={index}
     className='bag-card-wrapper'>
-      <img className='bag-card-image' src={item.img} alt='item-bag-image'/>
+      <img className='bag-card-image' src={item.img} alt='item-bag'/>
       <div className="container">
         <div className="row card-details-wrapper">
           <div className="col-7">
@@ -29,7 +37,7 @@ const BagCard = ({item , index, setTotalPrice}) => {
             {item.keyboard && <p className='m-0'>*{item.keyboard} - {item.keyboardColor}</p>}
             {item.smartKey && <p className='m-0'>*{item.smartKey}</p>}
           </div>
-          <div className="col-1 d-flex align-items-center">
+          <div className="col-2 d-flex align-items-center">
           {value >= 10 ? 
             <TextField
               className='input-bag'
@@ -50,13 +58,13 @@ const BagCard = ({item , index, setTotalPrice}) => {
               value={value}
               onChange={(e) => setValue(e.target.value)}
             >
-              {quantity.map(count => {
-              return <MenuItem value={count.value}>{count.value}{count.add}</MenuItem>
+              {quantity.map((count, index) => {
+              return <MenuItem key={index} value={count.value}>{count.value}{count.add}</MenuItem>
               })}      
             </Select>
             }
           </div>
-          <div className="col-4 d-flex flex-column align-items-center justify-content-center">
+          <div className="col-3 d-flex flex-column align-items-center justify-content-center">
               <h3 className='fw-bold'>
               ₱ {item.totalPrice.toLocaleString()}
               </h3>
@@ -67,7 +75,7 @@ const BagCard = ({item , index, setTotalPrice}) => {
         </div>
         <div className="row mt-2">
           <div className="col-12 d-flex align-items-center fw-bold">
-            <i class="fab fa-usps"></i>
+            <i className="fab fa-usps"></i>
             <p className='m-0 ms-2'>Ships in 1-3 business days.</p>
           </div>
         </div>

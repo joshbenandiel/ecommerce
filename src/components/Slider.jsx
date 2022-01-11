@@ -8,7 +8,7 @@ const Slider = () => {
 
   useEffect(() => {
       const intervalID = setTimeout(() =>  {
-        if(activeSlider == 3) {
+        if(activeSlider === 3) {
           setActiveSlider(1)
         } else {
           setActiveSlider(activeSlider + 1)
@@ -25,10 +25,12 @@ const Slider = () => {
           return (
             <div key={index}>
               <div className="slider-container d-flex justify-content-center align-items-center">
-                <img className="img-size"src={item.img} />
+                <img className="img-size"src={item.img} alt='slider' />
               </div>
             </div>  
           )
+        } else {
+          return null;
         }
       })}
 

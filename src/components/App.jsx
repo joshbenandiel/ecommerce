@@ -10,7 +10,6 @@ import {
 } from "react-router-dom";
 import Navbar from './Navbar'
 import Footer from './Footer'
-import { useSelector} from 'react-redux'
 import SelectedProduct from './SelectedProduct'
 import IphoneSelection from './IphoneSelection'
 import SelectedMacbookAir from './SelectedMacbookAir'
@@ -27,7 +26,6 @@ function App() {
     setSearchTerm(e.target.value);
   }
 
-  const checkState = useSelector((state) => { return state})
 
 
 

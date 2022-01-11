@@ -1,6 +1,5 @@
 import React from 'react'
 import '../styles/PromoCard.css'
-import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
 const PromoCard = ({selectedItem}) => {
@@ -15,7 +14,7 @@ const PromoCard = ({selectedItem}) => {
         <h4 className='promo-item-name mt-4'>₱{selectedItem.price.toLocaleString()}</h4>
         <Link to={`/product/buy/${selectedItem.tag}`}>
           <div className='promo-card-button'>
-          <i class="far fa-eye"></i>
+          <i className="far fa-eye"></i>
           </div>
         </Link>
       </div>

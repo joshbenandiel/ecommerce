@@ -15,7 +15,7 @@ const Cart = ({activeCart}) => {
     {activeCart && 
       <div className='cart-container'>
         <div className='cart-item-wrapper'>
-          {productsInCart.length == 0 ? <p>Your bag is empty</p>    
+          {productsInCart.length === 0 ? <p>Your bag is empty</p>    
           : 
           <>
           {productsInCart.map((item, index) => {
@@ -23,7 +23,7 @@ const Cart = ({activeCart}) => {
             <div
             key={index}
             className='d-flex align-items-center mb-3'>
-              <img className='cart-image' src={item.img} alt='cart-image' />
+              <img className='cart-image' src={item.img} alt='cart' />
               <div className='d-flex flex-column'>
                 <p className='m-0'>{item.name} {item.color} {item.size}</p>
                 <p className='m-0'>₱{item.price.toLocaleString()}</p>
@@ -35,11 +35,11 @@ const Cart = ({activeCart}) => {
         </div>
         {productsInCart.length > 0 && <Button
         className='mt-4' 
-        variant='contained' fullWidth='true'>Check Out</Button>}
+        variant='contained' fullWidth>Check Out</Button>}
         <Link className='bag-button w-100' to='/product/shop/bag'>
           <Button
           className='mt-2' 
-          variant='outlined' fullWidth='true'>View Bag</Button>
+          variant='outlined' fullWidth>View Bag</Button>
         </Link>
       </div>
     }

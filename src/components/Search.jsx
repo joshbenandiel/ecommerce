@@ -1,11 +1,8 @@
 import React , { useState } from 'react'
-import SearchNavbar from './SearchNavbar'
-import Footer from './Footer'
 import SearchCategories from './SearchCategories'
 import SearchItems from './SearchItems'
 import '../styles/Search.css'
-import Navbar from './Navbar'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
 

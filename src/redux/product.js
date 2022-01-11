@@ -1,7 +1,5 @@
-import { createSlice, current } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import products from '../components/data/RecomendationsData'
-import { josLog } from '.././utils/log'
-import price from './price'
 
 const initialState = {
   products,
@@ -17,15 +15,16 @@ export const productSlice = createSlice({
   reducers: {
     addCart: (state, payload) => {
       const cartList = state.cart
-      console.log(current(cartList))
       const item = payload.payload
       state.totalPrice.push(payload.payload.price)
-      const itemInCart = state.cart.find(cart => cart.id == item.id)
+      const itemInCart = state.cart.find(cart => cart.id === item.id)
 
       if(itemInCart){
         cartList.map(cart => {
-          if(cart.id == item.id){
-            cart.count += 1
+          if(cart.id === item.id){
+            return cart.count += 1
+          } else {
+            return null;
           }
         })
       } else {
@@ -55,7 +54,7 @@ export const productSlice = createSlice({
     },
     setQuantityItemCart: (state, payload) => {
       const cart = state.cart.map(item => {
-        if(item.id == payload.payload.id){
+        if(item.id === payload.payload.id){
           return {
             ...item,
             count: payload.payload.quantity,

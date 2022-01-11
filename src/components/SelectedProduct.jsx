@@ -28,7 +28,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
   const dispatch = useDispatch()
 
   const totalPrice = selectedProductMacbookPro.price + memoryPrice + storagePrice
-  console.log(totalPrice)
+ 
   return (
     <div className='position-relative'>
     <div className="container">
@@ -37,7 +37,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
           <div className='position-sticky top-0'>
             <img className='selected-image'src={displayImage.image} alt="" />
             <div className='mt-5 text-center'>
-                <i class="far fa-shipping-fast"></i>
+                <i className="far fa-shipping-fast"></i>
                 <p>Free Delivery</p>
             </div>
           </div>
@@ -45,30 +45,36 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
         <div className="p-5 col-6">
           <div className='header-selected-item'>
             <h2 className='fw-bolder text-justify w-75'>Customize your {displayImage.inch} {selectedProductMacbookPro.series} - {displayImage.color}</h2>
-            {selectedProductMacbookPro.description && selectedProductMacbookPro.description.map(item => {
-              return <p className='m-2'>{item}</p>
+            {selectedProductMacbookPro.description && selectedProductMacbookPro.description.map((item, index) => {
+              return <p key={index} className='m-2'>{item}</p>
             })}
           </div>
           <div className='memory-section-selected-item'>
             <p className='fw-bold p-2'>Memory</p>
-            {macbookMemory.map(itemMemory => {
-              return <button
-              onClick={() => handleMemory(itemMemory)}
-              className={`${memory == itemMemory.memory ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
-              ><p className='fw-bold m-0'>{itemMemory.memory}</p>
-               {itemMemory.price > 0 && <p className='fw-bold m-0'>₱{itemMemory.price.toLocaleString()}</p>}
-              </button>
+            {macbookMemory.map((itemMemory, index) => {
+              return (
+                <button
+                key={index}
+                onClick={() => handleMemory(itemMemory)}
+                className={`${memory === itemMemory.memory ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
+                ><p className='fw-bold m-0'>{itemMemory.memory}</p>
+                {itemMemory.price > 0 && <p className='fw-bold m-0'>₱{itemMemory.price.toLocaleString()}</p>}
+                </button>
+              )
             })}
           </div>
           <div className='storage-macbook-selection d-flex flex-column'>
           <p className='fw-bold p-2'>Storage</p>
-            {macbookStorage.map(itemStorage => {
-              return <button
-              onClick={() => handleStorage(itemStorage)}
-              className={`${storage == itemStorage.storage ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
-              ><p className='fw-bold m-0'>{itemStorage.storage}</p>
-              {itemStorage.price > 0 && <p className='fw-bold m-0'>₱{itemStorage.price.toLocaleString()}</p>}
-              </button>
+            {macbookStorage.map((itemStorage, index) => {
+              return (
+                <button
+                key={index}
+                onClick={() => handleStorage(itemStorage)}
+                className={`${storage === itemStorage.storage ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
+                ><p className='fw-bold m-0'>{itemStorage.storage}</p>
+                {itemStorage.price > 0 && <p className='fw-bold m-0'>₱{itemStorage.price.toLocaleString()}</p>}
+                </button>
+              )
             })}
           </div>
         </div>
@@ -77,7 +83,7 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
     <div className='macbook-footer position-fixed bottom-0'>
       <div className='footer-wrapper-selected'>
         <div className='item-ships mt-2 mb-2'>
-          <i class="far fa-shipping-fast"></i>
+          <i className="far fa-shipping-fast"></i>
           <div className='item-ships-desc'>
             <p className='m-0'><strong>Ships:</strong></p>
             <p className='m-0'>1-3 business days</p>

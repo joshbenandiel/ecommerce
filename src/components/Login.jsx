@@ -1,9 +1,9 @@
-import React , { useRef , useEffect} from 'react'
+import React from 'react'
 import "../styles/Login.css"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const Login = ({ activeLogin, toggleActiveLogin }) => {
+const Login = ({ activeLogin }) => {
 
   return (
     <>
@@ -16,8 +16,8 @@ const Login = ({ activeLogin, toggleActiveLogin }) => {
         <TextField fullWidth id="filled-basic" label="Password" variant="filled"  margin="normal"/>
         <Button fullWidth variant="contained">Login</Button>
         <div className="footer-container">
-          <p className="footer">New Costumer?<a href="">Create your account</a></p>
-          <p className="footer">Lost Password?<a href="">Recover password</a></p>
+          <p className="footer">New Costumer?<a href="/">Create your account</a></p>
+          <p className="footer">Lost Password?<a href="/">Recover password</a></p>
         </div>
       </div>
     }

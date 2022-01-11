@@ -27,7 +27,7 @@ const SearchNavbar = ({searchTerm}) => {
   const getCartTotal = () => {
     let finalCount = 0;
 
-    productsInCart.map((item) => {
+    productsInCart.forEach((item) => {
       finalCount = finalCount + item.count
     });
 
@@ -46,12 +46,14 @@ const SearchNavbar = ({searchTerm}) => {
         if (item.series.toLowerCase().includes(searchTermNavbar.toLowerCase()) || item.name.toLowerCase().includes(searchTermNavbar.toLowerCase())){
           items.push(item)
           setSearchEmpty(false);
-        } else if (items.length == 0){
+        } else if (items.length === 0){
           setSearchEmpty(true);
+        } else {
+          return null;
         }
       })
       setFilteredResult(items)
-  }, [searchTermNavbar])
+  }, [searchTermNavbar, productsData])
   return (
     <div className="navbar-wrapper">
       <div className="container">
@@ -67,10 +69,10 @@ const SearchNavbar = ({searchTerm}) => {
               <Link to="/search">
                 <div
                 className="search-btn">
-                  <i class="far fa-search"></i>
+                  <i className="far fa-search"></i>
                 </div>
               </Link>
-              {searchTermNavbar == ""  ? 
+              {searchTermNavbar === ""  ? 
                 null
                : 
               <div className="search-item mt-2">
@@ -112,7 +114,7 @@ const SearchNavbar = ({searchTerm}) => {
                 }}
                 type="button">
                 <h5 className="account">
-                  My Account <i class="fas fa-chevron-down"></i>
+                  My Account <i className="fas fa-chevron-down"></i>
                 </h5>
               </button>
             </div>
