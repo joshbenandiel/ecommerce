@@ -7,7 +7,7 @@ import { addCart } from '../redux/product'
 
 
 const SelectedProduct = ({selectedProductMacbookPro}) => {
-
+  
   const [memory, setMemory] = useState('8GB unified memory')
   const [storage, setStorage] = useState('256GB SSD storage')
   const [memoryPrice, setMemoryPrice] = useState(0)
@@ -25,6 +25,8 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
     setStoragePrice(item.price)
   }
 
+  
+
   const dispatch = useDispatch()
 
   const totalPrice = selectedProductMacbookPro.price + memoryPrice + storagePrice
@@ -38,15 +40,19 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
             <img className='selected-image'src={displayImage.image} alt="" />
             <div className='mt-5 text-center'>
                 <i className="far fa-shipping-fast"></i>
-                <p>Free Delivery</p>
+                <p>Free Delivery</p>      
             </div>
           </div>
         </div>
         <div className="p-5 col-6">
           <div className='header-selected-item'>
             <h2 className='fw-bolder text-justify w-75'>Customize your {displayImage.inch} {selectedProductMacbookPro.series} - {displayImage.color}</h2>
-            {selectedProductMacbookPro.description && selectedProductMacbookPro.description.map((item, index) => {
-              return <p key={index} className='m-2'>{item}</p>
+            {selectedProductMacbookPro.description && selectedProductMacbookPro.description.map((item,idx) => {
+              return (
+                <div key={idx}>
+                  <p className='m-2'>{item}</p>
+                </div>
+              )
             })}
           </div>
           <div className='memory-section-selected-item'>

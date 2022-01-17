@@ -28,7 +28,6 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
   }
 
   const totalPrice = selectedProductMacbookPro.price + memoryPrice + storagePrice
-  console.log(totalPrice)
   return (
     <div className='position-relative'>
     <div className="container">
@@ -45,14 +44,15 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
         <div className="p-5 col-6">
           <div className='header-selected-item'>
             <h2 className='fw-bolder text-justify w-75'>Customize your {selectedProductMacbookPro.series} - {displayImage.color}</h2>
-            {selectedProductMacbookPro.description && selectedProductMacbookPro.description.map(item => {
-              return <p className='m-2'>{item}</p>
+            {selectedProductMacbookPro.description && selectedProductMacbookPro.description.map((item, index) => {
+              return <p key={index} className='m-2'>{item}</p>
             })}
           </div>
           <div className='memory-section-selected-item'>
             <p className='fw-bold p-2'>Memory</p>
-            {macbookMemory.map(itemMemory => {
+            {macbookMemory.map((itemMemory, index) => {
               return <button
+              key={index}
               onClick={() => handleMemory(itemMemory)}
               className={`${memory === itemMemory.memory ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
               ><p className='fw-bold m-0'>{itemMemory.memory}</p>
@@ -62,8 +62,9 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
           </div>
           <div className='storage-macbook-selection d-flex flex-column'>
           <p className='fw-bold p-2'>Storage</p>
-            {macbookStorage.map(itemStorage => {
+            {macbookStorage.map((itemStorage, index) => {
               return <button
+              key={index}
               onClick={() => handleStorage(itemStorage)}
               className={`${storage === itemStorage.storage ? 'button-macbook-active' : 'button-macbook'} d-flex mb-2`}
               ><p className='fw-bold m-0'>{itemStorage.storage}</p>

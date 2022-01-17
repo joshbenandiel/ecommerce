@@ -63,7 +63,7 @@ const Navbar = ({searchFilter,searchTerm}) => {
             </div>
             </Link>
             </div>
-            <div className="col-6"> 
+            <div className="col-6 d-flex align-items-center"> 
               <div className="search-wrapper">
                 <input
                 onChange={searchFilter}
