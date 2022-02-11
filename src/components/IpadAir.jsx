@@ -31,7 +31,7 @@ const SmartKeyBoard = ({params,selectedProduct}) => {
   const [pencil, setPencil] = useState('')
   const [keyboard, setKeyboard] = useState('')
   const [wifiPrice, setWifiPrice] = useState(0)
-  const [selectedItem, setSelectedItem] = useState(selectedProduct[0])
+  const [selectedItem, setSelectedItem] = useState({})
   const [totalPrice, setTotalPrice] = useState(38990);
 
   const dispatch = useDispatch()
@@ -56,18 +56,22 @@ const SmartKeyBoard = ({params,selectedProduct}) => {
       }
     })
   }, [getPrice])
+
+  useEffect(() => {
+    setSelectedItem(selectedProduct[0])
+  },[selectedProduct])
   
   return (
     <div>
       <div className='ipad-header'>
-        <h1 className='fs-4'>{selectedItem.series}</h1>
+        <h1 className='fs-4'>{selectedItem && selectedItem.series}</h1>
         <h1 className='fs-4'>₱{totalPrice.toLocaleString()}</h1>
       </div>
       <div className="container mt-5">
         <div className="row">
         <div className="img-wrapper-ipad d-flex align-items-center flex-column col-6">
           <div className='img-ipad-sticky'>
-            <img src={selectedItem.img} alt='item'/>
+            <img src={selectedItem && selectedItem.img} alt='item'/>
             <div className='mt-5 text-center'>
               <i className="far fa-shipping-fast"></i>
               <p>Free Delivery</p>
@@ -75,7 +79,7 @@ const SmartKeyBoard = ({params,selectedProduct}) => {
           </div>
         </div>
       <div className="details-ipad-wrapper d-flex align-items-start flex-column col-6">  
-      <h1><strong>{selectedItem.descriptionHeader}</strong></h1>
+      <h1><strong>{selectedItem && selectedItem.descriptionHeader}</strong></h1>
       {buttonClose === false && <div>
         <p className='mt-5'><strong>Finish</strong></p>
         <div className='button-wrapper'>

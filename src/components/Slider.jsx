@@ -1,6 +1,11 @@
 import React, { useState , useEffect } from 'react'
 import sliderData from "./data/SliderData"
 import "../styles/Slider.css"
+import FirstImage from '../images/slider/holiday-snowflake-default-202111.jpg'
+import SecondImage from '../images/slider/holiday-snowflake-creativity-202111-2.jpg'
+import ThirdImage from '../images/slider/holiday-snowflake-entertainment-202111_GEO_PH.jpg'
+
+
 
 const Slider = () => {
 
@@ -13,44 +18,38 @@ const Slider = () => {
         } else {
           setActiveSlider(activeSlider + 1)
         }
-      }, 5000);
+      }, 4000);
       return () => clearInterval(intervalID);
   }, [activeSlider])
 
   return (
     <>
-    <div className="slider-container">
-      {sliderData.map((item, index)=> {
-        if (item.id === activeSlider) {
-          return (
-            <div key={index}>
-              <div className="slider-container d-flex justify-content-center align-items-center">
-                <img className="img-size"src={item.img} alt='slider' />
-              </div>
-            </div>  
-          )
-        } else {
-          return null;
-        }
-      })}
-
-      <div className="dot-wrapper d-flex justify-content-center">
-        {sliderData.map((item, index) => {
-          return (
-            <div
-              key={index}
-              onClick={() => setActiveSlider(item.id)}
-              className={
-              `d-flex justify-content-center align-items-center ${
-                activeSlider === item.id 
-                  ? "active-dot"
-                  : "dot"
-                }`
-              }>
-            </div>
-          )         
-        })}   
-      </div> 
+    <div className='slider-container'>
+      <div className='image_wrapper'>
+        <div className='slide'>
+         <img className={activeSlider === 1 ? 'image_slider_active' : 'image_slider'} src={FirstImage} alt='first-image'></img>
+        </div>
+        <div className='slide'>
+         <img className={activeSlider === 2 ? 'image_slider_active' : 'image_slider'} src={SecondImage} alt='first-image'></img>
+        </div>
+        <div className='slide'>
+          <img className={activeSlider === 3 ? 'image_slider_active' : 'image_slider'} src={ThirdImage} alt='first-image'></img>
+        </div>
+        <div className='dot-wrapper'>
+          <button 
+            onClick={() => setActiveSlider(1)} 
+            name='first-image' 
+            className={activeSlider === 1 ? 'active-dot' : 'dot'}/>
+          <button 
+            onClick={() => setActiveSlider(2)} 
+            name='second-image' 
+            className={activeSlider === 2 ? 'active-dot' : 'dot'}/>
+          <button 
+             onClick={() => setActiveSlider(3)} 
+            name='third-image' 
+            className={activeSlider === 3 ? 'active-dot' : 'dot'}/>
+        </div>
+      </div>
     </div>
     </>
   )

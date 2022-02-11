@@ -19,7 +19,7 @@ import { addCart } from '../redux/product'
 
 const Ipad = ({params,selectedProduct}) => {
 
-
+  console.log()
   const [ipadButtonAdded, setIpadButtonAdded] = useState(false)
   const [smartButton, setSmartButton] = useState(false)
   const [smartFolioButton , setSmartFolioButton] = useState('')
@@ -38,7 +38,7 @@ const Ipad = ({params,selectedProduct}) => {
   const [wifiPrice, setWifiPrice] = useState(0)
   const [pencil, setPencil] = useState('')
   const [folio, setFolio] = useState('')
-  const [selectedColor, setSelectedColor] = useState(selectedProduct[0])
+  const [selectedColor, setSelectedColor] = useState({})
 
   const dispatch = useDispatch()
 
@@ -71,6 +71,10 @@ const Ipad = ({params,selectedProduct}) => {
     
   }, [buttonCloseStorage])
 
+  useEffect(() => {
+    setSelectedColor(selectedProduct[0])
+  },[selectedProduct])
+
   const handleWifiSection = (item) => {
     setActiveButtonWifi(item)
     setButtonCloseWifi(true)
@@ -87,14 +91,14 @@ const Ipad = ({params,selectedProduct}) => {
     <>
     <div>
       <div className='ipad-header'>
-        <h1 className='fs-4'>{selectedColor.series}</h1>
+        <h1 className='fs-4'>{selectedColor && selectedColor.series}</h1>
         <h1 className='fs-4'>₱{totalPrice.toLocaleString()}</h1>
       </div>
       <div className="container mt-5">
         <div className="row">
         <div className="img-wrapper-ipad d-flex align-items-center flex-column col-6">
           <div className='img-ipad-sticky'>
-            <img src={selectedColor.img} alt='ipad'/>
+            <img src={selectedColor && selectedColor.img} alt='ipad'/>
             <div className='mt-5 text-center'>
               <i className="far fa-shipping-fast"></i>
               <p>Free Delivery</p>
@@ -102,7 +106,7 @@ const Ipad = ({params,selectedProduct}) => {
           </div>
         </div>
         <div className="details-ipad-wrapper d-flex align-items-start flex-column col-6">   
-        <h1><strong>{selectedColor.descriptionHeader}</strong></h1>
+        <h1><strong>{selectedColor && selectedColor.descriptionHeader}</strong></h1>
         {buttonClose === false && <div>
           <p className='mt-5'><strong>Finish</strong></p>
           <div className='button-wrapper'>

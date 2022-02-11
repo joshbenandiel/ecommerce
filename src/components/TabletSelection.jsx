@@ -11,9 +11,8 @@ import IpadPro from './IpadPro'
 
 
 const TabletSelection = () => {
-  const [selectedVariant, setSelectedVariant] = useState({})
   const [selectedProduct, setSelectedProduct] = useState([])
-  console.log(selectedVariant)
+
   
   const products = useSelector((state) => {
     return state.product.products
@@ -31,9 +30,8 @@ const TabletSelection = () => {
       }
     })
     setSelectedProduct(items)
-    setSelectedVariant(items[0])
 
-  },[params, products, selectedVariant])
+  },[params, products])
 
 
   return (
@@ -41,8 +39,6 @@ const TabletSelection = () => {
     {params.tag === 'ipad-mini' && 
       <>
       <Ipad   
-        selectedVariant={selectedVariant} 
-        setSelectedVariant={setSelectedVariant}
         selectedProduct={selectedProduct}
         params={params}    
       />
@@ -50,28 +46,22 @@ const TabletSelection = () => {
     {params.tag === 'ipad' && 
       <>
         <SmartKeyboard
-        selectedVariant={selectedVariant} 
-        setSelectedVariant={setSelectedVariant}
-        selectedProduct={selectedProduct}
-        params={params}    
+          selectedProduct={selectedProduct}
+          params={params}    
       />
     </>}
     {params.tag === 'ipad-air' && 
       <>
         <IpadAir
-        selectedVariant={selectedVariant} 
-        setSelectedVariant={setSelectedVariant}
-        selectedProduct={selectedProduct}
-        params={params}    
+          selectedProduct={selectedProduct}
+          params={params}    
       />
     </>}
     {params.tag === 'ipad-pro' && 
       <>
         <IpadPro
-        selectedVariant={selectedVariant} 
-        setSelectedVariant={setSelectedVariant}
-        selectedProduct={selectedProduct}
-        params={params}    
+          selectedProduct={selectedProduct}
+          params={params}    
       />
     </>}
     </>
