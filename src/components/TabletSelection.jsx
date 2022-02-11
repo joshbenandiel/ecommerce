@@ -13,6 +13,7 @@ import IpadPro from './IpadPro'
 const TabletSelection = () => {
   const [selectedVariant, setSelectedVariant] = useState({})
   const [selectedProduct, setSelectedProduct] = useState([])
+  console.log(selectedVariant)
   
   const products = useSelector((state) => {
     return state.product.products

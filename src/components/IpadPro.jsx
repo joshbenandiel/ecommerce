@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux'
 import { addCart } from '../redux/product'
 
 
-const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
+const SmartKeyBoard = ({params,selectedProduct}) => {
 
   const [ipadButtonAdded, setIpadButtonAdded] = useState(false)
   const [smartButton, setSmartButton] = useState(false)
@@ -42,6 +42,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
   const [keyboardSmart, setSmartKeyboard] = useState('')
   const [wifiPrice, setWifiPrice] = useState(0)
   const [totalPrice, setTotalPrice] = useState(45899);
+  const [selectedItem, setSelectedItem] = useState(selectedProduct[0])
 
   const dispatch = useDispatch()
 
@@ -80,14 +81,14 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
   return (
     <div>
       <div className='ipad-header'>
-        <h1 className='fs-4'>{selectedVariant.series}</h1>
+        <h1 className='fs-4'>{selectedItem.series}</h1>
         <h1 className='fs-4'>₱{totalPrice.toLocaleString()}</h1>
       </div>
       <div className="container mt-5">
         <div className="row">
         <div className="img-wrapper-ipad d-flex align-items-center flex-column col-6">
           <div className='img-ipad-sticky'>
-            <img src={selectedVariant.img} alt='main'/>
+            <img src={selectedItem.img} alt='main'/>
             <div className='mt-5 text-center'>
               <i className="far fa-shipping-fast"></i>
               <p>Free Delivery</p>
@@ -95,7 +96,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
           </div>
         </div>
       <div className="details-ipad-wrapper d-flex align-items-start flex-column col-6">   
-      <h1><strong>{selectedVariant.descriptionHeader}</strong></h1>
+      <h1><strong>{selectedItem.descriptionHeader}</strong></h1>
         <p className='fw-bold'>Model</p>
         {buttonCloseModel === false && <div className='d-flex flex-column'>
           {modelData.map((modelButton, index) => {
@@ -130,7 +131,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
             key={item.id}
             className={activeButton === item.id ? 'ipad-button-active' : 'ipad-button'}
             onClick={()=> {
-              setSelectedVariant(item)
+              setSelectedItem(item)
               setActiveButton(item.id)
               setButtonClose(true)
             }}
@@ -143,7 +144,7 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
       </div>}
       {buttonClose === true && 
         <div className='button-close-wrapper-storage'>
-          <h1 className='fw-bolder fs-4'>{selectedVariant.color}</h1>
+          <h1 className='fw-bolder fs-4'>{selectedItem.color}</h1>
           <button 
           onClick={()=> {
             setButtonClose(false)}
@@ -377,10 +378,10 @@ const SmartKeyBoard = ({selectedVariant,setSelectedVariant,params,selectedProduc
       <Button 
       onClick={()=> {
         dispatch(addCart({
-          id: selectedVariant.id,
-          name: selectedVariant.series,
-          img: selectedVariant.img,
-          color: selectedVariant.color, 
+          id: selectedItem.id,
+          name: selectedItem.series,
+          img: selectedItem.img,
+          color: selectedItem.color, 
           size: activeButtonStorage,
           price: totalPrice,
           pencil: pencilName,

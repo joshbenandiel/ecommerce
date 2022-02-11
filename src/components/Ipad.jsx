@@ -17,9 +17,8 @@ import { useDispatch } from 'react-redux'
 import { addCart } from '../redux/product'
 
 
-const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
+const Ipad = ({params,selectedProduct}) => {
 
-  
 
   const [ipadButtonAdded, setIpadButtonAdded] = useState(false)
   const [smartButton, setSmartButton] = useState(false)
@@ -39,6 +38,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
   const [wifiPrice, setWifiPrice] = useState(0)
   const [pencil, setPencil] = useState('')
   const [folio, setFolio] = useState('')
+  const [selectedColor, setSelectedColor] = useState(selectedProduct[0])
 
   const dispatch = useDispatch()
 
@@ -87,14 +87,14 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
     <>
     <div>
       <div className='ipad-header'>
-        <h1 className='fs-4'>{selectedVariant.series}</h1>
+        <h1 className='fs-4'>{selectedColor.series}</h1>
         <h1 className='fs-4'>₱{totalPrice.toLocaleString()}</h1>
       </div>
       <div className="container mt-5">
         <div className="row">
         <div className="img-wrapper-ipad d-flex align-items-center flex-column col-6">
           <div className='img-ipad-sticky'>
-            <img src={selectedVariant.img} alt='ipad'/>
+            <img src={selectedColor.img} alt='ipad'/>
             <div className='mt-5 text-center'>
               <i className="far fa-shipping-fast"></i>
               <p>Free Delivery</p>
@@ -102,7 +102,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
           </div>
         </div>
         <div className="details-ipad-wrapper d-flex align-items-start flex-column col-6">   
-        <h1><strong>{selectedVariant.descriptionHeader}</strong></h1>
+        <h1><strong>{selectedColor.descriptionHeader}</strong></h1>
         {buttonClose === false && <div>
           <p className='mt-5'><strong>Finish</strong></p>
           <div className='button-wrapper'>
@@ -111,7 +111,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
               key={item.id}
               className={activeButton === item.id ? 'ipad-button-active' : 'ipad-button'}
               onClick={()=> {
-                setSelectedVariant(item)
+                setSelectedColor(item)
                 setActiveButton(item.id)
                 setButtonClose(true)
               }}
@@ -124,7 +124,7 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         </div>}
         {buttonClose === true && 
           <div className='button-close-wrapper'>
-            <h1 className='fw-bolder fs-4'>{selectedVariant.color}</h1>
+            <h1 className='fw-bolder fs-4'>{selectedColor.color}</h1>
             <button 
             onClick={()=> setButtonClose(false)}
             className='change-button'>Change</button>
@@ -292,10 +292,10 @@ const Ipad = ({selectedVariant,setSelectedVariant,params,selectedProduct}) => {
         <Button
         onClick={()=> {
           dispatch(addCart({
-            id: selectedVariant.id,
-            name: selectedVariant.series,
-            img: selectedVariant.img,
-            color: selectedVariant.color, 
+            id: selectedColor.id,
+            name: selectedColor.series,
+            img: selectedColor.img,
+            color: selectedColor.color, 
             size: activeButtonStorage,
             price: totalPrice,
             pencil: pencil,
