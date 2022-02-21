@@ -1,7 +1,7 @@
 
 .slider-container {
  position: relative;
- height: 50vh;
+ height: 60vh;
  width: 100%;
   
 }
@@ -13,12 +13,12 @@
 
 
 .image_slider {
-  height: 500px;
+  height: 600px;
   width: 120em;
   opacity: 0;
 }
 .image_slider_active {
-  height: 500px;
+  height: 600px;
   width: 120em;
   opacity: 1;
   transition: 500ms;
@@ -36,6 +36,7 @@
   z-index: 2;
   bottom: 0;
   left: 50%;
+  transform: translateX(-50%);
 }
 
 .dot {
