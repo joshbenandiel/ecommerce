@@ -94,28 +94,27 @@ const Navbar = ({searchFilter,searchTerm}) => {
                     }
                     {filteredResult.map((searchItem , index) => {
                       return (
-                        <div
-                        onClick={() => {
-                          dispatch(setSearchisClose(false))
-                          dispatch(getProductItem(searchItem))
-                        }} 
-                        key={index}>
-                          <div className="search-wrapper">
-                            <div className="search-container d-flex">
-                              <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/buy/${searchItem.tag}`
-                              }>                         
+                        <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/buy/${searchItem.tag}`}>                          
+                          <div
+                          onClick={() => {
+                            dispatch(setSearchisClose(false))
+                            dispatch(getProductItem(searchItem))
+                          }} 
+                          key={index}>
+                            <div className="search-wrapper">
+                              <div className="search-container d-flex">
                                 <img className="search-img mt-2" src={searchItem.img} alt="item-img"></img>
-                              </Link> 
-                              <div className="search-details">
-                                <Link style={{textDecoration: 'none', color: 'black'}} to={searchItem.inch ? `/product/${searchItem.tag}/${searchItem.inch}/item` : `/product/${searchItem.tag}`}> 
-                                  <p className="search-series-header">{searchItem.series}</p>
-                                  <p>{searchItem.name}</p>
-                                  <p>₱ {searchItem.price}</p>
-                                </Link>         
-                              </div>        
+                                <div className="search-details">
+                                  {/* <Link style={{textDecoration: 'none', color: 'black'}} to={searchItem.inch ? `/product/${searchItem.tag}/${searchItem.inch}/item` : `/product/${searchItem.tag}`}>  */}
+                                    <p className="search-series-header">{searchItem.series}</p>
+                                    <p>{searchItem.name}</p>
+                                    <p>₱ {searchItem.price}</p>
+                                  {/* </Link>          */}
+                                </div>        
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </Link>
                       )
                     })}
                     </div>   
