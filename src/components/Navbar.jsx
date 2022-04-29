@@ -27,6 +27,9 @@ const Navbar = ({searchFilter,searchTerm}) => {
   
 
   const dispatch = useDispatch();
+
+  const state = useSelector((state) => state.search.searchIsVisible)
+  console.log(state)
   
   useEffect(() => {
       const items = []
@@ -49,14 +52,18 @@ const Navbar = ({searchFilter,searchTerm}) => {
         return null;
       }
       setFilteredResult(items)
-      dispatch(setSearchisClose(true));
-  }, [searchTerm, dispatch, productsData])
-
-
-
+      if(document.activeElement === inputRef.current){
+        dispatch(setSearchisClose(true));
+      }
+    }, [searchTerm, dispatch, productsData])
+    
+    
+    
+  const inputRef = useRef()
   const searchRef = useRef()
   const cartRef = useRef()
   const loginRef = useRef()
+  
 
 
   useOnClickOutside(loginRef, () => setActiveLogin(false))
@@ -81,7 +88,8 @@ const Navbar = ({searchFilter,searchTerm}) => {
             </div>
             <div className="col-6 d-flex align-items-center"> 
               <div className="search-wrapper">
-                <input ref={searchRef}
+                <input 
+                ref={inputRef}
                 onChange={searchFilter}
                 placeholder='Search...' className="search-input"></input>
                 <Link 
@@ -89,20 +97,20 @@ const Navbar = ({searchFilter,searchTerm}) => {
                   onClick={() => {      
                     dispatch(handleSearchResult(searchTerm))
                     dispatch(setSelectedCheckbox(''))
-                    dispatch(setSearchisClose(false))
+                    // dispatch(setSearchisClose(false))
                   }}
                 >
-                </Link>
                 <div 
                 className="search-btn">
                   <i className="far fa-search"></i>
                 </div>
+                </Link>
                 {searchIsVisible && 
                   <div>
                     {searchTerm === ""  ? 
                       null
                     : 
-                    <div className="search-item mt-2">
+                    <div ref={searchRef} className="search-item mt-2">
                     <p className="search-header">PRODUCTS</p>
                     {searchEmpty && 
                         <p className="p-2">Sorry, nothing found for "{searchTerm}"</p>
@@ -113,7 +121,7 @@ const Navbar = ({searchFilter,searchTerm}) => {
                           <div
                           onClick={() => {
                             dispatch(getProductItem(searchItem))
-                            dispatch(setSearchisClose(false))
+                            // dispatch(setSearchisClose(false))
                           }} 
                           key={index}>
                             <div className="search-wrapper">
