@@ -3,10 +3,12 @@ import SearchCategories from './SearchCategories'
 import SearchItems from './SearchItems'
 import '../styles/Search.css'
 import { useSelector } from 'react-redux'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 
 
-const Search = ({searchTerm}) => {
+const Search = ({searchTerm, searchFilter}) => {
 
 
 
@@ -23,27 +25,29 @@ const Search = ({searchTerm}) => {
   const [availIsCheck, setAvailIsCheck] = useState(false);
 
   return (
-    <div>
-        <div className="search-main-wrapper p-5 container-fluid px-0">
-          <div className="row m-0">
-            <div className="col-2">
-              <SearchCategories
-                setAvailIsCheck={setAvailIsCheck}
-                value={value}
-                setValue={setValue}
-                searchTerm={searchTerm}
-                availIsCheck={availIsCheck}
-              />
-            </div>
-            <div className="col-10">
-              <SearchItems
-                searchTerm={searchTerm}
-                value={value}
-              />
-            </div>
+    <>
+    <Navbar searchTerm={searchTerm} searchFilter={searchFilter}/>
+      <div className="search-main-wrapper p-5 container-fluid px-0">
+        <div className="row m-0">
+          <div className="col-2">
+            <SearchCategories
+              setAvailIsCheck={setAvailIsCheck}
+              value={value}
+              setValue={setValue}
+              searchTerm={searchTerm}
+              availIsCheck={availIsCheck}
+            />
+          </div>
+          <div className="col-10">
+            <SearchItems
+              searchTerm={searchTerm}
+              value={value}
+            />
           </div>
         </div>
-    </div>
+      </div>
+    <Footer/>
+    </>
   )
 }
 

@@ -4,9 +4,11 @@ import { useSelector , useDispatch} from 'react-redux'
 import '../styles/SelectedProduct.css'
 import { macbookMemory, macbookStorage } from './data/RecomendationsData'
 import { addCart } from '../redux/product'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 
-const SelectedProduct = ({selectedProductMacbookPro}) => {
+const SelectedProduct = ({selectedProductMacbookPro, searchTerm, searchFilter}) => {
 
   const [memory, setMemory] = useState('8GB unified memory')
   const [storage, setStorage] = useState('256GB SSD storage')
@@ -29,6 +31,8 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
 
   const totalPrice = selectedProductMacbookPro.price + memoryPrice + storagePrice
   return (
+    <>
+    <Navbar searchTerm={searchTerm} searchFilter={searchFilter}/>
     <div className='position-relative'>
     <div className="container">
       <div className="row">
@@ -102,6 +106,8 @@ const SelectedProduct = ({selectedProductMacbookPro}) => {
       </div>
     </div>
   </div>
+  <Footer/>
+  </>
   )
 }
 

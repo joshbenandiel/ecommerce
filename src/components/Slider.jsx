@@ -1,5 +1,4 @@
 import React, { useState , useEffect } from 'react'
-import sliderData from "./data/SliderData"
 import "../styles/Slider.css"
 import FirstImage from '../images/slider/holiday-snowflake-default-202111.jpg'
 import SecondImage from '../images/slider/holiday-snowflake-creativity-202111-2.jpg'
@@ -27,13 +26,13 @@ const Slider = () => {
     <div className='slider-container'>
       <div className='image_wrapper'>
         <div className='slide'>
-         <img className={activeSlider === 1 ? 'image_slider_active' : 'image_slider'} src={FirstImage} alt='first-image'></img>
+         <img className={activeSlider === 1 ? 'image_slider_active' : 'image_slider'} src={FirstImage} alt='first-profile'></img>
         </div>
         <div className='slide'>
-         <img className={activeSlider === 2 ? 'image_slider_active' : 'image_slider'} src={SecondImage} alt='first-image'></img>
+         <img className={activeSlider === 2 ? 'image_slider_active' : 'image_slider'} src={SecondImage} alt='second-profile'></img>
         </div>
         <div className='slide'>
-          <img className={activeSlider === 3 ? 'image_slider_active' : 'image_slider'} src={ThirdImage} alt='first-image'></img>
+          <img className={activeSlider === 3 ? 'image_slider_active' : 'image_slider'} src={ThirdImage} alt='third-profile'></img>
         </div>
         <div className='dot-wrapper'>
           <button 

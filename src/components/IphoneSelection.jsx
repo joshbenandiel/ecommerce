@@ -7,9 +7,11 @@ import TabletSelection from './TabletSelection'
 import MacbookSelection  from './MacbookSelection';
 import MacbookProSelection  from './MacbookProSelection';
 import { addCart } from '../redux/product';
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 
-const IphoneSelection = ({macbookProSelectedProduct}) => {
+const IphoneSelection = ({macbookProSelectedProduct, searchTerm, searchFilter}) => {
   const params = useParams()
   const [selectedProduct, setSelectedProduct] = useState([])
   const [selectedVariant, setSelectedVariant] = useState({})
@@ -49,6 +51,7 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
   
   return (
     <>
+    <Navbar searchTerm={searchTerm} searchFilter={searchFilter}/>
     {params.tag.includes('iphone') && <div className='iphone-container-select container'>
       <div className="row">
         <div className="image-container col-6">
@@ -197,6 +200,7 @@ const IphoneSelection = ({macbookProSelectedProduct}) => {
         />   
       </>
     }
+    <Footer/>
     </>
   )
 }

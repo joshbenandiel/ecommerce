@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import '../styles/Bag.css'
 import BagCard from './BagCard';
 import { Link } from 'react-router-dom'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
-const Bag = () => {
+const Bag = ({searchTerm, searchFilter}) => {
 
   
   const productsInCart = useSelector((state) => state.product.cart);
@@ -23,6 +25,7 @@ const Bag = () => {
 
   return (
     <>
+    <Navbar searchTerm={searchTerm} searchFilter={searchFilter}/>
     {productsInCart.length === 0 ? 
       <div className='d-flex flex-column align-items-center p-5'>
         <h1 className='fw-bold mt-4'>Your bag is empty.</h1>
@@ -52,6 +55,7 @@ const Bag = () => {
       })}
     </div> 
     }
+    <Footer/>
     </>
   )
 }

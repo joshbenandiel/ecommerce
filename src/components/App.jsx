@@ -8,8 +8,6 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Navbar from './Navbar'
-import Footer from './Footer'
 import SelectedProduct from './SelectedProduct'
 import IphoneSelection from './IphoneSelection'
 import SelectedMacbookAir from './SelectedMacbookAir'
@@ -34,40 +32,43 @@ function App() {
   return (
     <div className='app-container'>
       <BrowserRouter>
-        <Navbar
-          searchTerm={searchTerm}
-          searchFilter={searchFilter}
-        />
         <Routes>
           <Route path="/" element={
-          <Main
-            searchTerm={searchTerm}
-            searchFilter={searchFilter}
-            setSearchTerm={setSearchTerm}
-          />} />
+            <Main
+              searchTerm={searchTerm}
+              searchFilter={searchFilter}
+              setSearchTerm={setSearchTerm}
+            />} />
           <Route path='/search' element={
-          <Search
-            searchTerm={searchTerm}
-            searchFilter={searchFilter}
-          />} />
+            <Search
+              searchTerm={searchTerm}
+              searchFilter={searchFilter}
+            />} />
           <Route exact path='/product/buy/:tag/:item/:id' element={
             <SelectedProduct
+            searchTerm={searchTerm}
+            searchFilter={searchFilter}
             selectedProductMacbookPro={selectedProductMacbookPro}
           />} />
           <Route exact path='/product/buy/:tag/:id' element={
             <SelectedMacbookAir
+            searchTerm={searchTerm}
+            searchFilter={searchFilter}
             selectedProductMacbookPro={selectedProductMacbookPro}
             />}
           />
           <Route exact path='/product/buy/:tag' element={
             <IphoneSelection
+            searchTerm={searchTerm}
+            searchFilter={searchFilter}
             macbookProSelectedProduct={setSelectedProduct}
           />} />
           <Route exact path='/product/shop/bag' element={
             <Bag
+            searchTerm={searchTerm}
+            searchFilter={searchFilter}
           />} />
         </Routes>
-        <Footer/>
       </BrowserRouter>
     </div>
   );

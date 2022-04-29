@@ -2,15 +2,19 @@ import React from 'react'
 import Items from "./Items"
 import Promo from "./Promo"
 import Slider from "./Slider"
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 
-const Main = () => {
+const Main = ({searchTerm, searchFilter}) => {
 
   return (
     <div>
-      <Slider/>
-      <Promo/>
-      <Items/>
+      <Navbar searchTerm={searchTerm} searchFilter={searchFilter}/>
+        <Slider/>
+        <Promo/>
+        <Items/>
+      <Footer/>
     </div>
   )
 }
