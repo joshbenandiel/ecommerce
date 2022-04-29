@@ -1,4 +1,4 @@
-import React , { useState , useEffect } from 'react'
+import React , { useState , useEffect ,useRef } from 'react'
 import "../styles/Navbar.css"
 import Login from "./Login"
 import Cart from "./Cart"
@@ -9,6 +9,7 @@ import { handleSearchResult } from '../redux/SearchResult'
 import { setSelectedCheckbox } from '../redux/SelectedCheckBox'
 import { getProductItem } from '../redux/productItem'
 import apple from '../images/Watches/applelogogadgetspage-15753501854p8cl.jpg'
+import { useOnClickOutside } from '../hooks/outsideClick';
 
 const Navbar = ({searchFilter,searchTerm}) => {
   
@@ -51,8 +52,23 @@ const Navbar = ({searchFilter,searchTerm}) => {
       dispatch(setSearchisClose(true));
   }, [searchTerm, dispatch, productsData])
 
+
+
+  const searchRef = useRef()
+  const cartRef = useRef()
+  const loginRef = useRef()
+
+
+  useOnClickOutside(loginRef, () => setActiveLogin(false))
+  useOnClickOutside(searchRef, () => dispatch(setSearchisClose(false)))
+  useOnClickOutside(cartRef, () => setActiveCart(false))
+ 
+
+
+  
+
   return (
-      <div className="navbar-wrapper">
+      <div  className="navbar-wrapper">
         <div className="container">
           <div className="row">
             <div className="col logo">
@@ -65,23 +81,22 @@ const Navbar = ({searchFilter,searchTerm}) => {
             </div>
             <div className="col-6 d-flex align-items-center"> 
               <div className="search-wrapper">
-                <input
+                <input ref={searchRef}
                 onChange={searchFilter}
                 placeholder='Search...' className="search-input"></input>
                 <Link 
                   to={searchTerm && `/search?q=${searchTerm}`}
-                  onClick={() => {
-                    dispatch(setSearchisClose(false))
+                  onClick={() => {      
                     dispatch(handleSearchResult(searchTerm))
                     dispatch(setSelectedCheckbox(''))
+                    dispatch(setSearchisClose(false))
                   }}
                 >
-                  <div
-                  className="search-btn">
-                    <i className="far fa-search"></i>
-                  </div>
                 </Link>
-                
+                <div 
+                className="search-btn">
+                  <i className="far fa-search"></i>
+                </div>
                 {searchIsVisible && 
                   <div>
                     {searchTerm === ""  ? 
@@ -97,8 +112,8 @@ const Navbar = ({searchFilter,searchTerm}) => {
                         <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/buy/${searchItem.tag}`}>                          
                           <div
                           onClick={() => {
-                            dispatch(setSearchisClose(false))
                             dispatch(getProductItem(searchItem))
+                            dispatch(setSearchisClose(false))
                           }} 
                           key={index}>
                             <div className="search-wrapper">
@@ -124,14 +139,14 @@ const Navbar = ({searchFilter,searchTerm}) => {
               </div>
             </div>
             <div className="col login">
-              <div className="login-wrapper">
+              <div ref={loginRef} className="login-wrapper">
                 <h5 className="login-signup">Login / Signup</h5>
                 <button
                   style={{ border: 0, background: 'transparent' }}
                   onClick={() => {
-                    setActiveLogin(!activeLogin)
+                    setActiveLogin(true)
                     if (activeCart) {
-                      setActiveCart(!activeCart);
+                      setActiveCart(false);
                     }
                   }}
                   type="button">
@@ -139,15 +154,19 @@ const Navbar = ({searchFilter,searchTerm}) => {
                     My Account <i className="fas fa-chevron-down"></i>
                   </h5>
                 </button>
+                <Login
+                  activeLogin={activeLogin}
+                  setActiveLogin={setActiveLogin}
+                />
               </div>
-              <div className="cart-wrapper">
+              <div ref={cartRef} className="cart-wrapper">
                 <div className="cart-wrap position-relative">
                   <i className="cart-nav far fa-shopping-cart"></i>
                   <div
                     onClick={() => {
-                        setActiveCart(!activeCart)
+                        setActiveCart(true)
                         if (activeLogin) {
-                          setActiveLogin(!activeLogin);
+                          setActiveLogin(false);
                         }
                     }} 
                     className="cart-count">
@@ -162,12 +181,9 @@ const Navbar = ({searchFilter,searchTerm}) => {
             </div>
           </div>
         </div>  
-          <Login
-            activeLogin={activeLogin}
-            setActiveLogin={setActiveLogin}
-          />
+ 
+         
       </div>
-
   )
   
 }

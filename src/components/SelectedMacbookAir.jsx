@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React , { useState } from 'react'
+import React , { useEffect, useState } from 'react'
 import { useSelector , useDispatch} from 'react-redux'
 import '../styles/SelectedProduct.css'
 import { macbookMemory, macbookStorage } from './data/RecomendationsData'
@@ -29,6 +29,9 @@ const SelectedProduct = ({selectedProductMacbookPro, searchTerm, searchFilter}) 
     setStoragePrice(item.price)
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const totalPrice = selectedProductMacbookPro.price + memoryPrice + storagePrice
   return (
     <>

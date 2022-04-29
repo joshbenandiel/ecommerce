@@ -47,8 +47,10 @@ const IphoneSelection = ({macbookProSelectedProduct, searchTerm, searchFilter}) 
     setHeader(items[0].descriptionHeader)
   }, [params, products])
 
-
-  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+    
   return (
     <>
     <Navbar searchTerm={searchTerm} searchFilter={searchFilter}/>

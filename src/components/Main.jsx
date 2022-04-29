@@ -7,7 +7,7 @@ import Footer from './Footer'
 
 
 const Main = ({searchTerm, searchFilter}) => {
-
+  
   return (
     <div>
       <Navbar searchTerm={searchTerm} searchFilter={searchFilter}/>

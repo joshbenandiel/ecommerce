@@ -26,7 +26,6 @@ function App() {
 
 
 
-
   const [selectedProductMacbookPro, setSelectedProduct] = useState({})
 
   return (
